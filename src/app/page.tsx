@@ -14,26 +14,14 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header avec navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
-        <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h2 className="text-2xl font-extrabold text-white">Les Closurades</h2>
-          <ul className="flex space-x-6">
-            <li><a href="#billeterie" className="text-white hover:text-gray-300 transition">Billeterie</a></li>
-            <li><a href="#merch" className="text-white hover:text-gray-300 transition">Merch</a></li>
-            <li><a href="#lineup" className="text-white hover:text-gray-300 transition">Line-up</a></li>
-            <li><a href="#informations" className="text-white hover:text-gray-300 transition">Informations</a></li>
-          </ul>
-        </nav>
-      </header>
-
       {/* Section Header avec image et overlay */}
       <div className="relative h-screen">
-        <Image
+      <Image
           src="/background.jpg"
           alt="Image de fond pour le festival"
-          layout="fill"
-          objectFit="cover"
+          fill
+          style={{ objectFit: 'cover' }}
+          objectPosition="center"
         />
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
@@ -43,8 +31,11 @@ export default function Home() {
           <h1 className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
             Les Closurades Festival
           </h1>
+          <h2 className="mt-16 text-xl sm:text-3xl drop-shadow-lg">
+              <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> -  <span className='underline decoration-pink-500 font-extrabold'>18 & 19 Juillet 2025</span> 
+          </h2>
           {/* Liste d'artistes défilante */}
-          <ArtistList artists={artists} />
+          <ArtistList artists={artists}/>
         </div>
 
         {/* Indicateur de scroll */}
@@ -58,8 +49,8 @@ export default function Home() {
           >
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
           </svg>
-          <span className="mt-2 text-white font-medium">
-            Défilez pour voir les tickets
+          <span className="mt-2 text-xl text-white font-bold uppercase">
+            Billeterie
           </span>
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function ArtistList({ artists: artists }: Readonly<{ artists: str
 const duplicatedArtists = [...artists, ...artists];
 
 return (
-  <div className="overflow-hidden w-full mt-6">
+  <div className="overflow-hidden w-full mt-32">
     <div className="flex whitespace-nowrap animate-scroll">
       {duplicatedArtists.map((artist, index) => (
         <span
@@ -26,12 +26,12 @@ return (
           transform: translateX(0);
         }
         100% {
-          transform: translateX(-10%);
+          transform: translateX(-50%);
         }
       }
       .animate-scroll {
         display: inline-flex;
-        animation: scroll 12s linear infinite;
+        animation: scroll 30s linear infinite;
       }
     `}</style>
   </div>
