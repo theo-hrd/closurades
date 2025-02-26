@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useEffect, useState, useRef } from "react";
 
 export default function Header() {
@@ -36,7 +37,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <h2 className="text-2xl font-extrabold text-white">Les Closurades</h2>
+        <Link className="text-2xl font-extrabold text-white" href="/">Les Closurades</Link>
         <div className="lg:hidden flex items-center">
           <button ref={buttonRef} onClick={toggleMenu} className="text-white">
             <svg
@@ -57,24 +58,24 @@ export default function Header() {
         </div>
         <ul className="hidden lg:flex space-x-6">
           <li>
-            <a href="#billeterie" className="text-white hover:text-gray-300 transition">
+            <Link href="#billeterie" className="text-white hover:text-gray-300 transition">
               Billeterie
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#merch" className="text-white hover:text-gray-300 transition">
+            <Link href="#merch" className="text-white hover:text-gray-300 transition">
               Merch
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#lineup" className="text-white hover:text-gray-300 transition">
+            <Link href="#lineup" className="text-white hover:text-gray-300 transition">
               Line-up
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#informations" className="text-white hover:text-gray-300 transition">
+            <Link href="#informations" className="text-white hover:text-gray-300 transition">
               Informations
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>
@@ -88,24 +89,24 @@ export default function Header() {
       >
         <ul className="space-y-4 p-6">
           <li>
-            <a href="#billeterie" className="text-white hover:text-gray-300 transition">
+            <Link href="#billeterie" className="text-white hover:text-gray-300 transition">
               Billeterie
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#merch" className="text-white hover:text-gray-300 transition">
+            <Link href="#merch" className="text-white hover:text-gray-300 transition">
               Merch
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#lineup" className="text-white hover:text-gray-300 transition">
+            <Link href="#lineup" className="text-white hover:text-gray-300 transition">
               Line-up
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="#informations" className="text-white hover:text-gray-300 transition">
+            <Link href="#informations" className="text-white hover:text-gray-300 transition">
               Informations
-            </a>
+            </Link>
           </li>
         </ul>
       </div>

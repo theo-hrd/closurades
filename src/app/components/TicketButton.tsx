@@ -23,13 +23,13 @@ const TicketButton = () => {
         ></div>
         
         {/* Conteneur pour le texte */}
-        <div className="relative z-10">
-          <span>Prenez vos billets</span>
+        <div className="relative z-10 uppercase">
+          <span>Prenez vos tickets</span>
         </div>
       </button>
       
       {/* Prix qui apparaît au hover */}
-      <div className={`mt-3 font-semibold text-gray-300 transition-opacity duration-300 ${
+      <div className={`mt-3 font-semibold text-gray-600 transition-opacity duration-300 ${
         isHovered ? 'opacity-100' : 'opacity-0'
       }`}>
         Prix: 20 €
