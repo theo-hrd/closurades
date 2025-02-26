@@ -4,6 +4,7 @@ interface Artiste {
   photo: string;
   genre: string;
   heure: string;
+  origine: string;
 }
 
 interface ArtistesData {
@@ -13,49 +14,56 @@ interface ArtistesData {
 
 const artistesData: ArtistesData = {
   jour1: [
+
     {
       id: 1,
-      nom: 'Artiste 1',
+      nom: 'truc', 
       photo: '/artists/1.jpg',
-      genre: 'Schranz | Early Hardcore | Uptempo',
-      heure: '23h00 - 2h00'
+      genre: 'Post Punk',
+      heure: '20h00 - 20h45',
+      origine: 'France - Toulouse'
     },
     {
       id: 2,
-      nom: 'Artiste 2', 
-      photo: '/artists/2.jpg',
-      genre: 'Techno',
-      heure: '23h00 - 2h00'
+      nom: 'truc', 
+      photo: '/artists/1.jpg',
+      genre: 'Post Punk',
+      heure: '20h00 - 20h45',
+      origine: 'France - Toulouse'
     },
     {
       id: 3,
       nom: 'Artiste 3',
       photo: '/artists/3.jpg', 
       genre: 'Techno',
-      heure: '23h00 - 2h00'
+      heure: '23h00 - 2h00',
+      origine: 'France - Toulouse'
     },
   ],
   jour2: [
     {
       id: 4,
-      nom: 'Artiste 3',
-      photo: '/artists/4.jpg',
-      genre: 'Truc',
-      heure: '23h00 - 2h00'
+      nom: 'Stonks', 
+      photo: '/artists/stonks.jpg',
+      genre: 'Post Punk',
+      heure: '20h00 - 20h45',
+      origine: 'France - Toulouse'
     },
     {
       id: 5,
-      nom: 'Artiste 5',
-      photo: '/artists/4.jpg',
-      genre: 'Rock',
-      heure: '23h00 - 2h00'
+      nom: 'TWENTYHATE',
+      photo: '/artists/twentyhate.png',
+      genre: 'Schranz | Drum & Bass | Early Hardcore | Uptempo',
+      heure: '23h00 - 2h00',
+      origine: 'France - Toulouse'
     },
     {
       id: 6,
-      nom: 'Artiste 6',
+      nom: 'Artiste 5',
       photo: '/artists/4.jpg',
       genre: 'Rock',
-      heure: '23h00 - 2h00'
+      heure: '23h00 - 2h00',
+      origine: 'France - Toulouse'
     },
   ]
 };
