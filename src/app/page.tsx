@@ -8,6 +8,12 @@ export default function Home() {
   const images = [
     '/background.jpg',
     '/background2.jpg',
+    '/background3.jpg',
+    '/background4.jpg',
+    '/background5.jpg',
+    '/background6.jpg',
+    '/background7.jpg',
+    '/background8.jpg',
     // Vous pouvez ajouter d'autres images ici
   ];
   
@@ -17,7 +23,7 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
-    }, 5000); // Change l'image toutes les 5 secondes
+    }, 3000); // Change l'image toutes les 3 secondes
     
     return () => clearInterval(interval);
   }, [images.length]);
@@ -53,20 +59,6 @@ export default function Home() {
                 className="object-cover w-full h-full"
               />
             </div>
-          ))}
-        </div>
-        
-        {/* Indicateurs du carousel */}
-        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentImageIndex(index)}
-              className={`w-3 h-3 rounded-full ${
-                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
-              }`}
-              aria-label={`Aller à l'image ${index + 1}`}
-            />
           ))}
         </div>
         
