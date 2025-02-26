@@ -1,7 +1,27 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import ArtistList from './components/ArtistList';
 
 export default function Home() {
+  const images = [
+    '/background.jpg',
+    '/background2.jpg',
+    // Vous pouvez ajouter d'autres images ici
+  ];
+  
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Effet pour faire défiler automatiquement les images
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000); // Change l'image toutes les 5 secondes
+    
+    return () => clearInterval(interval);
+  }, [images.length]);
+  
   const artists = [
     "Stuffed Foxes",
     "Dandee",
@@ -11,18 +31,45 @@ export default function Home() {
     "TWENTYHATE",
     "Stonks"
   ];
-
+  
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Section Header avec image et overlay */}
+      {/* Section Header avec carousel d'images */}
       <div className="relative h-screen">
-      <Image
-          src="/background.jpg"
-          alt="Image de fond pour le festival"
-          fill
-          style={{ objectFit: 'cover' }}
-          objectPosition="center"
-        />
+        {/* Carousel d'images */}
+        <div className="absolute inset-0 overflow-hidden">
+          {images.map((src, index) => (
+            <div 
+              key={index} 
+              className={`absolute inset-0 transition-opacity duration-500 ${
+                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+              }`}
+            >
+              <Image
+                src={src}
+                alt={`Image ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover w-full h-full"
+              />
+            </div>
+          ))}
+        </div>
+        
+        {/* Indicateurs du carousel */}
+        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 flex space-x-2">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => setCurrentImageIndex(index)}
+              className={`w-3 h-3 rounded-full ${
+                index === currentImageIndex ? 'bg-white' : 'bg-white/50'
+              }`}
+              aria-label={`Aller à l'image ${index + 1}`}
+            />
+          ))}
+        </div>
+        
         {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent" />
         
@@ -32,12 +79,13 @@ export default function Home() {
             Les Closurades Festival
           </h1>
           <h2 className="mt-16 text-xl sm:text-3xl drop-shadow-lg">
-              <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> -  <span className='underline decoration-pink-500 font-extrabold'>18 & 19 Juillet 2025</span> 
+            <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> -  <span className='underline decoration-pink-500 font-extrabold'>18 & 19 Juillet 2025</span>
           </h2>
+         
           {/* Liste d'artistes défilante */}
-          <ArtistList artists={artists}/>
+          <ArtistList artists={artists} />
         </div>
-
+        
         {/* Indicateur de scroll */}
         <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center">
           <svg
@@ -54,7 +102,7 @@ export default function Home() {
           </span>
         </div>
       </div>
-
+      
       {/* Contenu principal */}
       <main className="flex-grow bg-gray-100">
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
@@ -73,7 +121,7 @@ export default function Home() {
           </div>
         </div>
       </main>
-
+      
       {/* Footer */}
       <footer className="bg-white shadow py-4">
         <div className="max-w-7xl mx-auto px-4 text-center text-gray-500">
