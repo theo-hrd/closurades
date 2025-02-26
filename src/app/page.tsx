@@ -11,9 +11,6 @@ export default function Home() {
     '/background3.jpg',
     '/background4.jpg',
     '/background5.jpg',
-    '/background6.jpg',
-    '/background7.jpg',
-    '/background8.jpg',
     // Vous pouvez ajouter d'autres images ici
   ];
   

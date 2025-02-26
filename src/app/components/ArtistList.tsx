@@ -12,7 +12,7 @@ return (
       {duplicatedArtists.map((artist, index) => (
         <span
           key={index}
-          className="mx-6 text-3xl font-bold text-whit px-6 py-3 shadow-lg uppercase tracking-wide"
+          className="mx-6 text-3xl font-bold text-whit px-6 py-3 uppercase tracking-wide"
         >
           {artist}
         </span>
