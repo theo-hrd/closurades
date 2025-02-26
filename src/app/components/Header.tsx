@@ -1,12 +1,30 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     setMounted(true); // Marquer le composant comme monté après le rendu
+
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target as Node) &&
+        buttonRef.current &&
+        !buttonRef.current.contains(event.target as Node)
+      ) {
+        setMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
   }, []);
 
   if (!mounted) return null; // Empêcher le rendu avant que le composant soit monté
@@ -20,7 +38,7 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <h2 className="text-2xl font-extrabold text-white">Les Closurades</h2>
         <div className="lg:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-white">
+          <button ref={buttonRef} onClick={toggleMenu} className="text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -63,6 +81,7 @@ export default function Header() {
 
       {/* Menu mobile avec animation */}
       <div
+        ref={menuRef}
         className={`lg:hidden transition-all duration-300 ease-in-out ${
           menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
         } overflow-hidden bg-black bg-opacity-80 backdrop-blur-md`}
