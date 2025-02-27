@@ -41,7 +41,7 @@ export default function Merch() {
 
     return (
         <div id="merch" className="min-h-screen py-16 max-w-7xl mx-auto px-6">
-            <h2 className="text-3xl font-bold text-center text-red-600">
+            <h2 className="text-3xl font-bold text-center bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
                 Merch
             </h2>
             <p className="mt-4 text-lg text-center text-black">

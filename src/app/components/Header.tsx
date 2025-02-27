@@ -57,7 +57,7 @@ export default function Header() {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-        <Link className="text-2xl font-extrabold text-white" href="/">Les Closurades</Link>
+        <button className="text-2xl font-extrabold text-white" onClick={() => scrollToSection("closurades")}>Les Closurades </button>
         <div className="lg:hidden flex items-center">
           <button 
             ref={buttonRef} 

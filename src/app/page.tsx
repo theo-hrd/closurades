@@ -46,6 +46,7 @@ export default function Home() {
 
   const artists = [
     "Stuffed Foxes",
+    "Till",
     "Dandee",
     "Lohan & Julien",
     "Born Idiot",
@@ -55,7 +56,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col" ref={sectionRef} id="closurades">
       {/* Section Hero avec carousel d'images */}
       <div className="relative h-screen">
         {/* Carousel d'images */}
