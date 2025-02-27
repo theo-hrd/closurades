@@ -43,15 +43,14 @@ const TicketButton = () => {
   }, [spinSpeed]);
 
   return (
-    <div className="relative flex flex-col items-center justify-center p-6 h-[600px]">
+    <div className="relative flex flex-col items-center justify-center p-6 h-[600px] overflow-hidden">
       {/* Vinyle en arrière-plan */}
       <div 
-        className="absolute"
+        className="absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px]"
         style={{
-          width: "500px",
-          height: "500px",
+          maxWidth: "100%",
           transform: `rotate(${rotationAngle}deg)`,
-          zIndex: 1,
+          zIndex: 1
         }}
       >
         <img 
