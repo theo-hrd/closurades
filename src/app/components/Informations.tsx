@@ -22,7 +22,7 @@ export default function Informations() {
           </div>
           <div className="space-y-4">
             <p className="text-gray-700">
-              Le camping est inclus avec votre billet pour les 2 jours du festival. Installez votre tente et profite des Closurades !
+              Le camping est inclus avec votre billet pour les 2 jours du festival. Installez votre tente et profitez des Closurades !
             </p>
             <div className="bg-gray-100 p-4 rounded-lg">
               <h4 className="font-semibold mb-2 text-black">Horaires du camping</h4>
@@ -77,7 +77,7 @@ export default function Informations() {
               </p>
               <ul className="list-disc pl-5 text-gray-700 space-y-1">
                 <li>Bières blonde, la classique tu connais</li>
-                <li>La Jacqueline on la connaît bien celle là </li>
+                <li>La Jacqueline on la connaît bien celle-là !</li>
                 <li>Cocktails signature du festival</li>
                 <li>Boissons sans alcool et rafraîchissements</li>
               </ul>
@@ -86,19 +86,17 @@ export default function Informations() {
         </div>
 
         {/* Plan du site */}
-        <div className="bg-white rounded-lg shadow-lg p-6 md:col-span-2 transition-transform hover:scale-105">
+        <div className="bg-white rounded-lg shadow-le md:col-span-2 transition-transform">
           <div className="flex items-center mb-4 text-red-600">
             <MapPin className="mr-2" size={24} />
             <h3 className="text-xl font-bold">Plan du site</h3>
           </div>
-          <div className="w-full aspect-video bg-gray-200 rounded-lg flex items-center justify-center">
-            <p className="text-gray-600">Carte du site du festival</p>
-            {/* Emplacement pour insérer la carte dessinée du site */}
-            {/* Vous pouvez remplacer cette div par une image ou un composant SVG plus tard */}
+          <div className="rounded-lg flex items-center justify-center">
+            <img src="/plandusite.jpeg" alt="Carte du site du festival" className="w-full h-full object-contain rounded-lg" />
           </div>
         </div>
 
-        {/* Règles et infos pratiques */}
+        {/* Infos pratiques */}
         <div className="bg-white rounded-lg shadow-lg p-6 md:col-span-2 transition-transform hover:scale-105">
           <div className="flex items-center mb-4 text-red-600">
             <Info className="mr-2" size={24} />
@@ -118,7 +116,6 @@ export default function Informations() {
                 <li>Objets dangereux et armes</li>
                 <li>Substances illicites</li>
                 <li>Les animaux de compagnie</li>
-
               </ul>
             </div>
           </div>
