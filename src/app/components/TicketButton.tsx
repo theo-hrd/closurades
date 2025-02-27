@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 const TicketButton = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -71,7 +72,9 @@ const TicketButton = () => {
           zIndex: 1
         }}
       >
-        <img 
+        <Image 
+          width={600}
+          height={600}
           src="/vinyl.png" 
           alt="Vinyl record" 
           className="object-cover w-full h-full"

@@ -28,7 +28,7 @@ export default function Home() {
     }, 5000); // Change l'image toutes les 5 secondes
 
     return () => clearInterval(interval);
-  }, []);
+  }, [images.length]);
 
   // Animation au scroll pour la section billeterie
   useEffect(() => {
@@ -37,10 +37,12 @@ export default function Home() {
       { threshold: 0.1 }
     );
 
-    if (billeterieRef.current) observer.observe(billeterieRef.current);
+    const currentRef = billeterieRef.current; // Copy the ref value to a variable
+
+    if (currentRef) observer.observe(currentRef);
 
     return () => {
-      if (billeterieRef.current) observer.unobserve(billeterieRef.current);
+      if (currentRef) observer.unobserve(currentRef);
     };
   }, []);
 
