@@ -16,11 +16,11 @@ const artistesData: ArtistesData = {
   jour1: [
     {
       id: 1,
-      nom: 'truc', 
-      photo: '/artists/1.jpg',
-      genre: 'Post Punk',
+      nom: 'Till', 
+      photo: '/artists/till.jpg',
+      genre: 'Jazz Fusion',
       heure: '20h00 - 20h45',
-      origine: 'Toulouse - France'
+      origine: 'Poitiers - France'
     },
     {
       id: 2,
