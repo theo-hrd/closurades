@@ -93,8 +93,8 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
       }}
     >
       <div className="absolute inset-0 bg-black/70"></div>
-      <div className="relative h-full p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 hover:opacity-100">
-        <h3 className="text-2xl font-bold mx-auto text-center text-white transition-colors hover:text-pink-500 shadow-xl">
+      <div className="relative h-full p-6 flex flex-col justify-end">
+        <h3 className="text-2xl font-bold mx-auto text-center text-white shadow-xl">
           {artiste.nom}
         </h3>
         <p className="mt-2 text-gray-400 text-center font-semibold text-sm">{artiste.genre}</p>
