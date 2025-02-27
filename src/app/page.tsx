@@ -19,7 +19,7 @@ export default function Home() {
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const billeterieRef = useRef<HTMLDivElement>(null);
 
   // Effet pour faire défiler automatiquement les images
   useEffect(() => {
@@ -30,19 +30,26 @@ export default function Home() {
     return () => clearInterval(interval);
   }, []);
 
-  // Animation au scroll
+  // Animation au scroll pour la section billeterie
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) observer.observe(sectionRef.current);
+    if (billeterieRef.current) observer.observe(billeterieRef.current);
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current);
+      if (billeterieRef.current) observer.unobserve(billeterieRef.current);
     };
   }, []);
+
+  // Fonction pour gérer le scroll vers la billeterie
+  const scrollToBilleterie = () => {
+    if (billeterieRef.current) {
+      billeterieRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
 
   const artists = [
     "Stuffed Foxes",
@@ -56,9 +63,9 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col" ref={sectionRef} id="closurades">
+    <div className="min-h-screen flex flex-col">
       {/* Section Hero avec carousel d'images */}
-      <div className="relative h-screen">
+      <div className="relative h-screen" id="closurades">
         {/* Carousel d'images */}
         <div className="absolute inset-0 overflow-hidden">
           {images.map((src, index) => (
@@ -79,8 +86,8 @@ export default function Home() {
           ))}
         </div>
 
-          {/* Overlay gradient */}
-          <div className="absolute inset-0 bg-black/50 to-transparent" />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-black/50 to-transparent" />
 
         {/* Titre centré */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -101,13 +108,13 @@ export default function Home() {
           <ArtistList artists={artists} />
         </div>
 
-        Indicateur de scroll
+        {/* Indicateur de scroll */}
         <div
           className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
-          onClick={() => document.getElementById("billeterie")?.scrollIntoView({ behavior: "smooth" })}
+          onClick={scrollToBilleterie}
         >
           <svg
-            className="h-8 w-8 text-white animate-bounce"
+            className="h-10 w-10 text-orange-600 animate-bounce"
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
@@ -120,7 +127,7 @@ export default function Home() {
               d="M19 9l-7 7-7-7"
             />
           </svg>
-          <span className="mt-2 text-xl blue-500 font-bold uppercase">
+          <span className="mt-2 text-xl font-bold uppercase bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
             Billeterie
           </span>
         </div>
@@ -131,8 +138,8 @@ export default function Home() {
         {/* Section Billeterie */}
         <div
           id="billeterie"
-          ref={sectionRef}
-          className={`min-h-screen py-32 py- max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
+          ref={billeterieRef}
+          className={`min-h-screen py-32 max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >

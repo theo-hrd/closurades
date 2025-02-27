@@ -28,7 +28,7 @@ export default function Informations() {
               <h4 className="font-semibold mb-2 text-black">Horaires du camping</h4>
               <div className="space-y-2">
                 <p className="flex items-center text-gray-700">
-                  <Clock className="mr-2" size={16} /> Ouverture : Vendredi 10h00
+                  <Clock className="mr-2" size={16} /> Ouverture : Vendredi 17h00
                 </p>
                 <p className="flex items-center text-gray-700">
                   <Clock className="mr-2" size={16} /> Fermeture : Lundi 12h00
