@@ -59,7 +59,11 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link className="text-2xl font-extrabold text-white" href="/">Les Closurades</Link>
         <div className="lg:hidden flex items-center">
-          <button ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} className="text-white">
+          <button 
+            ref={buttonRef} 
+            onClick={() => setMenuOpen(!menuOpen)} 
+            className="text-white relative z-50"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -67,12 +71,23 @@ export default function Header() {
               viewBox="0 0 24 24"
               stroke="currentColor"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
+              {menuOpen ? (
+                // X icon for when menu is open
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                // Hamburger icon for when menu is closed
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
             </svg>
           </button>
         </div>
@@ -103,8 +118,8 @@ export default function Header() {
       {/* Menu mobile avec animation */}
       <div
         ref={menuRef}
-        className={`lg:hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-screen opacity-100 fixed top-0 left-0 right-0" : "max-h-0 opacity-0"
+        className={`lg:hidden transition-all duration-300 ease-in-out fixed top-16 left-0 right-0 ${
+          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0 pointer-events-none"
         } overflow-hidden bg-black bg-opacity-80 backdrop-blur-md`}
       >
         <ul className="space-y-4 p-6">

@@ -107,7 +107,7 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
 
 const JourSection = ({ jour, artistes }: { jour: string; artistes: Artiste[] }) => (
   <section className={`${jour === 'Jour 1' ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
-    <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
+    <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
       {jour}
     </h3>
     <div className="grid grid-cols-1 gap-8">
