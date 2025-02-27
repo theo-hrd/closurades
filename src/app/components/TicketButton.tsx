@@ -42,6 +42,24 @@ const TicketButton = () => {
     };
   }, [spinSpeed]);
 
+  // Automatic spinning for mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) { // Mobile breakpoint
+        setSpinSpeed(15); // Set a constant spin speed for mobile
+      } else {
+        setSpinSpeed(0); // Stop spinning on larger screens
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize(); // Initial check
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <div className="relative flex flex-col items-center justify-center p-6 h-[600px] overflow-hidden">
       {/* Vinyle en arrière-plan */}
