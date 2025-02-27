@@ -42,8 +42,9 @@ export default function Home() {
     }
     
     return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
+      const currentSection = sectionRef.current;
+      if (currentSection) {
+        observer.unobserve(currentSection);
       }
     };
   }, []);
@@ -87,7 +88,7 @@ export default function Home() {
         
         {/* Titre centré avec animation */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-red-600 via-orange-600 to-purple-700 bg-clip-text text-transparent drop-shadow-lg">
             Les Closurades Festival
           </h1>
           <h2 className="mt-16 text-xl sm:text-3xl text-white drop-shadow-lg opacity-0 animate-fade-in-up">
@@ -119,13 +120,13 @@ export default function Home() {
       <main className="flex-grow bg-white">
         <div 
           ref={sectionRef}
-          className={`max-w-7xl mx-auto py-16 sm:px-6 lg:px-8 transition-all duration-1000 transform ${
+          className={`max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
             isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
           }`}
         >
           <div className="px-4 py-6 sm:px-0">
             <div className="text-center mt-8">
-              <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent uppercase">
+              <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">
                 Billeterie
               </h2>
               <p className="mt-4 text-lg max-w-2xl text-center mx-auto text-black">

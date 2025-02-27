@@ -14,14 +14,13 @@ interface ArtistesData {
 
 const artistesData: ArtistesData = {
   jour1: [
-
     {
       id: 1,
       nom: 'truc', 
       photo: '/artists/1.jpg',
       genre: 'Post Punk',
       heure: '20h00 - 20h45',
-      origine: 'France - Toulouse'
+      origine: 'Toulouse - France'
     },
     {
       id: 2,
@@ -29,15 +28,15 @@ const artistesData: ArtistesData = {
       photo: '/artists/1.jpg',
       genre: 'Post Punk',
       heure: '20h00 - 20h45',
-      origine: 'France - Toulouse'
+      origine: 'Toulouse - France'
     },
     {
       id: 3,
       nom: 'Artiste 3',
-      photo: '/artists/3.jpg', 
+      photo: '/artists/1.jpg', 
       genre: 'Techno',
       heure: '23h00 - 2h00',
-      origine: 'France - Toulouse'
+      origine: 'Toulouse - France'
     },
   ],
   jour2: [
@@ -45,9 +44,9 @@ const artistesData: ArtistesData = {
       id: 4,
       nom: 'Stonks', 
       photo: '/artists/stonks.jpg',
-      genre: 'Post Punk',
+      genre: 'Post Punk | Post Rock | Alternative rock',
       heure: '20h00 - 20h45',
-      origine: 'France - Toulouse'
+      origine: 'Bruxelles - Belgique'
     },
     {
       id: 5,
@@ -55,21 +54,20 @@ const artistesData: ArtistesData = {
       photo: '/artists/twentyhate.png',
       genre: 'Schranz | Drum & Bass | Early Hardcore | Uptempo',
       heure: '23h00 - 2h00',
-      origine: 'France - Toulouse'
+      origine: 'Toulouse - France'
     },
     {
       id: 6,
       nom: 'Artiste 5',
-      photo: '/artists/4.jpg',
+      photo: '/artists/1.jpg',
       genre: 'Rock',
       heure: '23h00 - 2h00',
-      origine: 'France - Toulouse'
+      origine: 'Toulouse - France'
     },
   ]
 };
 
 function CarteArtiste({ artiste }: { artiste: Artiste }) {
-  // Utilisation d'une couleur déterministe en fonction de l'id
   const colors = ['pink', 'blue', 'purple', 'red', 'green'];
   const randomColor = colors[artiste.id % colors.length];
   
@@ -87,7 +85,7 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
 
   return (
     <div 
-      className={`rounded-sm relative h-64 overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[randomColor]}`}
+      className={`rounded-sm relative h-96 overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[randomColor]}`}
       style={{
         backgroundImage: `url(${artiste.photo})`,
         backgroundSize: 'cover',
@@ -95,12 +93,13 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
       }}
     >
       <div className="absolute inset-0 bg-black/70"></div>
-      <div className="relative h-full p-6 flex flex-col justify-end">
-        <h3 className="text-2xl font-bold text-center text-white transition-colors hover:text-pink-500">
+      <div className="relative h-full p-6 flex flex-col justify-end opacity-0 transition-opacity duration-300 hover:opacity-100">
+        <h3 className="text-2xl font-bold mx-auto text-center text-white transition-colors hover:text-pink-500 shadow-xl">
           {artiste.nom}
         </h3>
-        <p className="mt-2 text-gray-400 text-center">{artiste.genre}</p>
-        <p className="mt-2 text-gray-400 text-center">{artiste.heure}</p>
+        <p className="mt-2 text-gray-400 text-center font-semibold text-sm">{artiste.genre}</p>
+        <p className="mt-2 text-gray-300 text-center font-bold">{artiste.heure}</p>
+        <p className="mt-2 text-gray-400 text-center text-sm">{artiste.origine}</p>
       </div>
     </div>
   );
@@ -108,7 +107,7 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
 
 const JourSection = ({ jour, artistes }: { jour: string; artistes: Artiste[] }) => (
   <section className={`${jour === 'Jour 1' ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
-    <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-l from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+    <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
       {jour}
     </h3>
     <div className="grid grid-cols-1 gap-8">
@@ -123,7 +122,7 @@ export default function Page() {
   return (
     <div id="lineup" className="py-16 bg-black">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="uppercase text-4xl font-bold text-center mb-12 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+        <h2 className="uppercase text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
           Line-up
         </h2>
         <div className="uppercase md:flex md:space-x-8">
