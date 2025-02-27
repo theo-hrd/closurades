@@ -122,7 +122,7 @@ export default function Page() {
   return (
     <div id="lineup" className="bg-black scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="uppercase text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
+        <h2 className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
           Line-up
         </h2>
         <div className="uppercase md:flex md:space-x-8">
