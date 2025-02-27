@@ -97,7 +97,7 @@ export default function Informations() {
             <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Plan du site</h3>
           </div>
           <div className="rounded-lg flex items-center justify-center">
-            <Image src="/plandusite.jpeg" alt="Carte du site du festival" className="w-full h-full object-contain rounded-lg" />
+            <Image src="/plandusite.jpeg" alt="Carte du site du festival" width={600} height={400} className="w-full h-full object-contain rounded-lg" />
           </div>
         </div>
 

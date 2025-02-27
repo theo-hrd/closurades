@@ -61,6 +61,8 @@ export default function Merch() {
                             <Image
                                 src={product.image} 
                                 alt={product.name} 
+                                width={300} // Added width property
+                                height={300} // Added height property
                                 className="object-cover w-full h-full transition-all duration-500 hover:scale-110"
                             />
                         </div>
