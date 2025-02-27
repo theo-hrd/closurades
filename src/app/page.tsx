@@ -5,6 +5,8 @@ import Image from "next/image";
 import ArtistList from "./components/ArtistList";
 import TicketButton from "./components/TicketButton";
 import Lineup from "./components/Lineup";
+import Merch from "./components/Merch";
+import Informations from "./components/Informations";
 
 export default function Home() {
   const images = [
@@ -155,28 +157,10 @@ export default function Home() {
         </div>
 
         {/* Section Merch */}
-        <div 
-          id="merch" 
-          className="min-h-screen py-16 max-w-7xl mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold text-center text-red-600">Merch</h2>
-          <p className="mt-4 text-lg text-center text-black">
-            Découvrez nos produits exclusifs !
-          </p>
-        </div>
+        <Merch />
 
         {/* Section Informations */}
-        <div 
-          id="informations" 
-          className="min-h-screen md:py-32 max-w-7xl mx-auto px-6"
-        >
-          <h2 className="text-3xl font-bold text-center text-red-600">
-            Informations
-          </h2>
-          <p className="mt-4 text-lg text-center text-black">
-            Tout ce que vous devez savoir pour profiter du festival !
-          </p>
-        </div>
+        <Informations />
       </main>
 
       {/* Styles pour les animations */}
