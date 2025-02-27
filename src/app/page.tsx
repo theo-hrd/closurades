@@ -76,8 +76,8 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Overlay gradient */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+          {/* Overlay gradient */}
+          <div className="absolute inset-0 bg-black/50 to-transparent" />
 
         {/* Titre centré */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
@@ -87,7 +87,7 @@ export default function Home() {
           <h2 className="mt-16 text-xl sm:text-3xl text-white drop-shadow-lg opacity-0 animate-fade-in-up">
             <span className="font-bold">
               Les Closures, St-Georges-lès-Baillargeaux (86)
-            </span>{" "}
+            </span>
             <br /> <br />
             <span className="underline decoration-pink-500 font-extrabold text-3xl">
               18 & 19 Juillet 2025
@@ -98,7 +98,7 @@ export default function Home() {
           <ArtistList artists={artists} />
         </div>
 
-        {/* Indicateur de scroll */}
+        Indicateur de scroll
         <div
           className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
           onClick={() => document.getElementById("billeterie")?.scrollIntoView({ behavior: "smooth" })}
@@ -129,12 +129,12 @@ export default function Home() {
         <div
           id="billeterie"
           ref={sectionRef}
-          className={`max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
+          className={`min-h-screen py-32 py- max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
             isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >
           <div className="px-4 py-6 sm:px-0">
-            <div className="text-center mt-8">
+            <div className="text-center">
               <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">
                 Billeterie
               </h2>
@@ -147,12 +147,18 @@ export default function Home() {
         </div>
 
         {/* Section Line-up */}
-        <div id="lineup">
+        <div 
+          id="lineup" 
+          className="min-h-screen md:py-32 py-16 bg-black"
+        >
           <Lineup />
         </div>
 
-          {/* Section Merch */}
-          <div id="merch" className="max-w-7xl mx-auto px-6 py-12">
+        {/* Section Merch */}
+        <div 
+          id="merch" 
+          className="min-h-screen py-16 max-w-7xl mx-auto px-6"
+        >
           <h2 className="text-3xl font-bold text-center text-red-600">Merch</h2>
           <p className="mt-4 text-lg text-center text-black">
             Découvrez nos produits exclusifs !
@@ -160,7 +166,10 @@ export default function Home() {
         </div>
 
         {/* Section Informations */}
-        <div id="informations" className="max-w-7xl mx-auto px-6 py-12">
+        <div 
+          id="informations" 
+          className="min-h-screen md:py-32 max-w-7xl mx-auto px-6"
+        >
           <h2 className="text-3xl font-bold text-center text-red-600">
             Informations
           </h2>

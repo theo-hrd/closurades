@@ -120,7 +120,7 @@ const JourSection = ({ jour, artistes }: { jour: string; artistes: Artiste[] }) 
 
 export default function Page() {
   return (
-    <div id="lineup" className="py-16 bg-black">
+    <div id="lineup" className="bg-black scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="uppercase text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
           Line-up

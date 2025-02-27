@@ -10,7 +10,7 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-
+  
     const handleClickOutside = (event: MouseEvent) => {
       if (
         menuRef.current &&
@@ -21,7 +21,11 @@ export default function Header() {
         setMenuOpen(false);
       }
     };
-
+  
+    // Measure the actual header height for scroll-padding-top
+    const headerHeight = document.querySelector('header')?.offsetHeight || 100;
+    document.documentElement.style.scrollPaddingTop = `${headerHeight}px`;
+  
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
@@ -30,16 +34,25 @@ export default function Header() {
 
   if (!mounted) return null;
 
-  // Fonction pour scroller jusqu'à une section
+  // Improved function for scrolling to sections
   const scrollToSection = (id: string) => {
     const section = document.getElementById(id);
     if (section) {
-      const headerHeight = document.querySelector("header")?.offsetHeight || 80; // Ajuste si besoin
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      window.scrollTo({ top: sectionTop - headerHeight - 20, behavior: "smooth" });
+      setMenuOpen(false);
+      
+      // Get the header height to use as offset
+      const headerHeight = document.querySelector('header')?.offsetHeight || 100;
+      
+      // Get the position of the section relative to the document
+      const sectionTop = section.getBoundingClientRect().top + window.pageYOffset;
+      
+      // Scroll to the section with the header height as offset
+      window.scrollTo({
+        top: sectionTop - headerHeight,
+        behavior: 'smooth'
+      });
     }
   };
-  
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
@@ -91,7 +104,7 @@ export default function Header() {
       <div
         ref={menuRef}
         className={`lg:hidden transition-all duration-300 ease-in-out ${
-          menuOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
+          menuOpen ? "max-h-screen opacity-100 fixed top-0 left-0 right-0" : "max-h-0 opacity-0"
         } overflow-hidden bg-black bg-opacity-80 backdrop-blur-md`}
       >
         <ul className="space-y-4 p-6">
