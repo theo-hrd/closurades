@@ -92,7 +92,7 @@ export default function Home() {
             Les Closurades Festival
           </h1>
           <h2 className="mt-16 text-xl sm:text-3xl text-white drop-shadow-lg opacity-0 animate-fade-in-up">
-            <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> - <span className='underline decoration-pink-500 font-extrabold'>18 & 19 Juillet 2025</span>
+            <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> <br /> <br /> <span className='underline decoration-pink-500 font-extrabold text-3xl'>18 & 19 Juillet 2025</span>
           </h2>
          
           {/* Liste d'artistes défilante */}
@@ -140,10 +140,6 @@ export default function Home() {
         {/* Section Line-up */}
         <Lineup />
       </main>
-      
-      {/* Footer */}
-      
-      
       {/* Styles pour les animations */}
       <style jsx>{`
         @keyframes fade-in-up {
