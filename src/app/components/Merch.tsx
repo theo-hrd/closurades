@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Merch() {
     // Liste des produits
     const products = [
@@ -56,7 +58,7 @@ export default function Merch() {
                         className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
                     >
                         <div className="relative h-64 bg-gray-200 overflow-hidden">
-                            <img 
+                            <Image
                                 src={product.image} 
                                 alt={product.name} 
                                 className="object-cover w-full h-full transition-all duration-500 hover:scale-110"

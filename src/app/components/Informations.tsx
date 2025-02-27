@@ -1,4 +1,5 @@
 import React from 'react';
+import Image from 'next/image';
 import { Tent, MapPin, UtensilsCrossed, Beer, Info, Clock, Milk, Utensils, Check, CircleOff } from 'lucide-react';
 
 export default function Informations() {
@@ -96,7 +97,7 @@ export default function Informations() {
             <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Plan du site</h3>
           </div>
           <div className="rounded-lg flex items-center justify-center">
-            <img src="/plandusite.jpeg" alt="Carte du site du festival" className="w-full h-full object-contain rounded-lg" />
+            <Image src="/plandusite.jpeg" alt="Carte du site du festival" className="w-full h-full object-contain rounded-lg" />
           </div>
         </div>
 
