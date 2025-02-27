@@ -127,6 +127,15 @@ export default function Page() {
         </h2>
         <div className="uppercase md:flex md:space-x-8">
           <JourSection jour="Jour 1" artistes={artistesData.jour1} />
+          {/* Ligne horizontale pour mobile */}
+          <div className="block md:hidden">
+            <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
+          </div>
+
+          {/* Ligne verticale pour desktop */}
+          <div className="hidden md:flex md:items-center">
+            <div className="w-2 h-full bg-gradient-to-b from-purple-700 to-red-600 rounded-full"></div>
+          </div>
           <JourSection jour="Jour 2" artistes={artistesData.jour2} />
         </div>
       </div>
