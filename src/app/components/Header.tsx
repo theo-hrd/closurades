@@ -9,7 +9,7 @@ export default function Header() {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    setMounted(true); // Marquer le composant comme monté après le rendu
+    setMounted(true);
 
     const handleClickOutside = (event: MouseEvent) => {
       if (
@@ -28,18 +28,25 @@ export default function Header() {
     };
   }, []);
 
-  if (!mounted) return null; // Empêcher le rendu avant que le composant soit monté
+  if (!mounted) return null;
 
-  const toggleMenu = () => {
-    setMenuOpen((prev) => !prev);
+  // Fonction pour scroller jusqu'à une section
+  const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+      const headerHeight = document.querySelector("header")?.offsetHeight || 80; // Ajuste si besoin
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: sectionTop - headerHeight - 20, behavior: "smooth" });
+    }
   };
+  
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-black bg-opacity-70 backdrop-blur-md shadow-lg">
       <nav className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
         <Link className="text-2xl font-extrabold text-white" href="/">Les Closurades</Link>
         <div className="lg:hidden flex items-center">
-          <button ref={buttonRef} onClick={toggleMenu} className="text-white">
+          <button ref={buttonRef} onClick={() => setMenuOpen(!menuOpen)} className="text-white">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               className="h-6 w-6"
@@ -58,24 +65,24 @@ export default function Header() {
         </div>
         <ul className="hidden lg:flex space-x-6">
           <li>
-            <Link href="#billeterie" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("billeterie")} className="text-white hover:text-gray-300 transition">
               Billeterie
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="#merch" className="text-white hover:text-gray-300 transition">
-              Merch
-            </Link>
-          </li>
-          <li>
-            <Link href="#lineup" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("lineup")} className="text-white hover:text-gray-300 transition">
               Line-up
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="#informations" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("merch")} className="text-white hover:text-gray-300 transition">
+              Merch
+            </button>
+          </li>
+          <li>
+            <button onClick={() => scrollToSection("informations")} className="text-white hover:text-gray-300 transition">
               Informations
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>
@@ -89,24 +96,24 @@ export default function Header() {
       >
         <ul className="space-y-4 p-6">
           <li>
-            <Link href="#billeterie" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("billeterie")} className="text-white hover:text-gray-300 transition">
               Billeterie
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="#merch" className="text-white hover:text-gray-300 transition">
-              Merch
-            </Link>
-          </li>
-          <li>
-            <Link href="#lineup" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("lineup")} className="text-white hover:text-gray-300 transition">
               Line-up
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="#informations" className="text-white hover:text-gray-300 transition">
+            <button onClick={() => scrollToSection("merch")} className="text-white hover:text-gray-300 transition">
+              Merch
+            </button>
+          </li>
+          <li>
+            <button onClick={() => scrollToSection("informations")} className="text-white hover:text-gray-300 transition">
               Informations
-            </Link>
+            </button>
           </li>
         </ul>
       </div>

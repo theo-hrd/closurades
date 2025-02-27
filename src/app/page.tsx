@@ -1,54 +1,47 @@
 "use client";
 
-import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
-import ArtistList from './components/ArtistList';
-import TicketButton from './components/TicketButton';
-import Lineup from './components/Lineup';
+import { useState, useEffect, useRef } from "react";
+import Image from "next/image";
+import ArtistList from "./components/ArtistList";
+import TicketButton from "./components/TicketButton";
+import Lineup from "./components/Lineup";
 
 export default function Home() {
   const images = [
-    '/background.jpg',
-    '/background2.jpg',
-    '/background3.jpg',
-    '/background4.jpg',
-    '/background5.jpg',
+    "/background.jpg",
+    "/background2.jpg",
+    "/background3.jpg",
+    "/background4.jpg",
+    "/background5.jpg",
   ];
-  
+
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const sectionRef = useRef(null);
-  
+  const sectionRef = useRef<HTMLDivElement>(null);
+
   // Effet pour faire défiler automatiquement les images
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex((prevIndex) => (prevIndex + 1) % images.length);
     }, 5000); // Change l'image toutes les 5 secondes
-    
+
     return () => clearInterval(interval);
-  }, [images.length]);
-  
+  }, []);
+
   // Animation au scroll
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        setIsVisible(entry.isIntersecting);
-      },
+      ([entry]) => setIsVisible(entry.isIntersecting),
       { threshold: 0.1 }
     );
-    
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-    
+
+    if (sectionRef.current) observer.observe(sectionRef.current);
+
     return () => {
-      const currentSection = sectionRef.current;
-      if (currentSection) {
-        observer.unobserve(currentSection);
-      }
+      if (sectionRef.current) observer.unobserve(sectionRef.current);
     };
   }, []);
-  
+
   const artists = [
     "Stuffed Foxes",
     "Dandee",
@@ -56,20 +49,20 @@ export default function Home() {
     "Born Idiot",
     "Kube",
     "TWENTYHATE",
-    "Stonks"
+    "Stonks",
   ];
-  
+
   return (
     <div className="min-h-screen flex flex-col">
       {/* Section Hero avec carousel d'images */}
       <div className="relative h-screen">
-        {/* Carousel d'images avec effet de fondu */}
+        {/* Carousel d'images */}
         <div className="absolute inset-0 overflow-hidden">
           {images.map((src, index) => (
-            <div 
-              key={index} 
+            <div
+              key={index}
               className={`absolute inset-0 transition-opacity duration-1000 ${
-                index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                index === currentImageIndex ? "opacity-100" : "opacity-0"
               }`}
             >
               <Image
@@ -82,25 +75,34 @@ export default function Home() {
             </div>
           ))}
         </div>
-        
-        {/* Overlay gradient amélioré */}
+
+        {/* Overlay gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-        
-        {/* Titre centré avec animation */}
+
+        {/* Titre centré */}
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4">
-          <h1 className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-red-600 via-orange-600 to-purple-700 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="text-6xl sm:text-7xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
             Les Closurades Festival
           </h1>
           <h2 className="mt-16 text-xl sm:text-3xl text-white drop-shadow-lg opacity-0 animate-fade-in-up">
-            <span className='font-bold'>Les Closures, St-Georges-lès-Baillargeaux (86)</span> <br /> <br /> <span className='underline decoration-pink-500 font-extrabold text-3xl'>18 & 19 Juillet 2025</span>
+            <span className="font-bold">
+              Les Closures, St-Georges-lès-Baillargeaux (86)
+            </span>{" "}
+            <br /> <br />
+            <span className="underline decoration-pink-500 font-extrabold text-3xl">
+              18 & 19 Juillet 2025
+            </span>
           </h2>
-         
+
           {/* Liste d'artistes défilante */}
           <ArtistList artists={artists} />
         </div>
-        
-        {/* Indicateur de scroll avec animation */}
-        <div className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300">
+
+        {/* Indicateur de scroll */}
+        <div
+          className="absolute bottom-16 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
+          onClick={() => document.getElementById("billeterie")?.scrollIntoView({ behavior: "smooth" })}
+        >
           <svg
             className="h-8 w-8 text-white animate-bounce"
             xmlns="http://www.w3.org/2000/svg"
@@ -108,20 +110,27 @@ export default function Home() {
             viewBox="0 0 24 24"
             stroke="currentColor"
           >
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M19 9l-7 7-7-7"
+            />
           </svg>
-          <span className="mt-2 text-xl blue-500 font-bold uppercase hover:text-[1c121] transition-colors duration-300">
+          <span className="mt-2 text-xl blue-500 font-bold uppercase">
             Billeterie
           </span>
         </div>
       </div>
-      
-      {/* Contenu principal avec animation au scroll */}
+
+      {/* Contenu principal */}
       <main className="flex-grow bg-white">
-        <div 
+        {/* Section Billeterie */}
+        <div
+          id="billeterie"
           ref={sectionRef}
           className={`max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
-            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-20 opacity-0'
+            isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
           }`}
         >
           <div className="px-4 py-6 sm:px-0">
@@ -136,10 +145,31 @@ export default function Home() {
             </div>
           </div>
         </div>
-        
+
         {/* Section Line-up */}
-        <Lineup />
+        <div id="lineup">
+          <Lineup />
+        </div>
+
+          {/* Section Merch */}
+          <div id="merch" className="max-w-7xl mx-auto px-6 py-12">
+          <h2 className="text-3xl font-bold text-center text-red-600">Merch</h2>
+          <p className="mt-4 text-lg text-center text-black">
+            Découvrez nos produits exclusifs !
+          </p>
+        </div>
+
+        {/* Section Informations */}
+        <div id="informations" className="max-w-7xl mx-auto px-6 py-12">
+          <h2 className="text-3xl font-bold text-center text-red-600">
+            Informations
+          </h2>
+          <p className="mt-4 text-lg text-center text-black">
+            Tout ce que vous devez savoir pour profiter du festival !
+          </p>
+        </div>
       </main>
+
       {/* Styles pour les animations */}
       <style jsx>{`
         @keyframes fade-in-up {
@@ -152,7 +182,7 @@ export default function Home() {
             transform: translateY(0);
           }
         }
-        
+
         .animate-fade-in-up {
           animation: fade-in-up 1s ease-out forwards;
           animation-delay: 0.5s;
