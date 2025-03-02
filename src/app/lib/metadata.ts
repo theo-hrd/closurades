@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { FESTIVAL_NAME, FESTIVAL_LOCATION, FESTIVAL_DATES } from './constants';
+import { FESTIVAL_NAME } from './constants';
 
 export const siteConfig = {
   name: FESTIVAL_NAME,
