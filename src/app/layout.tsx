@@ -1,20 +1,18 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import Header from "./components/Header";
+import Header from "./components/layout/Header";
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
-import Footer from "./components/Footer";
+import Footer from "./components/layout/Footer";
+import { generateMetadata } from "./lib/metadata";
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font-montserrat',
 });
 
-export const metadata: Metadata = {
-  title: "Les Closurades Festival",
-  description: "Le festival entre amis.",
-};
+export const metadata: Metadata = generateMetadata();
 
 export default function RootLayout({
   children,
