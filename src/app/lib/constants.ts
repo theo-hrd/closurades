@@ -3,14 +3,16 @@ export const FESTIVAL_LOCATION = "Les Closures, St-Georges-lès-Baillargeaux (86
 export const FESTIVAL_DATES = "18 & 19 Juillet 2025";
 
 export const ARTISTS = [
-  "Stuffed Foxes",
-  "Till",
-  "Dandee",
-  "Lohan & Julien",
-  "Born Idiot",
-  "Kube",
-  "TWENTYHATE",
   "Stonks",
+  "CLM",
+  "Sun Gazol",
+  "TILL",
+  "Trifouille1er",
+  "Larsen",
+  "TWENTYHATE",
+  "Akae",
+  "Toofoulk",
+  "PRPHPXIV & TSHIMBOMBO",
 ];
 
 export const BACKGROUND_IMAGES = [
@@ -23,6 +25,5 @@ export const BACKGROUND_IMAGES = [
 
 export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/lesclosurades",
-  facebook: "https://www.facebook.com/closurades",
-  twitter: "https://twitter.com/closurades",
+  discord: "https://discord.gg/5GKYWnzM",
 };

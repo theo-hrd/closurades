@@ -67,11 +67,20 @@ const artistesData: ArtistesData = {
   ]
 };
 
+// Pre-assign colors to ensure consistency between server and client
+const artisteColors: Record<number, string> = {
+  1: 'pink',
+  2: 'blue',
+  3: 'purple',
+  4: 'red',
+  5: 'green',
+  6: 'pink'
+};
+
 function CarteArtiste({ artiste }: { artiste: Artiste }) {
-  const colors = ['pink', 'blue', 'purple', 'red', 'green'];
-  const randomColor = colors[artiste.id % colors.length];
+  const color = artisteColors[artiste.id] || 'pink'; // Default to pink if id not found
   
-  const shadowClasses: Record<typeof colors[number], string> = {
+  const shadowClasses: Record<string, string> = {
     pink: 'hover:shadow-[0_10px_15px_rgba(236,72,153,0.3)]',
     blue: 'hover:shadow-[0_10px_15px_rgba(59,130,246,0.3)]',
     purple: 'hover:shadow-[0_10px_15px_rgba(168,85,247,0.3)]',
@@ -85,7 +94,7 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
 
   return (
     <div 
-      className={`rounded-sm relative h-96 overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[randomColor]}`}
+      className={`rounded-sm relative h-96 overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[color]}`}
       style={{
         backgroundImage: `url(${artiste.photo})`,
         backgroundSize: 'cover',
@@ -106,7 +115,7 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
 }
 
 const JourSection = ({ jour, artistes }: { jour: string; artistes: Artiste[] }) => (
-  <section className={`${jour === 'Jour 1' ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
+  <section className={`${jour === 'Vendredi 18' ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
     <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
       {jour}
     </h3>
@@ -126,7 +135,7 @@ export default function Page() {
           Line-up
         </h2>
         <div className="uppercase md:flex md:space-x-8">
-          <JourSection jour="Jour 1" artistes={artistesData.jour1} />
+          <JourSection jour="Vendredi 18" artistes={artistesData.jour1} />
           {/* Ligne horizontale pour mobile */}
           <div className="block md:hidden">
             <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
@@ -136,7 +145,7 @@ export default function Page() {
           <div className="hidden md:flex md:items-center">
             <div className="w-2 h-full bg-gradient-to-b from-purple-700 to-red-600 rounded-full"></div>
           </div>
-          <JourSection jour="Jour 2" artistes={artistesData.jour2} />
+          <JourSection jour="Samedi 19" artistes={artistesData.jour2} />
         </div>
       </div>
     </div>
