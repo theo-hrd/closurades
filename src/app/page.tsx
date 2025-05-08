@@ -78,9 +78,11 @@ function HeroSection({
           {FESTIVAL_NAME}
         </h1>
 
-        <h2 className="mt-8 text-xl sm:text-3xl text-white drop-shadow-lg opacity-0 animate-fade-in-up">
-          <span className="font-bold">{FESTIVAL_LOCATION}</span>
-          <br /> <br />
+        <h2 className="mt-8 text-xl sm:text-3xl text-white drop-shadow-lg">
+          {/* <span className="font-bold">{FESTIVAL_LOCATION} </span> */}
+          <br /> 
+          {/* <br /> */}
+          
           <span className="underline decoration-pink-500 font-extrabold text-3xl">
             {FESTIVAL_DATES}
           </span>
