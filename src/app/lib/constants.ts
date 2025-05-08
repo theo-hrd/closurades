@@ -1,5 +1,4 @@
 export const FESTIVAL_NAME = "Les Closurades Festival";
-export const FESTIVAL_LOCATION = "Les Closures, St-Georges-lès-Baillargeaux (86)";
 export const FESTIVAL_DATES = "18 & 19 Juillet 2025";
 
 export const ARTISTS = [

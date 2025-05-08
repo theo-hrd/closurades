@@ -8,12 +8,12 @@ interface Artiste {
 }
 
 interface ArtistesData {
-  jour1: Artiste[];
-  jour2: Artiste[];
+  a1: Artiste[];
+  a2: Artiste[];
 }
 
 const artistesData: ArtistesData = {
-  jour1: [
+  a1: [
     {
       id: 1,
       nom: 'Till', 
@@ -39,7 +39,7 @@ const artistesData: ArtistesData = {
       origine: 'Toulouse - France'
     },
   ],
-  jour2: [
+  a2: [
     {
       id: 4,
       nom: 'Stonks', 
@@ -135,7 +135,7 @@ export default function Page() {
           Line-up
         </h2>
         <div className="uppercase md:flex md:space-x-8">
-          <JourSection jour="Vendredi 18" artistes={artistesData.jour1} />
+          <JourSection jour="Vendredi 18" artistes={artistesData.a1} />
           {/* Ligne horizontale pour mobile */}
           <div className="block md:hidden">
             <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
@@ -145,7 +145,7 @@ export default function Page() {
           <div className="hidden md:flex md:items-center">
             <div className="w-2 h-full bg-gradient-to-b from-purple-700 to-red-600 rounded-full"></div>
           </div>
-          <JourSection jour="Samedi 19" artistes={artistesData.jour2} />
+          <JourSection jour="Samedi 19" artistes={artistesData.a2} />
         </div>
       </div>
     </div>

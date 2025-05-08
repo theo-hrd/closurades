@@ -16,7 +16,6 @@ import Informations from "./components/features/Informations";
 
 import {
   FESTIVAL_NAME,
-  FESTIVAL_LOCATION,
   FESTIVAL_DATES,
   ARTISTS,
   BACKGROUND_IMAGES,
@@ -79,10 +78,7 @@ function HeroSection({
         </h1>
 
         <h2 className="mt-8 text-xl sm:text-3xl text-white drop-shadow-lg">
-          {/* <span className="font-bold">{FESTIVAL_LOCATION} </span> */}
           <br /> 
-          {/* <br /> */}
-          
           <span className="underline decoration-pink-500 font-extrabold text-3xl">
             {FESTIVAL_DATES}
           </span>
