@@ -114,8 +114,14 @@ function CarteArtiste({ artiste }: { artiste: Artiste }) {
   );
 }
 
-const JourSection = ({ jour, artistes }: { jour: string; artistes: Artiste[] }) => (
-  <section className={`${jour === 'Vendredi 18' ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
+interface JourSectionProps {
+  jour: string;
+  artistes: Artiste[];
+  isFirstDay?: boolean;
+}
+
+const JourSection = ({ jour, artistes, isFirstDay = false }: JourSectionProps) => (
+  <section className={`${isFirstDay ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
     <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
       {jour}
     </h3>
@@ -135,7 +141,11 @@ export default function Page() {
           Line-up
         </h2>
         <div className="uppercase md:flex md:space-x-8">
-          <JourSection jour="Vendredi 18" artistes={artistesData.a1} />
+          <JourSection 
+            jour="Vendredi 18" 
+            artistes={artistesData.a1} 
+            isFirstDay={true} 
+          />
           {/* Ligne horizontale pour mobile */}
           <div className="block md:hidden">
             <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
@@ -145,7 +155,11 @@ export default function Page() {
           <div className="hidden md:flex md:items-center">
             <div className="w-2 h-full bg-gradient-to-b from-purple-700 to-red-600 rounded-full"></div>
           </div>
-          <JourSection jour="Samedi 19" artistes={artistesData.a2} />
+          <JourSection 
+            jour="Samedi 19" 
+            artistes={artistesData.a2} 
+            isFirstDay={false} 
+          />
         </div>
       </div>
     </div>
