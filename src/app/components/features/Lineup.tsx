@@ -85,7 +85,7 @@ const artistesData: ArtistesData = {
       nom: "TOOFOULK",
       photo: '/artists/1.jpg',
       genre: 'Jungle | Drum and Bass | Neuro',
-      heure: '00h30 - 02h00',
+      heure: '00h15 - 01h45',
       origine: 'Poitiers - France',
       description: ``
     },
@@ -94,7 +94,7 @@ const artistesData: ArtistesData = {
       nom: "Akae",
       photo: '/artists/1.jpg',
       genre: 'Hard Techno',
-      heure: '02h00 - 00h00',
+      heure: '01h45 - 02h45',
       origine: 'Toulouse - France',
       description: ``
     },
@@ -103,7 +103,7 @@ const artistesData: ArtistesData = {
       nom: 'TWENTYHATE',
       photo: '/artists/twentyhate.png',
       genre: 'Hard Music | Early Hardcore | Uptempo',
-      heure: '23h00 - 2h00',
+      heure: '02h45 - 05h00',
       origine: 'Toulouse - France',
       description: `TWENTYHATE vous entraîne dans un voyage sans concession : des atmosphères rugueuses de l’early hardcore aux déflagrations de kicks rythmés de l’uptempo.
                     Sur scène, chaque transition est un choc, chaque drop une explosion. Entre samples distordus, kicks surpuissants et breaks affûtés, il orchestre un véritable carnage auditif où l’on ne s’autorise aucun répit. Son objectif ? Faire découvrir au public des sonorités extrêmes tout en lâchant prise, et offrir une expérience live immersive, presque violente, mais toujours dans un esprit de joyeuseté.`
