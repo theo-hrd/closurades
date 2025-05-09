@@ -23,3 +23,18 @@ export interface FestivalDay {
   date: string;
   artists: Artist[];
 }
+
+export interface Artiste {
+  id: number;
+  nom: string;
+  photo: string;
+  genre: string;
+  heure: string;
+  origine: string;
+  description: string;
+}
+
+export interface ArtistesData {
+  j1: Artiste[];
+  j2: Artiste[];
+}
