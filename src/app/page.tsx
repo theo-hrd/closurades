@@ -114,7 +114,7 @@ function HeroSection({
         </svg>
 
         <span className="mt-2 text-xl font-bold uppercase bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-          Billeterie
+          Billetterie
         </span>
       </div>
     </div>
@@ -132,7 +132,7 @@ function TicketsSection({
 }) {
   return (
     <div
-      id="billeterie"
+      id="Billetterie"
       ref={forwardedRef}
       className={`min-h-screen py-32 max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
         isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
@@ -141,7 +141,7 @@ function TicketsSection({
       <div className="px-4 py-6 sm:px-0">
         <div className="text-center">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">
-            Billeterie
+            Billetterie
           </h2>
 
           <p className="mt-4 text-lg max-w-2xl text-center mx-auto text-black">
