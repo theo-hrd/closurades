@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import { usePathname } from "next/navigation";
 
 
 
@@ -23,6 +24,12 @@ const MENU_SECTIONS = [
 
 
 export default function Header() {
+  const pathname = usePathname();
+  
+  // Ne pas afficher le header sur la page truite-ou-couille
+  if (pathname === "/truite-ou-couille") {
+    return null;
+  }
 
   const [menuOpen, setMenuOpen] = useState(false);
 
