@@ -10,7 +10,7 @@ import { useEffect, useState, useRef } from "react";
 
 const MENU_SECTIONS = [
 
-  { id: "billeterie", label: "Billeterie" },
+  { id: "Billetterie", label: "Billetterie" },
 
   { id: "lineup", label: "Line-up" },
 
