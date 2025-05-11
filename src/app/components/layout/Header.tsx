@@ -77,6 +77,7 @@ export default function Header() {
         window.removeEventListener('scroll', handleScroll);
       };
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   
   // Ne pas afficher le header sur la page truite-ou-couille
