@@ -1,5 +1,12 @@
 "use client";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
+
+// Define a type for color combinations
+interface ColorCombination {
+  text: string;
+  from: string;
+  to: string;
+}
 
 interface ArtistListProps {
   artists: string[];
@@ -15,10 +22,10 @@ export default function ArtistList({
   gradientTo = "to-purple-500" 
 }: Readonly<ArtistListProps>) {
   const [mounted, setMounted] = useState(false);
-  const [artistColors, setArtistColors] = useState<{[key: string]: any}>({});
+  const [artistColors, setArtistColors] = useState<Record<string, ColorCombination>>({});
 
-  // Predefined color combinations for variety - expanded with more options
-  const colorCombinations = [
+  // Predefined color combinations for variety - wrapped in useMemo to prevent recreating on every render
+  const colorCombinations = useMemo<ColorCombination[]>(() => [
     // Originaux
     { text: 'text-pink-200', from: 'from-pink-500', to: 'to-purple-500' },
     { text: 'text-blue-200', from: 'from-blue-500', to: 'to-teal-500' },
@@ -71,13 +78,13 @@ export default function ArtistList({
     { text: 'text-lime-200', from: 'from-lime-500', to: 'to-green-800' },
     { text: 'text-teal-200', from: 'from-teal-500', to: 'to-blue-800' },
     { text: 'text-violet-200', from: 'from-violet-500', to: 'to-indigo-800' }
-  ];
+  ], []);
   
   useEffect(() => {
     setMounted(true);
     
     // Generate random color assignments for all artists
-    const colorAssignments: {[key: string]: any} = {};
+    const colorAssignments: Record<string, ColorCombination> = {};
     artists.forEach((artist) => {
       // Get truly random color for each artist
       const randomIndex = Math.floor(Math.random() * colorCombinations.length);
@@ -88,14 +95,14 @@ export default function ArtistList({
     
     // Add randomized animation timing for entrance animations
     const elements = document.querySelectorAll('.artist-item');
-    elements.forEach((el, index) => {
+    elements.forEach((el) => { // use underscore to indicate deliberately unused parameter
       const element = el as HTMLElement;
       
       // Random delay for entrance animation
       const entranceDelay = 0.1 + (Math.random() * 0.4);
       element.style.animationDelay = `${entranceDelay}s`;
     });
-  }, [artists]);
+  }, [artists, colorCombinations]);
 
   // Get a unique animation for each artist for variety
   const getAnimation = (index: number) => {

@@ -127,8 +127,21 @@ const artisteColors: Record<number, string> = {
 
 // Ajouter une fonction pour obtenir des dégradés plus dynamiques
 function getGradientOverlay(color: string): string {
-  // Utiliser un dégradé neutre pour toutes les couleurs
-  return 'from-black/70 via-black/55 to-black/40';
+  // Map colors to custom overlay gradients
+  const overlays: Record<string, string> = {
+    pink: 'from-black/70 via-black/55 to-pink-900/20',
+    blue: 'from-black/70 via-black/55 to-blue-900/20',
+    purple: 'from-black/70 via-black/55 to-purple-900/20',
+    red: 'from-black/70 via-black/55 to-red-900/20',
+    green: 'from-black/70 via-black/55 to-green-900/20',
+    yellow: 'from-black/70 via-black/55 to-yellow-900/20',
+    orange: 'from-black/70 via-black/55 to-orange-900/20',
+    teal: 'from-black/70 via-black/55 to-teal-900/20',
+    indigo: 'from-black/70 via-black/55 to-indigo-900/20'
+  };
+  
+  // Return color-specific overlay or default if color not found
+  return overlays[color] || 'from-black/70 via-black/55 to-black/40';
 }
 
 // Obtenir la classe CSS du dégradé de bordure selon la couleur de l'artiste
