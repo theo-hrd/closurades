@@ -15,7 +15,7 @@ export default function TruiteOuCouille() {
           .then(() => {
             clearInterval(playAttempt);
           })
-          .catch(error => {
+          .catch(() => {
             console.log("Lecture automatique bloquée, cliquez sur la page pour activer la musique");
           });
       }, 1000);
@@ -45,12 +45,6 @@ export default function TruiteOuCouille() {
           priority
         />
       </div>
-      
-      <audio 
-        ref={audioRef}
-        src="/audio/OMFG-hello.mp3"
-        loop
-      />
     </div>
   );
 } 
