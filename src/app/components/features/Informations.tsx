@@ -35,7 +35,7 @@ export default function Informations() {
 
   const handleZoomOut = (e: React.MouseEvent) => {
     e.stopPropagation();
-    setZoomLevel(prev => Math.max(prev - 0.25, 1));
+    setZoomLevel(prev => Math.max(prev - 0.25, 0.5));
   };
 
   const handleResetZoom = (e: React.MouseEvent) => {
@@ -90,6 +90,17 @@ export default function Informations() {
     setIsDragging(false);
   };
 
+  // Ajout du zoom au scroll
+  const handleWheelZoom = (e: WheelEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.deltaY < 0) {
+      setZoomLevel(prev => Math.min(prev + 0.1, 3)); // Zoom in
+    } else {
+      setZoomLevel(prev => Math.max(prev - 0.1, 0.5)); // Zoom out, ajusté pour un minimum de 0.5
+    }
+  };
+
   // Ajouter les événements lors du montage et les supprimer lors du démontage
   useEffect(() => {
     const container = containerRef.current;
@@ -97,10 +108,12 @@ export default function Informations() {
     if (isMapModalOpen && container) {
       document.addEventListener('mouseup', handleMouseUp);
       document.addEventListener('touchend', handleTouchEnd);
+      container.addEventListener('wheel', handleWheelZoom, { passive: false });
       
       return () => {
         document.removeEventListener('mouseup', handleMouseUp);
         document.removeEventListener('touchend', handleTouchEnd);
+        container.removeEventListener('wheel', handleWheelZoom);
       };
     }
   }, [isMapModalOpen, isDragging]);
@@ -383,7 +396,7 @@ export default function Informations() {
                 <button 
                   onClick={handleResetZoom}
                   className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Reset zoom"
+                  aria-label="Reset zoom and position"
                 >
                   <Move size={22} className="text-gray-800" />
                 </button>
