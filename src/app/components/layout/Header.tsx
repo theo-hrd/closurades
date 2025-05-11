@@ -83,8 +83,9 @@ export default function Header() {
 
       // Set header background when scrolled down
 
-      setScrolled(window.scrollY > 50);
+      const isScrolled = window.scrollY > 50;
 
+      setScrolled(isScrolled);
       
 
       const scrollPosition = window.scrollY + headerHeight + 50;
@@ -279,7 +280,13 @@ export default function Header() {
 
             ref={buttonRef} 
 
-            onClick={() => setMenuOpen(!menuOpen)} 
+            onClick={(e) => {
+
+              e.stopPropagation(); // Prevent event propagation
+
+              setMenuOpen(!menuOpen);
+
+            }} 
 
             className="text-white relative z-50"
 
@@ -356,27 +363,17 @@ export default function Header() {
       {/* Mobile menu dropdown */}
 
       <div
-
         ref={menuRef}
-
-        className={`fixed inset-0 z-40 bg-black bg-opacity-95 transform transition-transform duration-300 ease-in-out ${
-
+        className={`fixed top-0 left-0 right-0 bottom-0 z-40 bg-black bg-opacity-95 transform transition-transform duration-300 ease-in-out ${
           menuOpen ? "translate-x-0" : "-translate-x-full"
-
-        } lg:hidden`}
-
+        } lg:hidden overflow-y-auto`}
+        style={{ top: '0', height: '100vh' }}
       >
-
-        <div className="flex flex-col h-full justify-center items-center">
-
+        <div className="flex flex-col h-full justify-center items-center py-20">
           <ul className="space-y-8 text-center">
-
             <MenuItems />
-
           </ul>
-
         </div>
-
       </div>
 
     </header>
