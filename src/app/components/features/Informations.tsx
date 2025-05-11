@@ -6,7 +6,7 @@ export default function Informations() {
   return (
     <div id="informations" className="min-h-screen py-12 max-w-7xl mx-auto px-6">
       <div className="mb-12 space-y-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+        <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
           Informations
         </h2>
         <p className="mt-4 text-lg text-center text-black">
@@ -19,7 +19,7 @@ export default function Informations() {
         <div className="bg-white rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
           <div className="flex items-center mb-4 text-red-600">
             <Tent className="mr-2" size={24} />
-            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Camping</h3>
+            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Camping</h3>
           </div>
           <div className="space-y-4">
             <p className="text-gray-700">
@@ -54,7 +54,7 @@ export default function Informations() {
         <div className="bg-white rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
           <div className="flex items-center mb-4 text-red-600">
             <UtensilsCrossed className="mr-2" size={24} />
-            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Restauration</h3>
+            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Restauration</h3>
           </div>
           <div className="space-y-4">
             <p className="text-gray-700">
@@ -94,7 +94,7 @@ export default function Informations() {
         <div className="bg-white rounded-lg shadow-le md:col-span-2 transition-transform">
           <div className="flex items-center mb-4 text-red-600">
             <MapPin className="mr-2" size={24} />
-            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Plan du site</h3>
+            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Plan du site</h3>
           </div>
           <div className="rounded-lg flex items-center justify-center">
             <Image src="/plandusite.jpeg" alt="Carte du site du festival" width={600} height={400} className="w-full h-full object-contain rounded-lg" />
@@ -105,7 +105,7 @@ export default function Informations() {
         <div className="bg-white rounded-lg shadow-lg p-6 md:col-span-2 transition-transform hover:scale-105">
           <div className="flex items-center mb-4 text-red-600">
             <Info className="mr-2" size={24} />
-            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">Infos pratiques</h3>
+            <h3 className="text-xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Infos pratiques</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex flex-col items-start">

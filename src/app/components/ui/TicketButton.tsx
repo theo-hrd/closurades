@@ -111,6 +111,8 @@ const TicketButton = ({
           }`}
           onMouseEnter={() => setIsHovered(true)} 
           onMouseLeave={() => setIsHovered(false)}
+          role="button"
+          aria-label="Acheter des billets pour le festival"
         >
           <div className={`absolute inset-0 bg-gradient-to-r ${gradientFrom} ${gradientTo} transition-all duration-500`}></div>
           <div 
@@ -118,7 +120,7 @@ const TicketButton = ({
               isHovered ? 'opacity-10' : ''
             }`}
           ></div>
-          <div className="relative z-10 uppercase font-extrabold text-2xl">
+          <div className="relative z-10 uppercase font-extrabold text-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             <span>{buttonText}</span>
           </div>
         </button>
@@ -126,6 +128,7 @@ const TicketButton = ({
           className={`mt-3 text-center font-semibold text-white transition-opacity duration-500 ${
             isHovered ? 'opacity-100' : 'opacity-0'
           }`}
+          aria-live="polite"
         >
           Prix: {price}
         </div>

@@ -13,8 +13,8 @@ const artistesData: ArtistesData = {
       genre: 'Stoner Rock | Jazz | Groove',
       heure: '21h30 - 22h30',
       origine: 'Poitiers - France',
-      description: `2022, Tom Ranson et Baudouin Salembier ont formé le groupe musical Till', aujourd’hui composé d'un guitariste, d'un saxophoniste, d'un bassiste et d'un batteur.
-                    L'arrivée de Pierre-Antoine Clion, bassiste du groupe, a permis de réunir trois membres ayant une longue histoire commune, mais n'ayant jamais exploré leur connexion musicale en tant que trio En octobre 2023, lors du bal du chahut organisé par l’association Warp Unchained, le saxophoniste Hicham El Mansouri s'est joint au groupe pour jouer sur leur set.
+      description: `2022, Tom Ranson et Baudouin Salembier ont formé le groupe musical Till', aujourd'hui composé d'un guitariste, d'un saxophoniste, d'un bassiste et d'un batteur.
+                    L'arrivée de Pierre-Antoine Clion, bassiste du groupe, a permis de réunir trois membres ayant une longue histoire commune, mais n'ayant jamais exploré leur connexion musicale en tant que trio En octobre 2023, lors du bal du chahut organisé par l'association Warp Unchained, le saxophoniste Hicham El Mansouri s'est joint au groupe pour jouer sur leur set.
                     Cette collaboration a enrichi de façon significative la musique du groupe, en apportant des mélodies envoûtantes se mêlant au jeu de guitare de Tom et à la rythmique complexe jouée par Baudouin et Pierre-Antoine. Leur rencontre a été une évidence, contribuant ainsi à créer une grande osmose musicale.`
     },
     {
@@ -42,12 +42,12 @@ const artistesData: ArtistesData = {
       genre: 'Techno | Hard Techno',
       heure: '02h30 - 04h00',
       origine: 'Poitiers - France',
-      description: `LARSEN est le président et fondateur du collectif Badmood, aujourd’hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
-                    DJ passionné et engagé, il se distingue par une approche sans concession du mix, où l’éclectisme est poussé à l’outrance.
+      description: `LARSEN est le président et fondateur du collectif Badmood, aujourd'hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
+                    DJ passionné et engagé, il se distingue par une approche sans concession du mix, où l'éclectisme est poussé à l'outrance.
                     Ses sets fusionnent les styles avec audace en passant par des classiques détournés et des surprises inattendues.
                     Résolument instinctif et imprévisible, LARSEN aime jouer avec les codes, quitte à troller son public en glissant volontairement des morceaux inattendus ou complètement décalés dans ses sets.
-                    Amateur de contrastes et de chaos maîtrisé, il cultive l’art de la surprise et de la tension, créant des montagnes russes sonores entre intensité brute et clins d’œil malicieux.
-                    Fort d’une solide expérience en tant que DJ généraliste, il maîtrise les dynamiques de dancefloor sur le bout des doigts, ce qui lui permet d’embarquer tout type de public, du plus pointu au plus festif.`
+                    Amateur de contrastes et de chaos maîtrisé, il cultive l'art de la surprise et de la tension, créant des montagnes russes sonores entre intensité brute et clins d'œil malicieux.
+                    Fort d'une solide expérience en tant que DJ généraliste, il maîtrise les dynamiques de dancefloor sur le bout des doigts, ce qui lui permet d'embarquer tout type de public, du plus pointu au plus festif.`
     },
   ],
   j2: [
@@ -105,8 +105,8 @@ const artistesData: ArtistesData = {
       genre: 'Hard Music | Early Hardcore | Uptempo',
       heure: '02h45 - 05h00',
       origine: 'Toulouse - France',
-      description: `TWENTYHATE vous entraîne dans un voyage sans concession : des atmosphères rugueuses de l’early hardcore aux déflagrations de kicks rythmés de l’uptempo.
-                    Sur scène, chaque transition est un choc, chaque drop une explosion. Entre samples distordus, kicks surpuissants et breaks affûtés, il orchestre un véritable carnage auditif où l’on ne s’autorise aucun répit. Son objectif ? Faire découvrir au public des sonorités extrêmes tout en lâchant prise, et offrir une expérience live immersive, presque violente, mais toujours dans un esprit de joyeuseté.`
+      description: `TWENTYHATE vous entraîne dans un voyage sans concession : des atmosphères rugueuses de l'early hardcore aux déflagrations de kicks rythmés de l'uptempo.
+                    Sur scène, chaque transition est un choc, chaque drop une explosion. Entre samples distordus, kicks surpuissants et breaks affûtés, il orchestre un véritable carnage auditif où l'on ne s'autorise aucun répit. Son objectif ? Faire découvrir au public des sonorités extrêmes tout en lâchant prise, et offrir une expérience live immersive, presque violente, mais toujours dans un esprit de joyeuseté.`
     },
   ]
 };
@@ -126,6 +126,9 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
     <div 
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
       onClick={onClose}
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby={`artist-popup-title-${artiste.id}`}
     >
       <div 
         className="relative w-full max-w-2xl max-h-[90vh] overflow-auto rounded-md"
@@ -139,14 +142,15 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
           <button 
             className="absolute top-2 right-2 p-2 rounded-full bg-black/70 text-white hover:bg-black"
             onClick={onClose}
+            aria-label="Fermer les détails de l'artiste"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </button>
         </div>
         <div className="bg-black p-6 rounded-b-md">
-          <h2 className="text-3xl font-bold text-white mb-2">{artiste.nom}</h2>
+          <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-2">{artiste.nom}</h2>
           <p className="text-gray-400 mb-4">
             <span className="font-semibold">{artiste.genre}</span> | {artiste.origine}
           </p>
@@ -174,25 +178,26 @@ function CarteArtiste({ artiste, onClick }: { artiste: Artiste, onClick: () => v
   };
 
   return (
-    <div 
-      className={`uppercase rounded-sm relative h-96 overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[color]} cursor-pointer`}
+    <button 
+      className={`uppercase rounded-sm relative h-96 w-full overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[color]} cursor-pointer text-left`}
       style={{
         backgroundImage: `url(${artiste.photo})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center'
       }}
       onClick={onClick}
+      aria-label={`Voir les détails de ${artiste.nom}, ${artiste.genre}, ${artiste.heure}`}
     >
-      <div className="absolute inset-0 bg-black/50"></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50"></div>
       <div className="relative h-full p-6 flex flex-col justify-end">
-        <h3 className="text-2xl font-bold mx-auto text-center text-white shadow-xl">
+        <h3 className="text-2xl font-bold mx-auto text-center text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">
           {artiste.nom}
         </h3>
-        <p className="mt-2 text-gray-400 text-center font-semibold text-sm">{artiste.genre}</p>
-        <p className="mt-2 text-gray-300 text-center font-bold">{artiste.heure}</p>
-        <p className="mt-2 text-gray-400 text-center text-sm">{artiste.origine}</p>
+        <p className="mt-2 text-gray-200 text-center font-semibold text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.genre}</p>
+        <p className="mt-2 text-white text-center font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.heure}</p>
+        <p className="mt-2 text-gray-200 text-center text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.origine}</p>
       </div>
-    </div>
+    </button>
   );
 }
 
@@ -202,7 +207,7 @@ interface JourSectionProps {
   isFirstDay?: boolean;
 }
 
-const JourSection = ({ jour, artistes, isFirstDay = false }: JourSectionProps) => {
+function JourSection({ jour, artistes, isFirstDay = false }: JourSectionProps) {
   const [selectedArtiste, setSelectedArtiste] = useState<Artiste | null>(null);
   const [isMounted, setIsMounted] = useState(false);
   
@@ -213,7 +218,7 @@ const JourSection = ({ jour, artistes, isFirstDay = false }: JourSectionProps) =
 
   return (
     <section className={`${isFirstDay ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
-      <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
+      <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.3)]">
         {jour}
       </h3>
       <div className="grid grid-cols-1 gap-8">
@@ -233,13 +238,13 @@ const JourSection = ({ jour, artistes, isFirstDay = false }: JourSectionProps) =
       )}
     </section>
   );
-};
+}
 
 export default function Page() {
   return (
     <div id="lineup" className="bg-black scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent">
+        <h2 className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]">
           Line-up
         </h2>
         <div className="md:flex md:space-x-8">

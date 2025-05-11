@@ -5,7 +5,7 @@ export default function Merch() {
     const products = [
         {
             id: 1,
-            name: "T-shirt Signature",
+            name: "T-shirt Closurades 2025",
             image: "/artists/1.jpg",
             description: "T-shirt en coton bio avec notre logo emblématique"
         },

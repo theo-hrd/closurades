@@ -23,7 +23,7 @@ export default function ArtistList({
         {duplicatedArtists.map((artist, index) => (
           <span
             key={`${artist}-${index}`}
-            className={`text-3xl font-bold ${textColor} px-6 py-3 uppercase tracking-wide relative group`}
+            className={`text-3xl font-bold ${textColor} px-6 py-3 uppercase tracking-wide relative group drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]`}
           >
             {artist}
             <span className={`absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r ${gradientFrom} ${gradientTo} group-hover:w-full transition-all duration-300 ease-in-out`}></span>
