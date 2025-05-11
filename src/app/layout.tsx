@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Montserrat } from "next/font/google";
+import { Montserrat, Raleway } from "next/font/google";
 import "./globals.css";
 import Header from "./components/layout/Header";
 import { Analytics } from "@vercel/analytics/next"
@@ -12,6 +12,12 @@ const montserrat = Montserrat({
   variable: '--font-montserrat',
 });
 
+const raleway = Raleway({
+  subsets: ['latin'],
+  variable: '--font-raleway',
+  display: 'swap',
+});
+
 export const metadata: Metadata = generateMetadata();
 
 export default function RootLayout({
@@ -21,7 +27,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <body className={`${montserrat.variable} font-sans`}>
+      <body className={`${montserrat.variable} ${raleway.variable} font-sans`}>
         <Header />
         {children}
         <Analytics />
