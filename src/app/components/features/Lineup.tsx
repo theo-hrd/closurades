@@ -118,44 +118,93 @@ const artisteColors: Record<number, string> = {
   3: 'purple',
   4: 'red',
   5: 'green',
-  6: 'pink'
+  6: 'pink',
+  7: 'teal',
+  8: 'orange',
+  9: 'indigo',
+  10: 'yellow'
 };
 
+// Ajouter une fonction pour obtenir des dégradés plus dynamiques
+function getGradientOverlay(color: string): string {
+  // Utiliser un dégradé neutre pour toutes les couleurs
+  return 'from-black/70 via-black/55 to-black/40';
+}
+
+// Obtenir la classe CSS du dégradé de bordure selon la couleur de l'artiste
+function getBorderGradient(color: string): string {
+  const gradients: Record<string, string> = {
+    pink: 'from-pink-500 to-purple-500',
+    blue: 'from-blue-500 to-teal-500', 
+    purple: 'from-purple-500 to-fuchsia-500',
+    red: 'from-red-500 to-pink-500',
+    green: 'from-green-500 to-teal-500',
+    yellow: 'from-yellow-400 to-orange-500',
+    orange: 'from-orange-500 to-rose-500',
+    teal: 'from-teal-500 to-cyan-500',
+    indigo: 'from-indigo-500 to-blue-500'
+  };
+  
+  return gradients[color] || 'from-purple-500 to-fuchsia-500';
+}
+
 function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => void }) {
+  const color = artisteColors[artiste.id] || 'purple';
+  const gradientOverlay = getGradientOverlay(color);
+  const borderGradient = getBorderGradient(color);
+  
   return (
     <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80"
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
       aria-labelledby={`artist-popup-title-${artiste.id}`}
     >
-      <div 
-        className="relative w-full max-w-2xl max-h-[90vh] overflow-auto rounded-md"
-        onClick={e => e.stopPropagation()}
-      >
+      {/* Wrapper pour le contour en dégradé */}
+      <div className="relative w-full max-w-2xl">
+        {/* Contour en dégradé */}
+        <div className={`absolute -inset-[2px] rounded-lg bg-gradient-to-r ${borderGradient}`}></div>
+        
+        {/* Contenu principal avec fond noir */}
         <div 
-          className="relative aspect-video w-full rounded-t-md bg-cover bg-center"
-          style={{ backgroundImage: `url(${artiste.photo})` }}
+          className="relative w-full max-h-[90vh] bg-black rounded-lg overflow-hidden z-10 shadow-2xl"
+          onClick={e => e.stopPropagation()}
         >
-          <div className="absolute inset-0 bg-black/50"></div>
-          <button 
-            className="absolute top-2 right-2 p-2 rounded-full bg-black/70 text-white hover:bg-black"
-            onClick={onClose}
-            aria-label="Fermer les détails de l'artiste"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
-        </div>
-        <div className="bg-black p-6 rounded-b-md">
-          <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-2">{artiste.nom}</h2>
-          <p className="text-gray-400 mb-4">
-            <span className="font-semibold">{artiste.genre}</span> | {artiste.origine}
-          </p>
-          <p className="text-gray-200 mb-2 font-bold">{artiste.heure}</p>
-          <p className="text-gray-300 leading-relaxed">{artiste.description}</p>
+          <div className="flex flex-col">
+            <div 
+              className="relative aspect-video w-full bg-cover bg-center"
+              style={{ backgroundImage: `url(${artiste.photo})` }}
+            >
+              <div className={`absolute inset-0 bg-gradient-to-t ${gradientOverlay}`}></div>
+              <button 
+                className="absolute top-4 right-4 p-2 rounded-full bg-black/70 text-white hover:bg-black"
+                onClick={onClose}
+                aria-label="Fermer les détails de l'artiste"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            <div className="p-8 overflow-y-auto bg-black">
+              <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-3 drop-shadow-sm">{artiste.nom}</h2>
+              
+              <div className="bg-black/80 p-4 mb-5 rounded-md backdrop-blur-sm">
+                <p className="text-white mb-3">
+                  <span className="font-semibold text-lg">{artiste.genre}</span>
+                  {artiste.origine && <span className="text-gray-200"> | {artiste.origine}</span>}
+                </p>
+                <p className="text-white font-bold text-lg">{artiste.heure}</p>
+              </div>
+              
+              {artiste.description && (
+                <div className="mt-5">
+                  <p className="text-gray-100 whitespace-pre-line text-base leading-relaxed">{artiste.description}</p>
+                </div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -164,40 +213,44 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
 
 function CarteArtiste({ artiste, onClick }: { artiste: Artiste, onClick: () => void }) {
   const color = artisteColors[artiste.id] || 'purple'; // Default to purple if id not found
+  const gradientOverlay = getGradientOverlay(color);
+  const borderGradient = getBorderGradient(color);
   
-  const shadowClasses: Record<string, string> = {
-    pink: 'hover:shadow-[0_10px_15px_rgba(236,72,153,0.3)]',
-    blue: 'hover:shadow-[0_10px_15px_rgba(59,130,246,0.3)]',
-    purple: 'hover:shadow-[0_10px_15px_rgba(168,85,247,0.3)]',
-    red: 'hover:shadow-[0_10px_15px_rgba(239,68,68,0.3)]',
-    green: 'hover:shadow-[0_10px_15px_rgba(34,197,94,0.3)]',
-    yellow: 'hover:shadow-[0_10px_15px_rgba(234,179,8,0.3)]',
-    orange: 'hover:shadow-[0_10px_15px_rgba(249,115,22,0.3)]',
-    teal: 'hover:shadow-[0_10px_15px_rgba(20,184,166,0.3)]',
-    indigo: 'hover:shadow-[0_10px_15px_rgba(99,102,241,0.3)]'
-  };
-
   return (
-    <button 
-      className={`uppercase rounded-sm relative h-96 w-full overflow-hidden transition-all duration-300 hover:scale-105 ${shadowClasses[color]} cursor-pointer text-left`}
-      style={{
-        backgroundImage: `url(${artiste.photo})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center'
-      }}
-      onClick={onClick}
-      aria-label={`Voir les détails de ${artiste.nom}, ${artiste.genre}, ${artiste.heure}`}
-    >
-      <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-black/50"></div>
-      <div className="relative h-full p-6 flex flex-col justify-end">
-        <h3 className="text-2xl font-bold mx-auto text-center text-white drop-shadow-[0_2px_3px_rgba(0,0,0,0.8)]">
-          {artiste.nom}
-        </h3>
-        <p className="mt-2 text-gray-200 text-center font-semibold text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.genre}</p>
-        <p className="mt-2 text-white text-center font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.heure}</p>
-        <p className="mt-2 text-gray-200 text-center text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.origine}</p>
+    <div className="relative w-full rounded-lg p-[3px] group">
+      {/* Border container - only visible on hover */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${borderGradient} rounded-lg transition-opacity 
+                       duration-300 opacity-0 group-hover:opacity-100`}>
       </div>
-    </button>
+      
+      <button 
+        className="uppercase relative h-96 w-full overflow-hidden rounded-md
+                  transition-transform duration-300 cursor-pointer text-left bg-black z-10"
+        style={{
+          backgroundImage: `url(${artiste.photo})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+        onClick={onClick}
+        aria-label={`Voir les détails de ${artiste.nom}, ${artiste.genre}, ${artiste.heure}`}
+      >
+        {/* Overlay with neutral gradient */}
+        <div className={`absolute inset-0 bg-gradient-to-t ${gradientOverlay} transition-opacity duration-300 group-hover:opacity-60`}></div>
+        
+        <div className="relative h-full p-6 flex flex-col justify-end z-10">
+          {/* Artistic name display with dynamic text shadow */}
+          <h3 className={`text-2xl font-bold mx-auto text-center text-white transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]`}>
+            {artiste.nom}
+          </h3>
+          
+          <div className="transition-all duration-300 transform group-hover:translate-y-0 opacity-90 group-hover:opacity-100">
+            <p className="mt-3 text-gray-100 text-center font-semibold text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.genre}</p>
+            <p className="mt-2 text-white text-center font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">{artiste.heure}</p>
+            {artiste.origine && <p className="mt-2 text-gray-200 text-center text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.origine}</p>}
+          </div>
+        </div>
+      </button>
+    </div>
   );
 }
 
