@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Tent, MapPin, Info, Clock, Milk, Utensils, Car, Train, Check, CircleOff, ZoomIn, ZoomOut, X, Move } from 'lucide-react';
+import { Tent, MapPin, Info, Clock, Car, Train, Check, ZoomIn, ZoomOut, X, Move } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 
 export default function Informations() {
