@@ -1,8 +1,110 @@
 import React from 'react';
 import Image from 'next/image';
-import { Tent, MapPin, Info, Clock, Milk, Utensils, Car, Train, Check, CircleOff } from 'lucide-react';
+import { Tent, MapPin, Info, Clock, Milk, Utensils, Car, Train, Check, CircleOff, ZoomIn, ZoomOut, X, Move } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Informations() {
+  const [isMapModalOpen, setIsMapModalOpen] = useState(false);
+  const [zoomLevel, setZoomLevel] = useState(1);
+  
+  // Pour le drag de l'image
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const openMapModal = () => {
+    setIsMapModalOpen(true);
+    document.body.style.overflow = 'hidden';
+    // Réinitialiser la position et le zoom quand on ouvre la modal
+    setPosition({ x: 0, y: 0 });
+    setZoomLevel(1);
+  };
+
+  const closeMapModal = () => {
+    setIsMapModalOpen(false);
+    document.body.style.overflow = 'auto';
+    setZoomLevel(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const handleZoomIn = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setZoomLevel(prev => Math.min(prev + 0.25, 3));
+  };
+
+  const handleZoomOut = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setZoomLevel(prev => Math.max(prev - 0.25, 1));
+  };
+
+  const handleResetZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setZoomLevel(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Fonctionnalité de drag
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (zoomLevel > 1) {
+      setIsDragging(true);
+      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging && zoomLevel > 1) {
+      setPosition({
+        x: e.clientX - dragStart.x,
+        y: e.clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Gestion du drag pour les appareils tactiles
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1 && zoomLevel > 1) {
+      setIsDragging(true);
+      setDragStart({ 
+        x: e.touches[0].clientX - position.x, 
+        y: e.touches[0].clientY - position.y 
+      });
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (isDragging && e.touches.length === 1 && zoomLevel > 1) {
+      e.preventDefault();
+      setPosition({
+        x: e.touches[0].clientX - dragStart.x,
+        y: e.touches[0].clientY - dragStart.y,
+      });
+    }
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Ajouter les événements lors du montage et les supprimer lors du démontage
+  useEffect(() => {
+    const container = containerRef.current;
+    
+    if (isMapModalOpen && container) {
+      document.addEventListener('mouseup', handleMouseUp);
+      document.addEventListener('touchend', handleTouchEnd);
+      
+      return () => {
+        document.removeEventListener('mouseup', handleMouseUp);
+        document.removeEventListener('touchend', handleTouchEnd);
+      };
+    }
+  }, [isMapModalOpen, isDragging]);
+
   return (
     <div id="informations" className="min-h-screen py-12 max-w-7xl mx-auto px-6">
       <div className="mb-12 space-y-2">
@@ -230,10 +332,109 @@ export default function Informations() {
             </div>
             <h3 id="map-heading" className="ml-3 text-xl font-bold bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Plan du site</h3>
           </div>
-          <div className="rounded-lg flex items-center justify-center">
-            <Image src="/plandusite.jpeg" alt="Carte du site du festival" width={600} height={400} className="w-full h-full object-contain rounded-lg" />
+          <div 
+            className="rounded-lg flex items-center justify-center cursor-pointer relative group"
+            onClick={openMapModal}
+          >
+            <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+              <ZoomIn className="text-white" size={32} />
+            </div>
+            <Image 
+              src="/plandusite.jpeg" 
+              alt="Carte du site du festival" 
+              width={600} 
+              height={400} 
+              className="w-full h-full object-contain rounded-lg" 
+            />
+          </div>
+          <div className="flex items-center justify-center mt-3">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-600/10 to-purple-700/10 rounded-full border border-gray-200 shadow-sm">
+              <ZoomIn size={16} className="text-red-600" />
+              <p className="font-medium text-gray-800">Cliquez sur l'image pour agrandir</p>
+            </div>
           </div>
         </div>
+
+        {/* Modal for enlarged map view */}
+        {isMapModalOpen && (
+          <div 
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={closeMapModal}
+          >
+            <div 
+              className="relative max-w-4xl w-full h-auto max-h-[90vh] bg-white/5 rounded-xl backdrop-blur-sm p-1"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="absolute top-4 right-4 z-20 flex gap-2">
+                <button 
+                  onClick={handleZoomIn}
+                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  aria-label="Zoom in"
+                >
+                  <ZoomIn size={22} className="text-gray-800" />
+                </button>
+                <button 
+                  onClick={handleZoomOut}
+                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  aria-label="Zoom out"
+                >
+                  <ZoomOut size={22} className="text-gray-800" />
+                </button>
+                <button 
+                  onClick={handleResetZoom}
+                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  aria-label="Reset zoom"
+                >
+                  <Move size={22} className="text-gray-800" />
+                </button>
+                <button 
+                  onClick={closeMapModal}
+                  className="bg-red-500 p-3 rounded-full hover:bg-red-600 transition-colors shadow-lg flex items-center justify-center"
+                  aria-label="Close modal"
+                >
+                  <X size={22} className="text-white" />
+                </button>
+              </div>
+              
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
+                {zoomLevel > 1 ? 'Cliquez et déplacez pour naviguer • ' : ''} 
+                Zoom: {Math.round(zoomLevel * 100)}%
+              </div>
+
+              <div 
+                ref={containerRef}
+                className="overflow-hidden h-full w-full rounded-lg"
+                style={{ cursor: zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
+                onMouseDown={handleMouseDown}
+                onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp}
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
+                <div 
+                  className="transform-gpu w-full h-full" 
+                  style={{ 
+                    transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`, 
+                    transformOrigin: 'center', 
+                    transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+                  }}
+                >
+                  <Image 
+                    src="/plandusite.jpeg" 
+                    alt="Carte du site du festival" 
+                    width={1200} 
+                    height={800} 
+                    quality={95}
+                    className="w-full h-auto object-contain"
+                    draggable="false"
+                    priority
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Infos pratiques */}
         <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
