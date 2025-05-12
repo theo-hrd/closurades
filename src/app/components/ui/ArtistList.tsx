@@ -118,7 +118,7 @@ export default function ArtistList({
   
   return (
     <div className="w-full mt-8 sm:mt-16 md:mt-32">
-      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 w-full">
+      <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 w-full">
         {artists.map((artist, index) => {
           // Use the randomly assigned color for this artist
           const colorCombo = artistColors[artist] || { 
@@ -135,7 +135,7 @@ export default function ArtistList({
               <div 
                 className={`
                   font-bold ${colorCombo.text} uppercase tracking-wide py-1 px-6
-                  text-2xl sm:text-3xl md:text-4xl lg:text-5xl
+                  text-xl sm:text-2xl md:text-3xl lg:text-4xl
                   flex items-center justify-center
                   relative group
                   drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]

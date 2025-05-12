@@ -74,18 +74,18 @@ function HeroSection({
 
       <div className="absolute inset-0 flex flex-col items-center text-center px-4 sm:px-8">
         <div className="w-full max-w-4xl mx-auto pt-20 sm:pt-32">
-          <h1 className="w-full break-words text-4xl xs:text-5xl sm:text-7xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
+          <h1 className="w-full break-words text-5xl xs:text-6xl sm:text-8xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
             {FESTIVAL_NAME}
           </h1>
 
-          <h2 className="mt-4 sm:mt-8 text-xl sm:text-3xl text-white drop-shadow-lg">
-            <span className="underline decoration-pink-500 font-extrabold text-3xl">
+          <h2 className="mt-4 sm:mt-8 text-2xl sm:text-4xl text-white drop-shadow-lg">
+            <span className="underline decoration-pink-500 font-extrabold text-3xl sm:text-5xl">
               {FESTIVAL_DATES}
             </span>
           </h2>
 
           {/* Updated artist list with grid layout */}
-          <div className="mt-4 sm:mt-8 sm:max-h-[40vh] sm:overflow-y-auto md:overflow-y-visible mb-8 w-full max-w-[2000px] mx-auto">
+          <div className="mt-2 sm:mt-4 mb-16 sm:mb-8 w-full max-w-[2000px] mx-auto">
             <ArtistList
               artists={ARTISTS}
             />
