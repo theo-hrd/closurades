@@ -181,10 +181,10 @@ export default function Informations() {
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
               <h4 className="font-semibold mb-3 text-black text-center">Durée</h4>
               <p className="text-center text-gray-800">
-                3 jours de festival avec camping inclus
+                2 jours de festival avec camping inclus
               </p>
               <p className="text-center text-gray-800 mt-1">
-                Concerts, activités et restauration
+                Concerts, DJ sets, activités et restauration
               </p>
             </div>
             
@@ -221,9 +221,9 @@ export default function Informations() {
                 <h4 className="font-semibold">En voiture 🚙</h4>
               </div>
               <div className="space-y-2 text-gray-800">
-                <p>Privilégiez un maximum le covoiturage !! Vous pouvez trouver/proposer des groupes de covoit dans 🚙covoiturage sur le Discord.</p>
+                <p>Privilégiez un maximum le covoiturage !! Vous pouvez trouver / proposer des groupes de covoit dans 🚙covoiturage sur le Discord.</p>
                 <p>Quelqu'un vous guidera sur place pour vous garer.</p>
-                <p>Contactez un/e orga si vous venez de Poitiers/les environs, nous pourrons certainement vous prendre dans une des navettes.</p>
+                <p>Contactez un.e orga si vous venez de Poitiers et ces environs, nous pourrons certainement vous prendre dans une des navettes.</p>
               </div>
             </div>
             
@@ -231,12 +231,12 @@ export default function Informations() {
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
               <div className="flex items-center mb-2 text-black">
                 <Train className="mr-2 text-red-600" size={20} aria-hidden="true" />
-                <h4 className="font-semibold">En train/bus 🚎</h4>
+                <h4 className="font-semibold">En train  /bus 🚎</h4>
               </div>
               <div className="space-y-2 text-gray-800">
-                <p>Pour celles/ceux qui viennent en Train/Bus, prévoyez votre arrivée uniquement à : la gare du Futuroscope ou la gare de Poitiers.</p>
+                <p>Pour celles / ceux qui viennent en Train/Bus, prévoyez votre arrivée uniquement à : la gare du Futuroscope ou la gare de Poitiers.</p>
                 <p>Nous ferons la navette pour venir vous chercher à certaines heures (à partir de 17h le vendredi).</p>
-                <p>Afin de déterminer les horaires de passage de la navette, vous devez impérativement envoyer un message (dès que vous avez votre trajet) dans 🚌navette sur le Discord ou en contactant un/e orga.</p>
+                <p>Afin de déterminer les horaires de passage de la navette, vous devez impérativement envoyer un message (dès que vous avez votre trajet) dans 🚌navette sur le Discord ou en contactant un.e orga.</p>
               </div>
             </div>
           </div>
