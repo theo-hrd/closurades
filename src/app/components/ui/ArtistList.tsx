@@ -118,7 +118,7 @@ export default function ArtistList({
   
   return (
     <div className="w-full mt-8 sm:mt-16 md:mt-32">
-      <div className="flex flex-wrap justify-center gap-4 md:gap-8 max-w-7xl mx-auto px-4">
+      <div className="flex flex-wrap justify-center gap-8 md:gap-12 lg:gap-16 w-full">
         {artists.map((artist, index) => {
           // Use the randomly assigned color for this artist
           const colorCombo = artistColors[artist] || { 
@@ -134,8 +134,8 @@ export default function ArtistList({
             >
               <div 
                 className={`
-                  font-bold ${colorCombo.text} uppercase tracking-wide py-1 px-2
-                  text-2xl sm:text-3xl md:text-5xl lg:text-6xl
+                  font-bold ${colorCombo.text} uppercase tracking-wide py-1 px-6
+                  text-2xl sm:text-3xl md:text-4xl lg:text-5xl
                   flex items-center justify-center
                   relative group
                   drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]
@@ -144,6 +144,7 @@ export default function ArtistList({
                   hover:text-white
                   text-glow
                   cursor-pointer
+                  whitespace-nowrap
                 `}
               >
                 {artist}

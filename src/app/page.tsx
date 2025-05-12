@@ -85,7 +85,7 @@ function HeroSection({
           </h2>
 
           {/* Updated artist list with grid layout */}
-          <div className="mt-4 sm:mt-8 sm:max-h-[40vh] sm:overflow-y-auto md:overflow-y-visible mb-8">
+          <div className="mt-4 sm:mt-8 sm:max-h-[40vh] sm:overflow-y-auto md:overflow-y-visible mb-8 w-full max-w-[2000px] mx-auto">
             <ArtistList
               artists={ARTISTS}
             />
