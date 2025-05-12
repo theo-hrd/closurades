@@ -99,6 +99,9 @@ function HeroSection({
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center cursor-pointer hover:scale-110 transition-transform duration-300"
         onClick={onScrollToBilleterie}
       >
+        <span className="mb-2 text-xl font-bold uppercase bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
+          Billetterie
+        </span>
         <svg
           className="h-10 w-10 text-orange-600 animate-bounce"
           xmlns="http://www.w3.org/2000/svg"
@@ -114,10 +117,6 @@ function HeroSection({
             d="M19 9l-7 7-7-7"
           />
         </svg>
-
-        <span className="mt-2 text-xl font-bold uppercase bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent">
-          Billetterie
-        </span>
       </div>
     </div>
   );
