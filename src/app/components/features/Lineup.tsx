@@ -200,9 +200,8 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
                 </svg>
               </button>
             </div>
-            <div className="p-8 overflow-y-auto bg-black">
+            <div className="p-8 bg-black">
               <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-3 drop-shadow-sm">{artiste.nom}</h2>
-              
               <div className="bg-black/80 p-4 mb-5 rounded-md backdrop-blur-sm">
                 <p className="text-white mb-3">
                   <span className="font-semibold text-lg">{artiste.genre}</span>
@@ -210,9 +209,8 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
                 </p>
                 <p className="text-white font-bold text-lg">{artiste.heure}</p>
               </div>
-              
               {artiste.description && (
-                <div className="mt-5">
+                <div className="mt-5 max-h-[30vh] overflow-y-auto">
                   <p className="text-gray-100 whitespace-pre-line text-base leading-relaxed">{artiste.description}</p>
                 </div>
               )}
@@ -308,7 +306,7 @@ function JourSection({ jour, artistes, isFirstDay = false }: JourSectionProps) {
 
 export default function Page() {
   return (
-    <div id="lineup" className="bg-black scroll-mt-32">
+    <div id="lineup" className="bg-black scroll-mt-32 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]">
           Line-up

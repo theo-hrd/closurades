@@ -139,11 +139,7 @@ export default function Header() {
     }`}>
       <nav className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <button 
-          className={`font-raleway text-2xl font-extrabold transition-all duration-500
-            ${activeSection === "closurades" 
-              ? "bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent"
-              : "text-white hover:bg-gradient-to-r hover:from-fuchsia-500 hover:to-pink-500 hover:bg-clip-text hover:text-transparent"
-            }`}
+          className="font-raleway text-2xl font-extrabold transition-all duration-500 bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent"
           onClick={() => scrollToSection("closurades")}
         >
           Les Closurades
