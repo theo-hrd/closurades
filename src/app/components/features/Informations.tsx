@@ -300,15 +300,7 @@ export default function Informations() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-800">
                 <div className="flex items-center">
                   <div className="mr-2">•</div>
-                  <span>Ethylotest 🧪</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Contraception 🛡️</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Duvet / Plaid 🛌 (Il va faire chaud)</span>
+                  <span>Duvet / Plaid 🛌</span>
                 </div>
                 <div className="flex items-center">
                   <div className="mr-2">•</div>
