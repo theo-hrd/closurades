@@ -2,6 +2,41 @@ import React from 'react';
 import Image from 'next/image';
 import { Tent, MapPin, Info, Clock, Car, Train, Check, ZoomIn, ZoomOut, X, Move } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
+import { SOCIAL_LINKS } from '../../lib/constants';
+
+// Discord icon component
+const DiscordIcon = ({ size = 24, className = "" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 127.14 96.36" 
+    fill="currentColor"
+    className={className}
+  >
+    <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z" />
+  </svg>
+);
+
+// Instagram icon component
+const InstagramIcon = ({ size = 24, className = "" }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    width={size} 
+    height={size} 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className}
+  >
+    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+    <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+  </svg>
+);
 
 export default function Informations() {
   const [isMapModalOpen, setIsMapModalOpen] = useState(false);
@@ -442,7 +477,7 @@ export default function Informations() {
         )}
 
         {/* Infos pratiques */}
-        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group md:col-span-2">
           <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           <div className="relative flex items-center mb-4">
@@ -451,20 +486,52 @@ export default function Informations() {
             </div>
             <h3 id="info-heading" className="ml-3 text-xl font-bold bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Infos pratiques</h3>
           </div>
-          <div className="space-y-4">
-            <p className="text-gray-800">
-              Le site des Closurades est très sujet au risque d'incendie en plein été, alors afin que tout le monde passe un agréable moment tout en sécurité, vous devez prendre ardemment connaissance des règles de sécurité et de bonne conduite.
-            </p>
-            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
-              <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-              <h4 className="font-semibold mb-2 text-black">Sécurité</h4>
-              <div className="space-y-2">
-                <p className="text-gray-800">
-                  Respectez les consignes de sécurité et les zones délimitées.
-                </p>
-                <p className="text-gray-800">
-                  En cas de problème, adressez-vous immédiatement à un membre de l'organisation.
-                </p>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="space-y-4">
+              <p className="text-gray-800">
+                Le site des Closurades est très sujet au risque d'incendie en plein été, alors afin que tout le monde passe un agréable moment tout en sécurité, vous devez prendre ardemment connaissance des règles de sécurité et de bonne conduite.
+              </p>
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
+                <h4 className="font-semibold mb-2 text-black">Sécurité</h4>
+                <div className="space-y-2">
+                  <p className="text-gray-800">
+                    Respectez les consignes de sécurité et les zones délimitées.
+                  </p>
+                  <p className="text-gray-800">
+                    En cas de problème, adressez-vous immédiatement à un membre de l'organisation.
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group h-full flex flex-col">
+                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
+                <h4 className="font-semibold mb-5 text-black text-center">Suivez-nous</h4>
+                <div className="flex flex-col sm:flex-row gap-3 items-center justify-center flex-grow">
+                  <a 
+                    href={SOCIAL_LINKS.instagram} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-br from-purple-600 to-red-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                    aria-label="Instagram"
+                  >
+                    <InstagramIcon size={24} />
+                    <span className="font-medium">Instagram</span>
+                  </a>
+                  <a 
+                    href={SOCIAL_LINKS.discord} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto"
+                    aria-label="Discord"
+                  >
+                    <DiscordIcon size={24} />
+                    <span className="font-medium">Discord</span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
