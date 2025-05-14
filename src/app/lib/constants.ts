@@ -3,15 +3,17 @@ export const FESTIVAL_DATES = "18 & 19 Juillet 2025";
 
 export const ARTISTS = [
   "Stonks",
-  "CLM",
+  "Trifouille1er",
   "Sun Gazol",
   "TILL",
-  "Trifouille1er",
+  "Yoga Teacher",
+  "CLM",
   "Larsen",
+  "Toofoulk",
   "TWENTYHATE",
   "Akae",
-  "Toofoulk",
   "PRPHPXIV & TSHIMBOMBO",
+
 ];
 
 export const BACKGROUND_IMAGES = [
@@ -41,4 +43,5 @@ export const ARTIST_LINKS: Record<string, string> = {
   "Akae": "https://soundcloud.com/akae-xiii",
   "Toofoulk": "https://www.instagram.com/toofoulk.drums/",
   "PRPHPXIV & TSHIMBOMBO": "https://www.youtube.com/@LeBruitDrole",
+  "Yoga Teacher": "https://open.spotify.com/artist/5lewgaEvmdZYCsWgKkG14P?si=W1bOmmH5R0SExzsVlwbCHA",
 };

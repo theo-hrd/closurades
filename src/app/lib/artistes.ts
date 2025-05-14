@@ -2,20 +2,20 @@ export const artistesData = {
     j1: [
       {
         id: 1,
-        nom: "Artiste surprise", 
+        nom: "Groupe surprise", 
         photo: '/artists/question.webp',
         genre: '',
         heure: '',
-        origine: '',
-        description: ``
+        origine: '?',
+        description: `Quatre visages familiers vont tenter de vous divertir comme vous le méritez malgré leurs compétences musicales limitées.`
       },
       {
         id: 2,
-        nom: "à annoncer", 
-        photo: '/artists/question.webp',
-        genre: '',
-        heure: '',
-        origine: '',
+        nom: "Yoga Teacher", 
+        photo: '/artists/yogateacher.webp',
+        genre: 'Cardio Psych Rock',
+        heure: '20h00 - 21h30',
+        origine: 'Bruxelles - Belgique',
         description: ``
       },
       {
