@@ -6,37 +6,37 @@ export default function Merch() {
         {
             id: 1,
             name: "T-shirt Closurades 2025",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "T-shirt en coton bio avec notre logo emblématique"
         },
         {
             id: 2,
             name: "Casquette Premium",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "Casquette ajustable de haute qualité"
         },
         {
             id: 3,
             name: "Hoodie Deluxe",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "Sweat à capuche ultra confortable pour toutes les saisons"
         },
         {
             id: 4,
             name: "Tote Bag Écologique",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "Sac en toile durable et écologique"
         },
         {
             id: 5,
             name: "Mug Collector",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "Mug en céramique édition limitée"
         },
         {
             id: 6,
             name: "Stickers Pack",
-            image: "/artists/1.jpg",
+            image: "/artists/question.webp",
             description: "Ensemble de stickers exclusifs pour personnaliser vos objets"
         },
     ];

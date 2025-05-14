@@ -96,7 +96,7 @@ const TicketButton = ({
         <Image 
           width={600}
           height={600}
-          src="/vinyl.png" 
+          src="/vinyl.webp" 
           alt="Vinyl record" 
           className="object-cover w-full h-full"
           priority={false}

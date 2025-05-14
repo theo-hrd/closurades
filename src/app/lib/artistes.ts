@@ -3,7 +3,7 @@ export const artistesData = {
       {
         id: 1,
         nom: "Artiste surprise", 
-        photo: '/artists/question.png',
+        photo: '/artists/question.webp',
         genre: '',
         heure: '',
         origine: '',
@@ -12,7 +12,7 @@ export const artistesData = {
       {
         id: 2,
         nom: "à annoncer", 
-        photo: '/artists/question.png',
+        photo: '/artists/question.webp',
         genre: '',
         heure: '',
         origine: '',
@@ -21,7 +21,7 @@ export const artistesData = {
       {
         id: 3,
         nom: "Till'", 
-        photo: '/artists/till.jpg',
+        photo: '/artists/till.webp',
         genre: 'Stoner Rock | Jazz | Groove',
         heure: '21h30 - 22h30',
         origine: 'Poitiers - France',
@@ -32,7 +32,7 @@ export const artistesData = {
       {
         id: 4,
         nom: 'TRIFOUILLE1ER',
-        photo: '/artists/Trifouille1er.png', 
+        photo: '/artists/Trifouille1er.webp', 
         genre: 'Musique électronique modulaire',
         heure: '23h00 - 00h00',
         origine: '',
@@ -41,7 +41,7 @@ export const artistesData = {
       {
         id: 5,
         nom: 'PRPHTXIV & TSHIMBOMBO', 
-        photo: '/artists/julien.png',
+        photo: '/artists/julien.webp',
         genre: 'House | Dub | Techno',
         heure: '00h30 - 01h30',
         origine: 'Poitiers - France',
@@ -50,7 +50,7 @@ export const artistesData = {
       {
         id: 6,
         nom: 'LARSEN',
-        photo: '/artists/larsen.png',
+        photo: '/artists/larsen.webp',
         genre: 'Techno | Hard Techno',
         heure: '02h30 - 04h00',
         origine: 'Poitiers - France',
@@ -66,7 +66,7 @@ export const artistesData = {
       {
         id: 7,
         nom: 'Sun Gazol', 
-        photo: '/artists/sungazol.jpg',
+        photo: '/artists/sungazol.webp',
         genre: 'Pop Folk',
         heure: '20h30 - 21h30',
         origine: '',
@@ -77,7 +77,7 @@ export const artistesData = {
       {
         id: 8,
         nom: 'Stonks', 
-        photo: '/artists/stonks.jpg',
+        photo: '/artists/stonks.webp',
         genre: 'Post Punk | Post Rock | Alternative rock',
         heure: '21h30 - 22h45',
         origine: 'Bruxelles - Belgique',
@@ -86,7 +86,7 @@ export const artistesData = {
       {
         id: 9,
         nom: "C'EST ELLE AIME",
-        photo: '/artists/CLM.jpg',
+        photo: '/artists/CLM.webp',
         genre: 'Mood House | Electro-Acid | Techno Industrial | Dub',
         heure: '22h45 - 00h00',
         origine: 'Poitiers - France',
@@ -95,7 +95,7 @@ export const artistesData = {
       {
         id: 10,
         nom: "TOOFOULK",
-        photo: '/artists/1.jpg',
+        photo: '/artists/toofoulk.webp',
         genre: 'Jungle | Drum and Bass | Neuro',
         heure: '00h15 - 01h45',
         origine: 'Poitiers - France',
@@ -104,7 +104,7 @@ export const artistesData = {
       {
         id: 11,
         nom: "Akae",
-        photo: '/artists/1.jpg',
+        photo: '/artists/question.webp',
         genre: 'Hard Techno',
         heure: '01h45 - 02h45',
         origine: 'Toulouse - France',
@@ -113,7 +113,7 @@ export const artistesData = {
       {
         id: 12,
         nom: 'TWENTYHATE',
-        photo: '/artists/twentyhate.png',
+        photo: '/artists/twentyhate.webp',
         genre: 'Hard Music | Early Hardcore | Uptempo',
         heure: '02h45 - 05h00',
         origine: 'Toulouse - France',

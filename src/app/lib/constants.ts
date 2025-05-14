@@ -15,15 +15,17 @@ export const ARTISTS = [
 ];
 
 export const BACKGROUND_IMAGES = [
-  "/background.jpg",
-  "/background2.jpg",
-  "/background3.jpg",
-  "/background4.jpg",
-  "/background5.jpg",
+  "/background.webp",
+  "/background2.webp",
+  "/background3.webp",
+  "/background4.webp",
+  "/background5.webp",
+  "/background6.webp",
+  "/background7.webp",
 ];
 
 export const SOCIAL_LINKS = {
-  instagram: "https://www.instagram.com/lesclosurades",
+  instagram: "https://www.instagram.com/closuradesfestival/",
   discord: "https://discord.gg/5GKYWnzM",
 };
 
