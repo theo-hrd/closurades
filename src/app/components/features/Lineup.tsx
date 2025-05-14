@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 
-import { Artiste, ArtistesData } from '@/app/lib/types';
+import { Artiste } from '@/app/lib/types';
 
 import { artistesData } from '@/app/lib/artistes';
 
