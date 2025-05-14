@@ -16,7 +16,7 @@ export const artistesData = {
         genre: 'Cardio Psych Rock',
         heure: '20h00 - 21h30',
         origine: 'Bruxelles - Belgique',
-        description: ``
+        description: `Situé dans les prémices de la sortie de leurs premiers enregistrements, le groupe bruxellois Yoga Teacher façonne un son que l’on pourrait qualifier d’indie psychédélique groovy et chargé en riffs — à la fois accrocheur et distordu — influencé par les parcours musicaux propres à chacun des quatre membres, ainsi que par leur passion commune pour un rock sans compromis.`
       },
       {
         id: 3,

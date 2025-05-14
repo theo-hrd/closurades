@@ -81,14 +81,12 @@ export default function Informations() {
 
   // Fonctionnalité de drag
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (zoomLevel > 1) {
-      setIsDragging(true);
-      setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
-    }
+    setIsDragging(true);
+    setDragStart({ x: e.clientX - position.x, y: e.clientY - position.y });
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (isDragging && zoomLevel > 1) {
+    if (isDragging) {
       setPosition({
         x: e.clientX - dragStart.x,
         y: e.clientY - dragStart.y,
@@ -102,7 +100,7 @@ export default function Informations() {
 
   // Gestion du drag pour les appareils tactiles
   const handleTouchStart = (e: React.TouchEvent) => {
-    if (e.touches.length === 1 && zoomLevel > 1) {
+    if (e.touches.length === 1) {
       setIsDragging(true);
       setDragStart({ 
         x: e.touches[0].clientX - position.x, 
@@ -112,7 +110,7 @@ export default function Informations() {
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    if (isDragging && e.touches.length === 1 && zoomLevel > 1) {
+    if (isDragging && e.touches.length === 1) {
       e.preventDefault();
       setPosition({
         x: e.touches[0].clientX - dragStart.x,
@@ -151,7 +149,7 @@ export default function Informations() {
         container.removeEventListener('wheel', handleWheelZoom);
       };
     }
-  }, [isMapModalOpen, isDragging]);
+  }, [isMapModalOpen, isDragging, zoomLevel]);
 
   return (
     <div id="informations" className="min-h-screen py-12 max-w-7xl mx-auto px-6">
@@ -380,11 +378,11 @@ export default function Informations() {
               <ZoomIn className="text-white" size={32} />
             </div>
             <Image 
-              src="/plandusite.jpeg" 
+              src="/plandusite.webp" 
               alt="Carte du site du festival" 
               width={600} 
               height={400} 
-              className="w-full h-full object-contain rounded-lg" 
+              className="w-full h-auto max-h-[300px] object-contain rounded-lg" 
             />
           </div>
           <div className="flex items-center justify-center mt-3">
@@ -437,14 +435,13 @@ export default function Informations() {
               </div>
               
               <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
-                {zoomLevel > 1 ? 'Cliquez et déplacez pour naviguer • ' : ''} 
-                Zoom: {Math.round(zoomLevel * 100)}%
+                Cliquez et déplacez pour naviguer • Zoom: {Math.round(zoomLevel * 100)}%
               </div>
 
               <div 
                 ref={containerRef}
                 className="overflow-hidden h-full w-full rounded-lg"
-                style={{ cursor: zoomLevel > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default' }}
+                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
                 onMouseDown={handleMouseDown}
                 onMouseMove={handleMouseMove}
                 onMouseUp={handleMouseUp}
@@ -461,7 +458,7 @@ export default function Informations() {
                   }}
                 >
                   <Image 
-                    src="/plandusite.jpeg" 
+                    src="/plandusite.webp" 
                     alt="Carte du site du festival" 
                     width={1200} 
                     height={800} 
