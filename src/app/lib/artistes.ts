@@ -2,6 +2,24 @@ export const artistesData = {
     j1: [
       {
         id: 1,
+        nom: "Artiste surprise", 
+        photo: '/artists/question.png',
+        genre: '',
+        heure: '',
+        origine: '',
+        description: ``
+      },
+      {
+        id: 2,
+        nom: "à annoncer", 
+        photo: '/artists/question.png',
+        genre: '',
+        heure: '',
+        origine: '',
+        description: ``
+      },
+      {
+        id: 3,
         nom: "Till'", 
         photo: '/artists/till.jpg',
         genre: 'Stoner Rock | Jazz | Groove',
@@ -12,7 +30,7 @@ export const artistesData = {
                       Cette collaboration a enrichi de façon significative la musique du groupe, en apportant des mélodies envoûtantes se mêlant au jeu de guitare de Tom et à la rythmique complexe jouée par Baudouin et Pierre-Antoine. Leur rencontre a été une évidence, contribuant ainsi à créer une grande osmose musicale.`
       },
       {
-        id: 2,
+        id: 4,
         nom: 'TRIFOUILLE1ER',
         photo: '/artists/Trifouille1er.png', 
         genre: 'Musique électronique modulaire',
@@ -21,7 +39,7 @@ export const artistesData = {
         description: `Fils et filtres, Radios et magnétos, Grande fêtes et tintamarre, Turbulences électroniques, Insouciance majestueuse, Antennes et potentiomètres, Modulations aléatoires, Commandes rectilignes, Hommes-pumas et bottes magiques, Générateur d'agréable, Télécommandes et parasites, Saturations et décodeurs, Grande Maison du Strobe, Laboratoire de séquences, Oscilloscopes et ondulations, Fantômes et trains de nuit.`
       },
       {
-        id: 3,
+        id: 5,
         nom: 'PRPHTXIV & TSHIMBOMBO', 
         photo: '/artists/julien.png',
         genre: 'House | Dub | Techno',
@@ -30,7 +48,7 @@ export const artistesData = {
         description: ``
       },
       {
-        id: 4,
+        id: 6,
         nom: 'LARSEN',
         photo: '/artists/larsen.png',
         genre: 'Techno | Hard Techno',
@@ -46,7 +64,7 @@ export const artistesData = {
     ],
     j2: [
       {
-        id: 5,
+        id: 7,
         nom: 'Sun Gazol', 
         photo: '/artists/sungazol.jpg',
         genre: 'Pop Folk',
@@ -57,7 +75,7 @@ export const artistesData = {
                       Ses quatre musicien·nes plongent l'auditeur·rice dans un océan onirique, où les textures riches des synthétiseurs et des rythmes se fondent dans les vagues intimistes des guitares électriques et acoustiques.`
       },
       {
-        id: 6,
+        id: 8,
         nom: 'Stonks', 
         photo: '/artists/stonks.jpg',
         genre: 'Post Punk | Post Rock | Alternative rock',
@@ -66,7 +84,7 @@ export const artistesData = {
         description: `Formé en 2021 par quatre musiciens attirés par la création originale et alternative, Stonks est un groupe indé Bruxellois. Ils sont inspiré par le rock, le jazz, le brouahahah désinvolte, les valses cassées, tous types de musiques pour cheveux longs, et surtout par la nouvelle scène post-punk anglaise, tirée au lasso par squid, shame et les viagra boys qui font parler d'eux depuis quelques années.`
       },
       {
-        id: 7,
+        id: 9,
         nom: "C'EST ELLE AIME",
         photo: '/artists/CLM.jpg',
         genre: 'Mood House | Electro-Acid | Techno Industrial | Dub',
@@ -75,7 +93,7 @@ export const artistesData = {
         description: `Plongez dans l'univers cosmique et cyberpunk des protagonistes C'est Elle et Aime grace à leurs aventures retrouvés sous format audio. Genres musicaux diagnostiqués : mood house, electro-acid, techno indus/DUB.`
       },
       {
-        id: 8,
+        id: 10,
         nom: "TOOFOULK",
         photo: '/artists/1.jpg',
         genre: 'Jungle | Drum and Bass | Neuro',
@@ -84,7 +102,7 @@ export const artistesData = {
         description: ``
       },
       {
-        id: 9,
+        id: 11,
         nom: "Akae",
         photo: '/artists/1.jpg',
         genre: 'Hard Techno',
@@ -93,7 +111,7 @@ export const artistesData = {
         description: ``
       },
       {
-        id: 10,
+        id: 12,
         nom: 'TWENTYHATE',
         photo: '/artists/twentyhate.png',
         genre: 'Hard Music | Early Hardcore | Uptempo',
