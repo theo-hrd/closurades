@@ -78,7 +78,7 @@ export const artistesData = {
         id: 8,
         nom: 'Stonks', 
         photo: '/artists/stonks.webp',
-        genre: 'Post Punk | Post Rock | Alternative rock',
+        genre: 'Post Punk | Post Rock | Shoegaze',
         heure: '21h30 - 22h45',
         origine: 'Bruxelles - Belgique',
         description: `Formé en 2021 par quatre musiciens attirés par la création originale et alternative, Stonks est un groupe indé Bruxellois. Ils sont inspiré par le rock, le jazz, le brouahahah désinvolte, les valses cassées, tous types de musiques pour cheveux longs, et surtout par la nouvelle scène post-punk anglaise, tirée au lasso par squid, shame et les viagra boys qui font parler d'eux depuis quelques années.`
