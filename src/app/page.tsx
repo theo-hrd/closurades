@@ -15,7 +15,6 @@ import Merch from "./components/features/Merch";
 import Informations from "./components/features/Informations";
 
 import {
-  FESTIVAL_NAME,
   FESTIVAL_DATES,
   ARTISTS,
   BACKGROUND_IMAGES,
@@ -74,9 +73,16 @@ function HeroSection({
 
       <div className="absolute inset-0 flex flex-col items-center text-center px-4 sm:px-8">
         <div className="w-full max-w-4xl mx-auto pt-20 sm:pt-32">
-          <h1 className="subpixel-antialiased w-full break-words text-5xl xs:text-6xl sm:text-8xl font-extrabold bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent drop-shadow-lg">
-            {FESTIVAL_NAME}
-          </h1>
+          <div className="mx-auto w-full max-w-2xl sm:max-w-3xl flex justify-center">
+            <Image 
+              src="/closurades.webp" 
+              alt="Les Closurades" 
+              width={2000} 
+              height={2000} 
+              className="w-full h-auto object-contain"
+              priority
+            />
+          </div>
 
           <h2 className="mt-4 sm:mt-8 text-2xl sm:text-4xl text-white drop-shadow-lg">
             <span className="subpixel-antialiased underline decoration-pink-500 font-extrabold text-3xl sm:text-5xl">

@@ -6,7 +6,7 @@ export const artistesData = {
         photo: '/artists/question.webp',
         genre: '',
         heure: '',
-        origine: '?',
+        origine: '',
         description: `Quatre visages familiers vont tenter de vous divertir comme vous le méritez malgré leurs compétences musicales limitées.`
       },
       {
