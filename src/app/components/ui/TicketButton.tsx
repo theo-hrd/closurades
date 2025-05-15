@@ -106,7 +106,7 @@ const TicketButton = ({
       {/* Main content with button and text */}
       <div className="relative z-10">
         <button 
-          className={`relative overflow-hidden px-12 py-6 rounded-lg font-bold tracking-wide text-white transition-all duration-500 ${
+          className={`relative overflow-hidden px-8 py-4 md:px-12 md:py-6 rounded-lg font-bold tracking-wide text-white transition-all duration-500 ${
             isHovered ? 'scale-105 shadow-lg shadow-pink-500/50' : ''
           }`}
           onMouseEnter={() => setIsHovered(true)} 
@@ -120,7 +120,7 @@ const TicketButton = ({
               isHovered ? 'opacity-10' : ''
             }`}
           ></div>
-          <div className="relative z-10 uppercase font-extrabold text-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+          <div className="relative z-10 uppercase font-extrabold text-xl md:text-2xl drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
             <span>{buttonText}</span>
           </div>
         </button>

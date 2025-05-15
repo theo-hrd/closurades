@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion, useInView, AnimatePresence } from 'framer-motion';
 
 import { Artiste } from '@/app/lib/types';
 
@@ -62,76 +63,124 @@ function ArtistPopup({ artiste, onClose }: { artiste: Artiste, onClose: () => vo
   const borderGradient = getBorderGradient(color);
   
   return (
-    <div 
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
-      onClick={onClose}
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby={`artist-popup-title-${artiste.id}`}
-    >
-      {/* Wrapper pour le contour en dégradé */}
-      <div className="relative w-full max-w-2xl">
-        {/* Contour en dégradé */}
-        <div className={`absolute -inset-[2px] rounded-lg bg-gradient-to-r ${borderGradient}`}></div>
-        
-        {/* Contenu principal avec fond noir */}
-        <div 
-          className="relative w-full max-h-[90vh] bg-black rounded-lg overflow-hidden z-10 shadow-2xl"
-          onClick={e => e.stopPropagation()}
+    <AnimatePresence>
+      <motion.div 
+        className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-sm"
+        onClick={onClose}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={`artist-popup-title-${artiste.id}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Wrapper pour le contour en dégradé */}
+        <motion.div 
+          className="relative w-full max-w-2xl"
+          initial={{ scale: 0.9, y: 20 }}
+          animate={{ scale: 1, y: 0 }}
+          exit={{ scale: 0.9, y: 20 }}
+          transition={{ 
+            type: "spring", 
+            damping: 25, 
+            stiffness: 300 
+          }}
         >
-          <div className="flex flex-col">
-            <div 
-              className="relative aspect-video w-full bg-cover bg-center"
-              style={{ backgroundImage: `url(${artiste.photo})` }}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-t ${gradientOverlay}`}></div>
-              <button 
-                className="absolute top-4 right-4 p-2 rounded-full bg-black/70 text-white hover:bg-black"
-                onClick={onClose}
-                aria-label="Fermer les détails de l'artiste"
+          {/* Contour en dégradé */}
+          <div className={`absolute -inset-[2px] rounded-lg bg-gradient-to-r ${borderGradient}`}></div>
+          
+          {/* Contenu principal avec fond noir */}
+          <div 
+            className="relative w-full max-h-[90vh] bg-black rounded-lg overflow-hidden z-10 shadow-2xl"
+            onClick={e => e.stopPropagation()}
+          >
+            <div className="flex flex-col">
+              <div 
+                className="relative aspect-video w-full bg-cover bg-center"
+                style={{ backgroundImage: `url(${artiste.photo})` }}
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-            </div>
-            <div className="p-8 bg-black">
-              <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-3 drop-shadow-sm">{artiste.nom}</h2>
-              <div className="bg-black/80 p-4 mb-5 rounded-md backdrop-blur-sm">
-                <p className="text-white mb-3">
-                  <span className="font-semibold text-lg">{artiste.genre}</span>
-                  {artiste.origine && <span className="text-gray-200"> | {artiste.origine}</span>}
-                </p>
-                <p className="text-white font-bold text-lg">{artiste.heure}</p>
+                <div className={`absolute inset-0 bg-gradient-to-t ${gradientOverlay}`}></div>
+                <button 
+                  className="absolute top-4 right-4 p-2 rounded-full bg-black/70 text-white hover:bg-black"
+                  onClick={onClose}
+                  aria-label="Fermer les détails de l'artiste"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
               </div>
-              {artiste.description && (
-                <div className="mt-5 max-h-[30vh] overflow-y-auto">
-                  <p className="text-gray-100 whitespace-pre-line text-base leading-relaxed">{artiste.description}</p>
+              <div className="p-8 bg-black">
+                <h2 id={`artist-popup-title-${artiste.id}`} className="text-3xl font-bold text-white mb-3 drop-shadow-sm">{artiste.nom}</h2>
+                <div className="bg-black/80 p-4 mb-5 rounded-md backdrop-blur-sm">
+                  <p className="text-white mb-3">
+                    <span className="font-semibold text-lg">{artiste.genre}</span>
+                    {artiste.origine && <span className="text-gray-200"> | {artiste.origine}</span>}
+                  </p>
+                  <p className="text-white font-bold text-lg">{artiste.heure}</p>
                 </div>
-              )}
+                {artiste.description && (
+                  <div className="mt-5 max-h-[30vh] overflow-y-auto">
+                    <p className="text-gray-100 whitespace-pre-line text-base leading-relaxed">{artiste.description}</p>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+        </motion.div>
+      </motion.div>
+    </AnimatePresence>
   );
 }
 
-function CarteArtiste({ artiste, onClick }: { artiste: Artiste, onClick: () => void }) {
-  const color = artisteColors[artiste.id] || 'purple'; // Default to purple if id not found
+function CarteArtiste({ artiste, onClick, index }: { artiste: Artiste, onClick: () => void, index: number }) {
+  const color = artisteColors[artiste.id] || 'purple'; 
   const gradientOverlay = getGradientOverlay(color);
   const borderGradient = getBorderGradient(color);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
+  
+  // Variation pour une apparition plus naturelle et variée
+  const variants = {
+    hidden: { 
+      opacity: 0,
+      filter: "blur(5px)",
+      scale: 0.95
+    },
+    visible: { 
+      opacity: 1,
+      filter: "blur(0px)",
+      scale: 1,
+      transition: { 
+        duration: 0.8,
+        delay: index * 0.15, 
+        ease: [0.04, 0.62, 0.23, 0.98] // Easing personnalisé pour une animation plus naturelle
+      }
+    }
+  };
   
   return (
-    <div className="relative w-full rounded-lg p-[3px] group">
+    <motion.div 
+      className="relative w-full rounded-lg p-[3px] group"
+      ref={ref}
+      variants={variants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      whileHover={{ 
+        y: -8,
+        boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
+        transition: { duration: 0.3 }
+      }}
+    >
       {/* Border container - only visible on hover */}
       <div className={`absolute inset-0 bg-gradient-to-r ${borderGradient} rounded-lg transition-opacity 
-                       duration-300 opacity-0 group-hover:opacity-100`}>
+                     duration-300 opacity-0 group-hover:opacity-100`}>
       </div>
       
       <button 
         className="uppercase relative h-96 w-full overflow-hidden rounded-md
-                  transition-transform duration-300 cursor-pointer text-left bg-black z-10"
+                transition-transform duration-300 cursor-pointer text-left bg-black z-10"
         style={{
           backgroundImage: `url(${artiste.photo})`,
           backgroundSize: 'cover',
@@ -143,20 +192,28 @@ function CarteArtiste({ artiste, onClick }: { artiste: Artiste, onClick: () => v
         {/* Overlay with neutral gradient */}
         <div className={`absolute inset-0 bg-gradient-to-t ${gradientOverlay} transition-opacity duration-300 group-hover:opacity-60`}></div>
         
-        <div className="relative h-full p-6 flex flex-col justify-end z-10">
+        <motion.div 
+          className="relative h-full p-6 flex flex-col justify-end z-10"
+        >
           {/* Artistic name display with dynamic text shadow */}
-          <h3 className={`text-2xl font-bold mx-auto text-center text-white transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]`}>
+          <motion.h3 
+            className={`text-2xl font-bold mx-auto text-center text-white transition-all duration-300 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]`}
+            whileHover={{ 
+              textShadow: "0 0 8px rgba(255,255,255,0.5), 0 0 12px rgba(255,255,255,0.3)",
+              transition: { duration: 0.2 }
+            }}
+          >
             {artiste.nom}
-          </h3>
+          </motion.h3>
           
-          <div className="transition-all duration-300 transform group-hover:translate-y-0 opacity-90 group-hover:opacity-100">
+          <div className="transition-all duration-300 transform opacity-90 group-hover:opacity-100">
             <p className="mt-3 text-gray-100 text-center font-semibold text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.genre}</p>
             <p className="mt-2 text-white text-center font-bold drop-shadow-[0_1px_3px_rgba(0,0,0,1)]">{artiste.heure}</p>
             {artiste.origine && <p className="mt-2 text-gray-200 text-center text-sm drop-shadow-[0_1px_2px_rgba(0,0,0,1)]">{artiste.origine}</p>}
           </div>
-        </div>
+        </motion.div>
       </button>
-    </div>
+    </motion.div>
   );
 }
 
@@ -169,22 +226,67 @@ interface JourSectionProps {
 function JourSection({ jour, artistes, isFirstDay = false }: JourSectionProps) {
   const [selectedArtiste, setSelectedArtiste] = useState<Artiste | null>(null);
   const [isMounted, setIsMounted] = useState(false);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.1 });
   
-  // Only enable client-side features after component mounts
+  // Nouvelles variantes pour les sections de jour
+  const sectionVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 20
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      transition: { 
+        duration: 0.6,
+        when: "beforeChildren",
+        staggerChildren: 0.1
+      }
+    }
+  };
+  
+  const titleVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: -10,
+      scale: 0.98
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      transition: { 
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+  
   useEffect(() => {
     setIsMounted(true);
   }, []);
 
   return (
-    <section className={`${isFirstDay ? 'mb-16 md:mb-0' : ''} md:w-1/2`}>
-      <h3 className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.3)]">
+    <motion.section 
+      ref={sectionRef}
+      className={`${isFirstDay ? 'mb-16 md:mb-0' : ''} md:w-1/2`}
+      variants={sectionVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+    >
+      <motion.h3 
+        className="text-4xl font-bold text-center mb-12 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.3)]"
+        variants={titleVariants}
+      >
         {jour}
-      </h3>
+      </motion.h3>
       <div className="grid grid-cols-1 gap-8">
-        {artistes.map((artiste) => (
+        {artistes.map((artiste, index) => (
           <CarteArtiste 
             key={artiste.id} 
-            artiste={artiste} 
+            artiste={artiste}
+            index={index}
             onClick={() => isMounted && setSelectedArtiste(artiste)}
           />
         ))}
@@ -195,17 +297,60 @@ function JourSection({ jour, artistes, isFirstDay = false }: JourSectionProps) {
           onClose={() => setSelectedArtiste(null)} 
         />
       )}
-    </section>
+    </motion.section>
   );
 }
 
 export default function Page() {
+  const titleRef = useRef(null);
+  const isInView = useInView(titleRef, { once: true, amount: 0.1 });
+  
+  // Variantes pour le titre principal
+  const mainTitleVariants = {
+    hidden: { 
+      opacity: 0,
+      y: 15,
+      scale: 0.98
+    },
+    visible: { 
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: { 
+        duration: 0.7,
+        ease: [0.175, 0.885, 0.32, 1] // Personnalisé pour un effet premium
+      }
+    }
+  };
+  
+  // Variantes pour les séparateurs
+  const separatorVariants = {
+    hidden: { 
+      opacity: 0,
+      scale: 0.5
+    },
+    visible: { 
+      opacity: 1,
+      scale: 1,
+      transition: { 
+        duration: 0.5,
+        ease: "backOut"
+      }
+    }
+  };
+
   return (
     <div id="lineup" className="bg-black scroll-mt-32 overflow-x-hidden">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]">
+        <motion.h2 
+          ref={titleRef}
+          className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]"
+          variants={mainTitleVariants}
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+        >
           Line-up
-        </h2>
+        </motion.h2>
         <div className="md:flex md:space-x-8">
           <JourSection 
             jour="Vendredi 18" 
@@ -213,14 +358,26 @@ export default function Page() {
             isFirstDay={true} 
           />
           {/* Ligne horizontale pour mobile */}
-          <div className="block md:hidden">
+          <motion.div 
+            className="block md:hidden"
+            variants={separatorVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.3 }}
+          >
             <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
-          </div>
+          </motion.div>
 
           {/* Ligne verticale pour desktop */}
-          <div className="hidden md:flex md:items-center">
+          <motion.div 
+            className="hidden md:flex md:items-center"
+            variants={separatorVariants}
+            initial="hidden"
+            animate="visible"
+            transition={{ delay: 0.3 }}
+          >
             <div className="w-2 h-full bg-gradient-to-b from-purple-700 to-red-600 rounded-full"></div>
-          </div>
+          </motion.div>
           <JourSection 
             jour="Samedi 19" 
             artistes={artistesData.j2} 

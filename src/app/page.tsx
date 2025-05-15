@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useScroll, useSpring, useInView } from "framer-motion";
 
 import ArtistList from "./components/ui/ArtistList";
 
@@ -19,6 +19,27 @@ import {
   ARTISTS,
   BACKGROUND_IMAGES,
 } from "./lib/constants";
+
+// Animation component that reveals content when scrolled into view
+function AnimateOnScroll({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
+  
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ y: 50, opacity: 0 }}
+      animate={isInView ? { y: 0, opacity: 1 } : { y: 50, opacity: 0 }}
+      transition={{ 
+        duration: 0.8, 
+        delay: delay,
+        ease: [0.2, 0.65, 0.3, 0.9] // Custom easing curve for a smooth entrance
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+}
 
 // Separate component for Hero section to improve organization
 
@@ -212,21 +233,25 @@ function HeroSection({
 // Separate component for the Tickets section
 
 function TicketsSection({
-  isVisible,
   forwardedRef,
 }: {
   isVisible: boolean;
   forwardedRef: React.RefObject<HTMLDivElement>;
 }) {
+  const isInView = useInView(forwardedRef, { once: true, amount: 0.1 });
+
   return (
     <div
       id="Billetterie"
       ref={forwardedRef}
-      className={`min-h-screen py-32 max-w-7xl mx-auto sm:px-6 lg:px-8 transition-all duration-1000 transform ${
-        isVisible ? "translate-y-0 opacity-100" : "translate-y-20 opacity-0"
-      }`}
+      className="min-h-screen py-32 max-w-7xl mx-auto sm:px-6 lg:px-8"
     >
-      <div className="px-4 py-6 sm:px-0">
+      <motion.div
+        className="px-4 py-6 sm:px-0"
+        initial={{ opacity: 0, y: 50 }}
+        animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
         <div className="text-center">
           <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">
             Billetterie
@@ -238,22 +263,27 @@ function TicketsSection({
 
           <TicketButton />
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 }
 
 export default function Home() {
   const [isVisible, setIsVisible] = useState(false);
-
   const billeterieRef = useRef<HTMLDivElement>(null);
+  
+  // Scroll animation
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
 
   // Intersection Observer for animation when scrolling to tickets section
-
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => setIsVisible(entry.isIntersecting),
-
       { threshold: 0.1 }
     );
 
@@ -267,7 +297,6 @@ export default function Home() {
   }, []);
 
   // Function to handle scrolling to tickets section
-
   const scrollToBilleterie = () => {
     if (billeterieRef.current) {
       billeterieRef.current.scrollIntoView({ behavior: "smooth" });
@@ -276,34 +305,39 @@ export default function Home() {
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Hero Section with image carousel */}
+      {/* Progress bar */}
+      <motion.div
+        className="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500 z-50"
+        style={{ scaleX, transformOrigin: "0%" }}
+      />
 
+      {/* Hero Section with image carousel */}
       <HeroSection onScrollToBilleterie={scrollToBilleterie} />
 
       {/* Main content */}
-
       <main className="flex-grow bg-white">
         {/* Tickets Section */}
-
         <TicketsSection isVisible={isVisible} forwardedRef={billeterieRef as React.RefObject<HTMLDivElement>} />
 
         {/* Line-up Section */}
-
         <div id="lineup" className="min-h-screen md:py-32 py-16 bg-black">
-          <Lineup />
+          <AnimateOnScroll>
+            <Lineup />
+          </AnimateOnScroll>
         </div>
 
         {/* Merchandise Section */}
-
-        <Merch />
+        <AnimateOnScroll delay={0.2}>
+          <Merch />
+        </AnimateOnScroll>
 
         {/* Information Section */}
-
-        <Informations />
+        <AnimateOnScroll delay={0.3}>
+          <Informations />
+        </AnimateOnScroll>
       </main>
 
       {/* Styles for animations */}
-
       <style jsx>{`
         @keyframes fade-in-up {
           from {
