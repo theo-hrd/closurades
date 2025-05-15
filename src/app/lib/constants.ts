@@ -13,6 +13,7 @@ export const ARTISTS = [
   "TWENTYHATE",
   "Akae",
   "PRPHPXIV & TSHIMBOMBO",
+
 ];
 
 export const BACKGROUND_IMAGES = [
