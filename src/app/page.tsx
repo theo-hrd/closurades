@@ -54,6 +54,7 @@ function HeroSection({
   // Effect for handling mouse movement for parallax effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      // Calcul normalisé de la position de la souris (-1 à 1)
       const { clientX, clientY } = e;
       const x = (clientX / window.innerWidth) * 2 - 1; 
       const y = (clientY / window.innerHeight) * 2 - 1;
@@ -79,23 +80,31 @@ function HeroSection({
     <div className="relative h-screen" id="closurades">
       {/* Image carousel */}
 
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden perspective-[1000px]">
         {BACKGROUND_IMAGES.map((src, index) => (
           <motion.div
             key={`bg-image-${index}`}
-            className="absolute inset-0"
+            className="absolute inset-0 origin-center"
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ 
               opacity: index === currentImageIndex ? 1 : 0,
               scale: 1.05,
-              x: index === currentImageIndex ? mousePosition.x * -15 : 0,
-              y: index === currentImageIndex ? mousePosition.y * -15 : 0,
+              x: index === currentImageIndex ? mousePosition.x * -60 : 0,
+              y: index === currentImageIndex ? mousePosition.y * -60 : 0,
+              rotateX: index === currentImageIndex ? mousePosition.y * 6 : 0,
+              rotateY: index === currentImageIndex ? mousePosition.x * -6 : 0,
             }}
             transition={{ 
               opacity: { duration: 1.2, ease: "easeInOut" },
               scale: { duration: 8, ease: "linear" },
-              x: { duration: 0.5, ease: "linear" },
-              y: { duration: 0.5, ease: "linear" }
+              x: { duration: 0.15, ease: "linear" },
+              y: { duration: 0.15, ease: "linear" },
+              rotateX: { duration: 0.15, ease: "linear" },
+              rotateY: { duration: 0.15, ease: "linear" }
+            }}
+            style={{
+              // Ajouter un style pour simuler la profondeur avec une perspective CSS
+              transformStyle: "preserve-3d"
             }}
           >
             <motion.div
