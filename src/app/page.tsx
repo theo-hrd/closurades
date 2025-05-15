@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 import ArtistList from "./components/ui/ArtistList";
 
@@ -28,9 +28,22 @@ function HeroSection({
   onScrollToBilleterie: () => void;
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+
+  // Effect for handling mouse movement for parallax effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth) * 2 - 1; 
+      const y = (clientY / window.innerHeight) * 2 - 1;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
 
   // Effect for automatically scrolling images
-
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentImageIndex(
@@ -47,21 +60,40 @@ function HeroSection({
 
       <div className="absolute inset-0 overflow-hidden">
         {BACKGROUND_IMAGES.map((src, index) => (
-          <div
+          <motion.div
             key={`bg-image-${index}`}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === currentImageIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.05 }}
+            animate={{ 
+              opacity: index === currentImageIndex ? 1 : 0,
+              scale: 1.05,
+              x: index === currentImageIndex ? mousePosition.x * -15 : 0,
+              y: index === currentImageIndex ? mousePosition.y * -15 : 0,
+            }}
+            transition={{ 
+              opacity: { duration: 1.2, ease: "easeInOut" },
+              scale: { duration: 8, ease: "linear" },
+              x: { duration: 0.5, ease: "linear" },
+              y: { duration: 0.5, ease: "linear" }
+            }}
           >
-            <Image
-              src={src}
-              alt={`Festival background ${index + 1}`}
-              fill
-              priority={index === 0}
-              className="object-cover w-full h-full transform scale-105 hover:scale-100 transition-transform duration-10000"
-              sizes="100vw"
-            />
-          </div>
+            <motion.div
+              className="w-full h-full"
+              animate={{ 
+                filter: index === currentImageIndex ? "brightness(1.1) saturate(1.1)" : "brightness(0.9) saturate(0.9)"
+              }}
+              transition={{ duration: 3 }}
+            >
+              <Image
+                src={src}
+                alt={`Festival background ${index + 1}`}
+                fill
+                priority={index === 0}
+                className="object-cover w-full h-full"
+                sizes="100vw"
+              />
+            </motion.div>
+          </motion.div>
         ))}
       </div>
 
@@ -73,21 +105,70 @@ function HeroSection({
 
       <div className="absolute inset-0 flex flex-col items-center text-center px-4 sm:px-8">
         <div className="w-full max-w-4xl mx-auto pt-20 sm:pt-32">
-          <div className="mx-auto w-full max-w-2xl sm:max-w-3xl flex justify-center">
-            <Image 
-              src="/closurades.webp" 
-              alt="Les Closurades" 
-              width={2000} 
-              height={2000} 
-              className="w-full h-auto object-contain"
-              priority
-            />
+          <div className="md:pt-10 mx-auto w-full max-w-2xl sm:max-w-3xl flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 30, rotate: 0 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                rotate: [0, -1, 1, -1, 0] 
+              }}
+              transition={{ 
+                opacity: { duration: 1, ease: "easeOut" },
+                y: { duration: 1, ease: "easeOut" },
+                rotate: { 
+                  repeat: Infinity, 
+                  repeatType: "loop", 
+                  duration: 5,
+                  ease: "easeInOut",
+                  delay: 0.8  // Commence après le fade-in
+                }
+              }}
+            >
+              <Image 
+                src="/closurades.webp" 
+                alt="Les Closurades" 
+                width={2000} 
+                height={2000} 
+                className="w-full h-auto object-contain"
+                priority
+              />
+            </motion.div>
           </div>
 
           <h2 className="mt-4 sm:mt-8 text-2xl sm:text-4xl text-white drop-shadow-lg">
-            <span className="subpixel-antialiased underline decoration-pink-500 font-extrabold text-3xl sm:text-5xl">
+            <motion.span 
+              className="font-[helvetica] subpixel-antialiased font-extrabold text-3xl sm:text-5xl uppercase tracking-wider bg-gradient-to-r from-amber-400 to-orange-500 bg-clip-text text-transparent"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ 
+                opacity: 1, 
+                y: 0,
+                x: [0, -2, 2, -2, 0],
+                rotate: [0, -0.5, 0.5, -0.5, 0]
+              }}
+              transition={{ 
+                duration: 0.8,
+                x: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 3.5,
+                  ease: "easeInOut"
+                },
+                rotate: {
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  duration: 3.5,
+                  ease: "easeInOut"
+                }
+              }}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              drag="x"
+              dragConstraints={{ left: -10, right: 10 }}
+              dragElastic={0.1}
+            >
               {FESTIVAL_DATES}
-            </span>
+            </motion.span>
           </h2>
 
           {/* Updated artist list with grid layout */}
@@ -227,20 +308,17 @@ export default function Home() {
         @keyframes fade-in-up {
           from {
             opacity: 0;
-
             transform: translateY(20px);
           }
 
           to {
             opacity: 1;
-
             transform: translateY(0);
           }
         }
 
         .animate-fade-in-up {
           animation: fade-in-up 1s ease-out forwards;
-
           animation-delay: 0.5s;
         }
       `}</style>

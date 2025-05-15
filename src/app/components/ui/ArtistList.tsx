@@ -197,6 +197,35 @@ export default function ArtistList({
       // Random delay for entrance animation
       const entranceDelay = 0.1 + (Math.random() * 0.4);
       element.style.animationDelay = `${entranceDelay}s`;
+      
+      // Add subtle wobble animation
+      const wobbleDelay = (Math.random() * 2);
+      const wobbleDuration = 3 + (Math.random() * 1.5);
+      
+      // Create keyframes for the wobble effect
+      const keyframes = [
+        { transform: 'rotate(0deg) translateX(0px)' },
+        { transform: 'rotate(-0.3deg) translateX(-1px)' },
+        { transform: 'rotate(0.3deg) translateX(1px)' },
+        { transform: 'rotate(-0.3deg) translateX(-1px)' },
+        { transform: 'rotate(0deg) translateX(0px)' }
+      ];
+      
+      // Set animation options
+      const options = {
+        duration: wobbleDuration * 1000,
+        iterations: Infinity,
+        delay: wobbleDelay * 1000,
+        easing: 'ease-in-out'
+      };
+      
+      // Add animation after entrance animation completes
+      setTimeout(() => {
+        const artistElement = element.querySelector('a');
+        if (artistElement) {
+          artistElement.animate(keyframes, options);
+        }
+      }, 800 + entranceDelay * 1000);
     });
   }, [artists, colorCombinations]);
 
