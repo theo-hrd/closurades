@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 // Define menu sections for better maintainability
 const MENU_SECTIONS = [
@@ -139,10 +140,16 @@ export default function Header() {
     }`}>
       <nav className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <button 
-          className={`font-raleway text-2xl font-extrabold transition-all duration-500 bg-gradient-to-r from-fuchsia-500 to-pink-500 bg-clip-text text-transparent ${scrolled ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+          className={`transition-all duration-500 ${scrolled ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
           onClick={() => scrollToSection("closurades")}
         >
-          Les Closurades
+          <Image 
+            src="/closurades.webp" 
+            alt="Les Closurades" 
+            width={160} 
+            height={60} 
+            className="h-12 w-auto object-contain"
+          />
         </button>
         
         {/* Mobile menu button */}

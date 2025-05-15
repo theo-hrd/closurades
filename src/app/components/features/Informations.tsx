@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Tent, MapPin, Info, Clock, Car, Train, Check, ZoomIn, ZoomOut, X, Move } from 'lucide-react';
+import { Tent, MapPin, Info, Clock, Car, Train, Check, ZoomIn, ZoomOut, X, Move, Download } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { SOCIAL_LINKS } from '../../lib/constants';
 
@@ -387,8 +387,8 @@ export default function Informations() {
           </div>
           <div className="flex items-center justify-center mt-3">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-red-600/10 to-purple-700/10 rounded-full border border-gray-200 shadow-sm">
-              <ZoomIn size={16} className="text-red-600" />
-              <p className="font-medium text-gray-800">Cliquez sur l'image pour agrandir</p>
+              <ZoomIn size={16} className="text-red-600 flex-shrink-0" />
+              <p className="font-medium text-gray-800 text-sm whitespace-nowrap">Cliquez sur l'image pour agrandir</p>
             </div>
           </div>
         </div>
@@ -403,38 +403,47 @@ export default function Informations() {
               className="relative max-w-4xl w-full h-auto max-h-[90vh] bg-white/5 rounded-xl backdrop-blur-sm p-1"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="absolute top-4 right-4 z-20 flex gap-2">
+              <div className="absolute top-4 right-4 z-20 flex gap-1 md:gap-2">
                 <button 
                   onClick={handleZoomIn}
-                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
                   aria-label="Zoom in"
                 >
-                  <ZoomIn size={22} className="text-gray-800" />
+                  <ZoomIn size={18} className="text-gray-800" />
                 </button>
                 <button 
                   onClick={handleZoomOut}
-                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
                   aria-label="Zoom out"
                 >
-                  <ZoomOut size={22} className="text-gray-800" />
+                  <ZoomOut size={18} className="text-gray-800" />
                 </button>
                 <button 
                   onClick={handleResetZoom}
-                  className="bg-white p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
                   aria-label="Reset zoom and position"
                 >
-                  <Move size={22} className="text-gray-800" />
+                  <Move size={18} className="text-gray-800" />
                 </button>
+                <a 
+                  href="/plandusite-optimized.webp" 
+                  download="Plan_du_site_Closurades.webp"
+                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                  aria-label="Télécharger la carte"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Download size={18} className="text-gray-800" />
+                </a>
                 <button 
                   onClick={closeMapModal}
-                  className="bg-red-500 p-3 rounded-full hover:bg-red-600 transition-colors shadow-lg flex items-center justify-center"
+                  className="bg-red-500 p-2 md:p-3 rounded-full hover:bg-red-600 transition-colors shadow-lg flex items-center justify-center"
                   aria-label="Close modal"
                 >
-                  <X size={22} className="text-white" />
+                  <X size={18} className="text-white" />
                 </button>
               </div>
               
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-3 py-1.5 rounded-full text-sm backdrop-blur-sm">
+              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm backdrop-blur-sm w-auto max-w-[95%] md:max-w-[90%] text-center whitespace-nowrap">
                 Cliquez et déplacez pour naviguer • Zoom: {Math.round(zoomLevel * 100)}%
               </div>
 

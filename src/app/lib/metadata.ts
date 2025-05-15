@@ -5,7 +5,7 @@ export const siteConfig = {
   name: FESTIVAL_NAME,
   description: 'Le festival entre amis.',
   url: 'https://www.lesclosurades.fr',
-  ogImage: '/background.jpg',
+  ogImage: '/2025.webp',
   links: {
     twitter: 'https://twitter.com/closurades',
     instagram: 'https://instagram.com/lesclosurades',
