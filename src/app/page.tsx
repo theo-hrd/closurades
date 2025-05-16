@@ -134,7 +134,7 @@ function HeroSection({
       {/* Centered title */}
 
       <div className="absolute inset-0 flex flex-col items-center text-center px-4 sm:px-8">
-        <div className="w-full max-w-4xl mx-auto pt-20 sm:pt-32">
+        <div className="w-full max-w-4xl mx-auto pt-20 sm:pt-16">
           <div className="md:pt-10 mx-auto w-full max-w-2xl sm:max-w-3xl flex justify-center">
             <motion.div
               initial={{ opacity: 0, y: 30, rotate: 0 }}
