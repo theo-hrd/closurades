@@ -340,7 +340,7 @@ export default function Page() {
   };
 
   return (
-    <div id="lineup" className="bg-black scroll-mt-32 overflow-x-hidden">
+    <div id="lineup" className="bg-black scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4">
         <motion.h2 
           ref={titleRef}
@@ -365,7 +365,7 @@ export default function Page() {
             animate="visible"
             transition={{ delay: 0.3 }}
           >
-            <div className="h-2 bg-gradient-to-b from-purple-700 to-red-600 my-8 rounded-full"></div>
+            <div className="h-1 bg-gradient-to-r from-purple-700 via-red-600 to-purple-700 my-8 rounded-full"></div>
           </motion.div>
 
           {/* Ligne verticale pour desktop */}

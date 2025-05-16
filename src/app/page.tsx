@@ -50,19 +50,17 @@ function HeroSection({
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Effect for handling mouse movement for parallax effect
+  // Effect pour détecter si l'appareil est mobile
   useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      // Calcul normalisé de la position de la souris (-1 à 1)
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth) * 2 - 1; 
-      const y = (clientY / window.innerHeight) * 2 - 3;
-      setMousePosition({ x, y });
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
     };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
   // Effect for automatically scrolling images
@@ -75,6 +73,22 @@ function HeroSection({
 
     return () => clearInterval(interval);
   }, []);
+
+  // Effect for handling mouse movement for parallax effect
+  useEffect(() => {
+    if (isMobile) return;
+
+    const handleMouseMove = (e: MouseEvent) => {
+      // Calcul normalisé de la position de la souris (-1 à 1)
+      const { clientX, clientY } = e;
+      const x = (clientX / window.innerWidth) * 2 - 1; 
+      const y = (clientY / window.innerHeight) * 2 - 3;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, [isMobile]);
 
   return (
     <div className="relative h-screen" id="closurades">
@@ -89,10 +103,10 @@ function HeroSection({
             animate={{ 
               opacity: index === currentImageIndex ? 1 : 0,
               scale: 1.05,
-              x: index === currentImageIndex ? mousePosition.x * -20 : 0,
-              y: index === currentImageIndex ? mousePosition.y * -20 : 0,
-              rotateX: index === currentImageIndex ? mousePosition.y * 2 : 0,
-              rotateY: index === currentImageIndex ? mousePosition.x * -2 : 0,
+              x: !isMobile && index === currentImageIndex ? mousePosition.x * -20 : 0,
+              y: !isMobile && index === currentImageIndex ? mousePosition.y * -20 : 0,
+              rotateX: !isMobile && index === currentImageIndex ? mousePosition.y * 2 : 0,
+              rotateY: !isMobile && index === currentImageIndex ? mousePosition.x * -2 : 0,
             }}
             transition={{ 
               opacity: { duration: 1.2, ease: "easeInOut" },
