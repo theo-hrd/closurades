@@ -28,7 +28,7 @@ export const BACKGROUND_IMAGES = [
 
 export const SOCIAL_LINKS = {
   instagram: "https://www.instagram.com/closuradesfestival/",
-  discord: "https://discord.gg/5GKYWnzM",
+  discord: "https://discord.gg/P2byNntpaA",
 };
 
 // URLs externes pour les artistes

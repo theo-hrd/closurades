@@ -49,19 +49,6 @@ function HeroSection({
   onScrollToBilleterie: () => void;
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Effect pour détecter si l'appareil est mobile
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
 
   // Effect for automatically scrolling images
   useEffect(() => {
@@ -74,51 +61,22 @@ function HeroSection({
     return () => clearInterval(interval);
   }, []);
 
-  // Effect for handling mouse movement for parallax effect
-  useEffect(() => {
-    if (isMobile) return;
-
-    const handleMouseMove = (e: MouseEvent) => {
-      // Calcul normalisé de la position de la souris (-1 à 1)
-      const { clientX, clientY } = e;
-      const x = (clientX / window.innerWidth) * 2 - 1; 
-      const y = (clientY / window.innerHeight) * 2 - 3;
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [isMobile]);
-
   return (
     <div className="relative h-screen" id="closurades">
       {/* Image carousel */}
-
-      <div className="absolute inset-0 overflow-hidden perspective-[1000px]">
+      <div className="absolute inset-0 overflow-hidden">
         {BACKGROUND_IMAGES.map((src, index) => (
           <motion.div
             key={`bg-image-${index}`}
-            className="absolute inset-0 origin-center"
-            initial={{ opacity: 0, scale: 1.05 }}
+            className="absolute inset-0"
+            initial={{ opacity: 0, scale: 1.1 }}
             animate={{ 
               opacity: index === currentImageIndex ? 1 : 0,
-              scale: 1.05,
-              x: !isMobile && index === currentImageIndex ? mousePosition.x * -20 : 0,
-              y: !isMobile && index === currentImageIndex ? mousePosition.y * -20 : 0,
-              rotateX: !isMobile && index === currentImageIndex ? mousePosition.y * 2 : 0,
-              rotateY: !isMobile && index === currentImageIndex ? mousePosition.x * -2 : 0,
+              scale: index === currentImageIndex ? 1 : 1.1,
             }}
             transition={{ 
-              opacity: { duration: 1.2, ease: "easeInOut" },
-              scale: { duration: 8, ease: "linear" },
-              x: { duration: 0.15, ease: "linear" },
-              y: { duration: 0.15, ease: "linear" },
-              rotateX: { duration: 0.15, ease: "linear" },
-              rotateY: { duration: 0.15, ease: "linear" }
-            }}
-            style={{
-              // Ajouter un style pour simuler la profondeur avec une perspective CSS
-              transformStyle: "preserve-3d"
+              duration: 2,
+              ease: [0.4, 0, 0.2, 1]
             }}
           >
             <motion.div
@@ -126,7 +84,7 @@ function HeroSection({
               animate={{ 
                 filter: index === currentImageIndex ? "brightness(1.1) saturate(1.1)" : "brightness(0.9) saturate(0.9)"
               }}
-              transition={{ duration: 3 }}
+              transition={{ duration: 2 }}
             >
               <Image
                 src={src}

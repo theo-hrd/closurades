@@ -243,8 +243,8 @@ export default function Informations() {
             <h3 id="transport-heading" className="ml-3 text-xl font-bold bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Transport</h3>
           </div>
           <div className="space-y-4">
-            <p className="text-gray-800">
-              Nous disposons d'un espace limité pour garer les voitures, alors faites un maximum de covoiturage, surtout si vous venez de la même ville !!
+            <p className="text-gray-800 font-bold">
+              Nous disposons d'un espace limité pour garer les voitures, alors faites un maximum de covoiturage, surtout si vous venez de la même ville !
             </p>
             
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
@@ -253,11 +253,11 @@ export default function Informations() {
                 <Car className="mr-2 text-red-600" size={20} aria-hidden="true" />
                 <h4 className="font-semibold">En voiture 🚙</h4>
               </div>
-              <div className="space-y-2 text-gray-800">
-                <p>Privilégiez un maximum le covoiturage !! Vous pouvez trouver / proposer des groupes de covoit dans 🚙covoiturage sur le Discord.</p>
-                <p>Quelqu'un vous guidera sur place pour vous garer.</p>
-                <p>Contactez un.e orga si vous venez de Poitiers et ces environs, nous pourrons certainement vous prendre dans une des navettes.</p>
-              </div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-800">
+                <li>Privilégiez un maximum le covoiturage ! Vous pouvez trouver ou proposer des groupes de covoit' dans <span className="font-bold">🚙covoiturage</span> sur le <a href={SOCIAL_LINKS.discord} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">Discord</a>.</li>
+                <li>Quelqu'un vous guidera pour vous garer lorsque vous arrivez sur le site.</li>
+                <li>Contactez un.e orga si vous venez de Poitiers et ces environs, nous pourrons certainement vous prendre dans une des navettes.</li>
+              </ul>
             </div>
             
             <div className="bg-gray-50 p-4 rounded-lg mt-4 border border-gray-200 shadow-sm relative overflow-hidden group">
@@ -266,11 +266,11 @@ export default function Informations() {
                 <Train className="mr-2 text-red-600" size={20} aria-hidden="true" />
                 <h4 className="font-semibold">En train  /bus 🚎</h4>
               </div>
-              <div className="space-y-2 text-gray-800">
-                <p>Pour celles / ceux qui viennent en Train/Bus, prévoyez votre arrivée uniquement à : la gare du Futuroscope ou la gare de Poitiers.</p>
-                <p>Nous ferons la navette pour venir vous chercher à certaines heures (à partir de 17h le vendredi).</p>
-                <p>Afin de déterminer les horaires de passage de la navette, vous devez impérativement envoyer un message (dès que vous avez votre trajet) dans 🚌navette sur le Discord ou en contactant un.e orga.</p>
-              </div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-800">
+                <li>Pour celles / ceux qui viennent en train / bus, prévoyez votre arrivée uniquement à la gare du Futuroscope ou la gare de Poitiers.</li>
+                <li>Nous ferons la navette pour venir vous chercher à certaines heures (à partir de 17h le vendredi).</li>
+                <li>Afin de déterminer les horaires de passage de la navette, vous devez impérativement envoyer un message (dès que vous avez votre trajet) dans <span className="font-bold">🚌navette</span> sur le <a href={SOCIAL_LINKS.discord} target="_blank" rel="noopener noreferrer" className="text-red-600 hover:text-red-700">Discord</a> ou en contactant un.e orga.</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -298,29 +298,22 @@ export default function Informations() {
                 <h4 className="font-semibold">Les Indispensables</h4>
               </div>
               <div className="space-y-3 text-gray-800 mt-2">
-                <div className="flex items-start">
-                  <div className="mt-1 mr-2 min-w-4 text-center">•</div>
-                  <div>
+                <ul className="list-disc pl-5 space-y-1 text-gray-800">
+                  <li>
                     <span className="font-medium text-black">Votre tente ⛺</span> : Elle vous logera pendant deux nuits.
                     Elle vous permettra également d'y laisser vos effets personnels pendant votre festival,
                     ainsi il est recommandé d'amener un cadenas, pour pouvoir la fermer.
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="mt-1 mr-2 min-w-4 text-center">•</div>
-                  <div>
+                  </li>
+                  <li>
                     <span className="font-medium text-black">Une bouteille ou une gourde 🍶</span> : De l'eau potable sera 
                     disponible à volonté, donc pensez à votre contenant
                     pour vous hydrater n'importe où / quand.
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="mt-1 mr-2 min-w-4 text-center">•</div>
-                  <div>
+                  </li>
+                  <li>
                     <span className="font-medium text-black">De l'argent LIQUIDE 💸</span> : Pour celles et ceux qui n'ont pas pris des JETONS en avance avec votre billet, vous pourrez en acheter sur place, avec
                     de l'argent LIQUIDE (Aucuns distributeurs à 5km à la ronde).
-                  </div>
-                </div>
+                  </li>
+                </ul>
               </div>
             </div>
             
@@ -330,32 +323,14 @@ export default function Informations() {
                 <Check className="mr-2 text-red-600" size={20} aria-hidden="true" />
                 <h4 className="font-semibold">Les Recommandés</h4>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-gray-800">
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Duvet / Plaid 🛌</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Une batterie externe 🔋</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Cadenas 🔒 (Pour fermer votre tente)</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Lingettes bébé 🧻</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Spray anti-moustique / anti-tique 🦟</span>
-                </div>
-                <div className="flex items-center">
-                  <div className="mr-2">•</div>
-                  <span>Hamac 🌴 (Il y a quelques arbres bien disposés)</span>
-                </div>
-              </div>
+              <ul className="list-disc pl-5 space-y-1 text-gray-800">
+                <li>Duvet / Plaid 🛌</li>
+                <li>Une batterie externe 🔋</li>
+                <li>Cadenas 🔒 (Pour fermer votre tente)</li>
+                <li>Lingettes bébé 🧻</li>
+                <li>Spray anti-moustique / anti-tique 🦟</li>
+                <li>Hamac 🌴 (Il y a quelques arbres bien disposés)</li>
+              </ul>
             </div>
           </div>
         </div>
@@ -495,7 +470,7 @@ export default function Informations() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="space-y-4">
-              <p className="text-gray-800">
+              <p className="text-gray-800 ">
                 Le site des Closurades est très sujet au risque d'incendie en plein été, alors afin que tout le monde passe un agréable moment tout en sécurité, vous devez prendre ardemment connaissance des règles de sécurité et de bonne conduite.
               </p>
               <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
