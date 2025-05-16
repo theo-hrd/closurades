@@ -242,7 +242,7 @@ export default function ArtistList({
   };
   
   return (
-    <div className="w-full mt-8 sm:mt-16 md:mt-32">
+    <div className="w-full mt-8 md:mt-16">
       <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 w-full">
         {artists.map((artist, index) => {
           // Use the randomly assigned color for this artist

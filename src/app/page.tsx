@@ -57,7 +57,7 @@ function HeroSection({
       // Calcul normalisé de la position de la souris (-1 à 1)
       const { clientX, clientY } = e;
       const x = (clientX / window.innerWidth) * 2 - 1; 
-      const y = (clientY / window.innerHeight) * 2 - 1;
+      const y = (clientY / window.innerHeight) * 2 - 3;
       setMousePosition({ x, y });
     };
 
@@ -89,10 +89,10 @@ function HeroSection({
             animate={{ 
               opacity: index === currentImageIndex ? 1 : 0,
               scale: 1.05,
-              x: index === currentImageIndex ? mousePosition.x * -60 : 0,
-              y: index === currentImageIndex ? mousePosition.y * -60 : 0,
-              rotateX: index === currentImageIndex ? mousePosition.y * 6 : 0,
-              rotateY: index === currentImageIndex ? mousePosition.x * -6 : 0,
+              x: index === currentImageIndex ? mousePosition.x * -20 : 0,
+              y: index === currentImageIndex ? mousePosition.y * -20 : 0,
+              rotateX: index === currentImageIndex ? mousePosition.y * 2 : 0,
+              rotateY: index === currentImageIndex ? mousePosition.x * -2 : 0,
             }}
             transition={{ 
               opacity: { duration: 1.2, ease: "easeInOut" },
