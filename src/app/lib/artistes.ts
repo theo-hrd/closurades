@@ -24,7 +24,7 @@ export const artistesData = {
         id: 3,
         nom: 'LARSEN',
         photo: '/artists/larsen.webp',
-        genre: 'Techno | Hard Techno',
+        genre: 'House | Techno',
         heure: '22h00',
         origine: 'Poitiers - France',
         description: `LARSEN est le président et fondateur du collectif Badmood, aujourd'hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
