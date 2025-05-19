@@ -24,7 +24,7 @@ export const artistesData = {
         id: 3,
         nom: 'LARSEN',
         photo: '/artists/larsen.webp',
-        genre: 'House | Techno',
+        genre: 'amapiano | chill-house | techno progressive',
         heure: '22h00',
         origine: 'Poitiers - France',
         description: `LARSEN est le président et fondateur du collectif Badmood, aujourd'hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
@@ -56,7 +56,7 @@ export const artistesData = {
         id: 6,
         nom: 'PRPHTXIV & TSHIMBOMBO', 
         photo: '/artists/julien.webp',
-        genre: 'House | Dub | Techno',
+        genre: 'house | techno progressive',
         heure: '02h30',
         origine: 'Poitiers - France',
         description: ``
