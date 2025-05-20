@@ -202,7 +202,7 @@ export default function Merch() {
                 />
             </div>
             <p className="mt-4 text-lg text-center text-black">
-                Découvrez nos produits exclusifs !
+                Notre Merch Closurades 2025 !
             </p>
             
             {/* Grille de produits */}
