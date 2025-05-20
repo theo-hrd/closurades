@@ -393,8 +393,8 @@ export default function Informations() {
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-              <h4 className="font-semibold mb-2 text-black text-center text-xl">🦺 Sécurité du site</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+              <h4 className="font-semibold mb-2 text-black text-center text-xl md:text-xl text-lg">🦺 Sécurité du site</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-base md:text-lg">
                 <li>Ne jamais jeter ses mégots dans la nature mais dans les nombreux cendriers prévus à cet effet : risque très important d'incendie 🚬</li>
                 <li>Ne pas faire de feu même brasero et barbecue 🔥</li>
                 <li>Ne pas utiliser de bougie et d'allumette 🕯️</li>
@@ -403,8 +403,8 @@ export default function Informations() {
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-              <h4 className="font-semibold mb-2 text-black text-center text-xl">⛑️ Sécurité des personnes</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+              <h4 className="font-semibold mb-2 text-black text-center text-xl md:text-xl text-lg">⛑️ Sécurité des personnes</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-base md:text-lg">
                 <li>Gérez votre consommation d'alcool sur place pour votre bien-être et celui des autres.</li>
                 <li>Tout produit stupéfiant illicite (autre que l'alcool) est formellement interdit sur le site.</li>
                 <li>La nature du festival fait qu'on ne peut pas se permettre d'avoir quelconque problème lié à la consommation de stupéfiants.</li>
@@ -417,8 +417,8 @@ export default function Informations() {
 
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-              <h4 className="font-semibold mb-2 text-black text-center text-xl">🤝 Bonne conduite</h4>
-              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+              <h4 className="font-semibold mb-2 text-black text-center text-xl md:text-xl text-lg">🤝 Bonne conduite</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-base md:text-lg">
                 <li>🚫 Interdit aux animaux de compagnie ! 🐕 🐱 🚫</li>
                 <li>Nous avons investi du temps et beaucoup d'argent dans la Buvette, alors nous demandons de ne pas ramener d'alcool et de nourriture (Les prix sont bas).</li>
                 <li>Prenez soin de l'écocup qui vous est offert à l'entrée ! Si vous le perdez / cassez, vous devrez en racheter un au stand boisson !</li>
