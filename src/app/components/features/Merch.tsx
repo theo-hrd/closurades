@@ -26,7 +26,7 @@ export default function Merch() {
         {
             id: 1,
             name: "T-shirt Closurades 2025",
-            image: "/merch/mockup.png", // Image par défaut
+            image: "/merch/tshirt2025-bleu-front.webp", // Image par défaut
             description: "T-shirt exclusif avec notre logo 2025",
             isShirt: true,
             colors: ["bleu", "orange", "vert"],
@@ -210,7 +210,7 @@ export default function Merch() {
                 {products.map((product) => (
                     <div 
                         key={product.id} 
-                        className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border border-gray-100"
+                        className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-[1.02] hover:shadow-xl border border-gray-100 group"
                     >
                         <div className="relative bg-white overflow-hidden" style={{ height: "480px" }}>
                             {product.isShirt && product.views?.includes("back") && (
@@ -225,7 +225,7 @@ export default function Merch() {
                                 </div>
                             )}
                             
-                            <div className="w-full h-full flex items-center justify-center">
+                            <div className="w-full h-full flex items-center justify-center overflow-hidden">
                                 {loadingStates[product.id] && (
                                     <div className="absolute inset-0 flex items-center justify-center bg-white/80 z-10">
                                         <Loader2 size={40} className="animate-spin text-gray-700" />
@@ -236,7 +236,7 @@ export default function Merch() {
                                     alt={product.name} 
                                     width={900}
                                     height={900}
-                                    className="w-full h-full object-contain md:object-fill transition-all duration-500 hover:scale-110"
+                                    className="w-full h-full object-cover md:object-contain transition-all duration-500 group-hover:scale-105"
                                     priority={product.id <= 2}
                                     onLoadingComplete={() => handleImageLoad(product.id)}
                                     onLoad={() => handleImageLoad(product.id)}
