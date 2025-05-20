@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import { Tent, MapPin, Info, Clock, Car, Train, Check, ZoomIn, ZoomOut, X, Move, Download } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
-import { SOCIAL_LINKS } from '../../lib/constants';
+import { SOCIAL_LINKS } from '@/app/lib/constants';
 
 // Discord icon component
 const DiscordIcon = ({ size = 24, className = "" }) => (
@@ -152,19 +152,26 @@ export default function Informations() {
   }, [isMapModalOpen, isDragging, zoomLevel]);
 
   return (
-    <div id="informations" className="min-h-screen py-12 max-w-7xl mx-auto px-6">
+    <div id="informations" className="min-h-screen py-12 max-w-7xl mx-auto px-4 sm:px-6">
       <div className="mb-12 space-y-2">
-        <h2 className="text-3xl md:text-4xl font-bold text-center bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">
-          Informations
-        </h2>
+        <div className="flex justify-center items-center">
+          <Image
+            src="/titles/informations.webp"
+            alt="Informations Closurades"
+            width={400}
+            height={80}
+            className="object-contain"
+            priority
+          />
+        </div>
         <p className="mt-4 text-lg text-center text-black">
           Tout ce que vous devez savoir pour profiter du festival !
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 gap-8">
         {/* À propos */}
-        <div className="relative bg-white rounded-lg shadow-xl p-6 md:col-span-2 overflow-hidden group">
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           <div className="relative flex items-center mb-4">
@@ -191,7 +198,7 @@ export default function Informations() {
         </div>
 
         {/* Horaires */}
-        <div className="relative bg-white rounded-lg shadow-xl p-6 md:col-span-2 overflow-hidden group">
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           <div className="relative flex items-center mb-4">
@@ -200,7 +207,7 @@ export default function Informations() {
             </div>
             <h3 id="schedule-heading" className="ml-3 text-xl font-bold bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Horaires du Festival</h3>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
               <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
               <h4 className="font-semibold mb-3 text-black text-center">Début</h4>
@@ -336,7 +343,7 @@ export default function Informations() {
         </div>
 
         {/* Plan du site */}
-        <div className="relative bg-white rounded-lg shadow-xl p-6 md:col-span-2 overflow-hidden group">
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           <div className="relative flex items-center mb-4">
@@ -368,97 +375,8 @@ export default function Informations() {
           </div>
         </div>
 
-        {/* Modal for enlarged map view */}
-        {isMapModalOpen && (
-          <div 
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-            onClick={closeMapModal}
-          >
-            <div 
-              className="relative max-w-4xl w-full h-auto max-h-[90vh] bg-white/5 rounded-xl backdrop-blur-sm p-1"
-              onClick={(e) => e.stopPropagation()}
-            >
-              <div className="absolute top-4 right-4 z-20 flex gap-1 md:gap-2">
-                <button 
-                  onClick={handleZoomIn}
-                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Zoom in"
-                >
-                  <ZoomIn size={18} className="text-gray-800" />
-                </button>
-                <button 
-                  onClick={handleZoomOut}
-                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Zoom out"
-                >
-                  <ZoomOut size={18} className="text-gray-800" />
-                </button>
-                <button 
-                  onClick={handleResetZoom}
-                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Reset zoom and position"
-                >
-                  <Move size={18} className="text-gray-800" />
-                </button>
-                <a 
-                  href="/plandusite-optimized.webp" 
-                  download="Plan_du_site_Closurades.webp"
-                  className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Télécharger la carte"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <Download size={18} className="text-gray-800" />
-                </a>
-                <button 
-                  onClick={closeMapModal}
-                  className="bg-red-500 p-2 md:p-3 rounded-full hover:bg-red-600 transition-colors shadow-lg flex items-center justify-center"
-                  aria-label="Close modal"
-                >
-                  <X size={18} className="text-white" />
-                </button>
-              </div>
-              
-              <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm backdrop-blur-sm w-auto max-w-[95%] md:max-w-[90%] text-center whitespace-nowrap">
-                Cliquez et déplacez pour naviguer • Zoom: {Math.round(zoomLevel * 100)}%
-              </div>
-
-              <div 
-                ref={containerRef}
-                className="overflow-hidden h-full w-full rounded-lg"
-                style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
-                onMouseDown={handleMouseDown}
-                onMouseMove={handleMouseMove}
-                onMouseUp={handleMouseUp}
-                onTouchStart={handleTouchStart}
-                onTouchMove={handleTouchMove}
-                onTouchEnd={handleTouchEnd}
-              >
-                <div 
-                  className="transform-gpu w-full h-full" 
-                  style={{ 
-                    transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`, 
-                    transformOrigin: 'center', 
-                    transition: isDragging ? 'none' : 'transform 0.2s ease-out'
-                  }}
-                >
-                  <Image 
-                    src="/plandusite.webp" 
-                    alt="Carte du site du festival" 
-                    width={1200} 
-                    height={800} 
-                    quality={95}
-                    className="w-full h-auto object-contain"
-                    draggable="false"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
-
         {/* Infos pratiques */}
-        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group md:col-span-2">
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
           <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
           <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
           <div className="relative flex items-center mb-4">
@@ -468,96 +386,171 @@ export default function Informations() {
             <h3 id="info-heading" className="ml-3 text-xl font-bold bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_1px_rgba(0,0,0,0.3)]">Infos pratiques</h3>
           </div>
           
-          <div className="grid grid-cols-1 gap-4">
-            <div className="space-y-4">
-              <p className="font-bold text-gray-800 text-lg text-center max-w-3xl mx-auto">
-                Le site des Closurades est très sujet au risque d'incendie en plein été, alors afin que tout le monde passe un agréable moment tout en sécurité, vous devez prendre ardemment connaissance des règles de sécurité et de bonne conduite.
-              </p>
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group max-w-4xl mx-auto">
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-                <h4 className="font-semibold mb-4 text-black text-center text-xl">Sécurité</h4>
-                <div className="space-y-2 text-center">
-                  <p className="text-gray-800 text-lg">
-                    Respectez les consignes de sécurité et les zones délimitées.
-                  </p>
-                  <p className="text-gray-800 text-lg">
-                    En cas de problème, adressez-vous immédiatement à un membre de l'organisation.
-                  </p>
-                </div>
-              </div>
+          <div className="space-y-4">
+            <p className="text-gray-800 font-bold">
+              Le site des Closurades est très sujet au risque d'incendie en plein été, alors afin que tout le monde passe un agréable moment tout en sécurité, vous devez prendre ardemment connaissance des règles de sécurité et de bonne conduite.
+            </p>
 
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group max-w-4xl mx-auto">
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-                <h4 className="font-semibold mb-4 text-black text-center text-xl">🦺 Sécurité du site</h4>
-                <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
-                  <li>Ne jamais jeter ses mégots dans la nature mais dans les nombreux cendriers prévus à cet effet : risque très important d'incendie 🚬</li>
-                  <li>Ne pas faire de feu même brasero et barbecue 🔥</li>
-                  <li>Ne pas utiliser de bougie et d'allumette 🕯️</li>
-                </ul>
-              </div>
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
+              <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
+              <h4 className="font-semibold mb-2 text-black text-center text-xl">🦺 Sécurité du site</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+                <li>Ne jamais jeter ses mégots dans la nature mais dans les nombreux cendriers prévus à cet effet : risque très important d'incendie 🚬</li>
+                <li>Ne pas faire de feu même brasero et barbecue 🔥</li>
+                <li>Ne pas utiliser de bougie et d'allumette 🕯️</li>
+              </ul>
+            </div>
 
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group max-w-4xl mx-auto">
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-                <h4 className="font-semibold mb-4 text-black text-center text-xl">⛑️ Sécurité des personnes</h4>
-                <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
-                  <li>Gérez votre consommation d'alcool sur place pour votre bien-être et celui des autres.</li>
-                  <li>Tout produit stupéfiant illicite (autre que l'alcool) est formellement interdit sur le site.</li>
-                  <li>La nature du festival fait qu'on ne peut pas se permettre d'avoir quelconque problème lié à la consommation de stupéfiants.</li>
-                  <li>Ne pas se rendre dans les lieux réservés aux ORGANISATEURS (Chalet, dortoir, zone de stockage, zone de barbecue, etc) qui seront indiqués par une affiche ⛔</li>
-                  <li>Interdiction formelle de se rendre dans les lieux avec rubalise : risque d'éboulement 🚧</li>
-                  <li>Interdiction formelle de monter sur n'importe quelle toiture et n'importe quel puits.</li>
-                  <li>En cas de doute, des contrôles d'alcoolémie seront réalisés pour ceux et celles qui veulent partir en voiture.</li>
-                </ul>
-              </div>
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
+              <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
+              <h4 className="font-semibold mb-2 text-black text-center text-xl">⛑️ Sécurité des personnes</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+                <li>Gérez votre consommation d'alcool sur place pour votre bien-être et celui des autres.</li>
+                <li>Tout produit stupéfiant illicite (autre que l'alcool) est formellement interdit sur le site.</li>
+                <li>La nature du festival fait qu'on ne peut pas se permettre d'avoir quelconque problème lié à la consommation de stupéfiants.</li>
+                <li>Ne pas se rendre dans les lieux réservés aux ORGANISATEURS (Chalet, dortoir, zone de stockage, zone de barbecue, etc) qui seront indiqués par une affiche ⛔</li>
+                <li>Interdiction formelle de se rendre dans les lieux avec rubalise : risque d'éboulement 🚧</li>
+                <li>Interdiction formelle de monter sur n'importe quelle toiture et n'importe quel puits.</li>
+                <li>En cas de doute, des contrôles d'alcoolémie seront réalisés pour ceux et celles qui veulent partir en voiture.</li>
+              </ul>
+            </div>
 
-              <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group max-w-4xl mx-auto">
-                <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-                <h4 className="font-semibold mb-4 text-black text-center text-xl">🤝 Bonne conduite</h4>
-                <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
-                  <li>🚫 Interdit aux animaux de compagnie ! 🐕 🐱 🚫</li>
-                  <li>Nous avons investi du temps et beaucoup d'argent dans la Buvette, alors nous demandons de ne pas ramener d'alcool et de nourriture (Les prix sont bas).</li>
-                  <li>Prenez soin de l'écocup qui vous est offert à l'entrée ! Si vous le perdez / cassez, vous devrez en racheter un au stand boisson !</li>
-                  <li>Refermez systématiquement le robinet des bidons d'eau en libre-service au stand bouffe et boisson et ne gaspillez pas l'eau.</li>
-                  <li>Respectez les lieux de repos la nuit, pas de bruit, si vous voulez parler etc les lieux sont grands, allez autre part.</li>
-                  <li>Grosse commission uniquement dans les toilettes, interdiction même dans les champs.</li>
-                  <li>Si vous pouvez faire pipi debout, n'encombrez pas les toilettes inutilement. Marchez une minute et allez faire pipi dans le champ (Pas au niveau des voitures).</li>
-                  <li>Interdiction formelle de laisser du papier toilette par terre et autres déchets (même organique)!! 🚯</li>
-                  <li>De nombreuses poubelles sont à votre disposition merci de jeter vos déchets.</li>
-                </ul>
-              </div>
+            <div className="bg-gray-50 p-4 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group">
+              <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
+              <h4 className="font-semibold mb-2 text-black text-center text-xl">🤝 Bonne conduite</h4>
+              <ul className="list-disc pl-5 space-y-2 text-gray-800 text-lg">
+                <li>🚫 Interdit aux animaux de compagnie ! 🐕 🐱 🚫</li>
+                <li>Nous avons investi du temps et beaucoup d'argent dans la Buvette, alors nous demandons de ne pas ramener d'alcool et de nourriture (Les prix sont bas).</li>
+                <li>Prenez soin de l'écocup qui vous est offert à l'entrée ! Si vous le perdez / cassez, vous devrez en racheter un au stand boisson !</li>
+                <li>Refermez systématiquement le robinet des bidons d'eau en libre-service au stand bouffe et boisson et ne gaspillez pas l'eau.</li>
+                <li>Respectez les lieux de repos la nuit, pas de bruit, si vous voulez parler etc les lieux sont grands, allez autre part.</li>
+                <li>Grosse commission uniquement dans les toilettes, interdiction même dans les champs.</li>
+                <li>Si vous pouvez faire pipi debout, n'encombrez pas les toilettes inutilement. Marchez une minute et allez faire pipi dans le champ (Pas au niveau des voitures).</li>
+                <li>Interdiction formelle de laisser du papier toilette par terre et autres déchets (même organique)!! 🚯</li>
+                <li>De nombreuses poubelles sont à votre disposition merci de jeter vos déchets.</li>
+              </ul>
             </div>
           </div>
+        </div>
 
-          <div className="mt-8">
-            <div className="bg-gray-50 p-6 rounded-lg border border-gray-200 shadow-sm relative overflow-hidden group max-w-4xl mx-auto">
-              <div className="absolute bottom-0 left-0 h-1 w-full bg-gradient-to-r from-red-600/40 to-purple-700/40 transform origin-left"></div>
-              <h4 className="font-semibold mb-5 text-black text-center text-xl">Suivez-nous</h4>
-              <div className="flex flex-col sm:flex-row gap-3 items-center justify-center flex-grow">
-                <a 
-                  href={SOCIAL_LINKS.instagram} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-br from-purple-600 to-red-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-lg"
-                  aria-label="Instagram"
-                >
-                  <InstagramIcon size={28} />
-                  <span className="font-medium">Instagram</span>
-                </a>
-                <a 
-                  href={SOCIAL_LINKS.discord} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-lg"
-                  aria-label="Discord"
-                >
-                  <DiscordIcon size={28} />
-                  <span className="font-medium">Discord</span>
-                </a>
+        {/* Suivez-nous */}
+        <div className="relative bg-white rounded-lg shadow-xl p-6 overflow-hidden group">
+          <div className="absolute inset-0 bg-gradient-to-r from-red-600/10 to-purple-700/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-red-600 to-purple-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></div>
+          <h4 className="font-semibold mb-5 text-black text-center text-xl">Suivez-nous</h4>
+          <div className="flex flex-col sm:flex-row gap-3 items-center justify-center flex-grow">
+            <a 
+              href={SOCIAL_LINKS.instagram}
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-br from-purple-600 to-red-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-lg cursor-pointer pointer-events-auto relative z-10"
+              aria-label="Instagram"
+            >
+              <InstagramIcon size={28} />
+              <span className="font-medium">Instagram</span>
+            </a>
+            <a 
+              href={SOCIAL_LINKS.discord}
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="flex items-center justify-center gap-2 px-6 py-3 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-full hover:shadow-lg hover:scale-105 transition-all duration-300 w-full sm:w-auto text-lg cursor-pointer pointer-events-auto relative z-10"
+              aria-label="Discord"
+            >
+              <DiscordIcon size={28} />
+              <span className="font-medium">Discord</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      {/* Modal for enlarged map view */}
+      {isMapModalOpen && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={closeMapModal}
+        >
+          <div 
+            className="relative max-w-4xl w-full h-auto max-h-[90vh] bg-white/5 rounded-xl backdrop-blur-sm p-1"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="absolute top-4 right-4 z-20 flex gap-1 md:gap-2">
+              <button 
+                onClick={handleZoomIn}
+                className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                aria-label="Zoom in"
+              >
+                <ZoomIn size={18} className="text-gray-800" />
+              </button>
+              <button 
+                onClick={handleZoomOut}
+                className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                aria-label="Zoom out"
+              >
+                <ZoomOut size={18} className="text-gray-800" />
+              </button>
+              <button 
+                onClick={handleResetZoom}
+                className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                aria-label="Reset zoom and position"
+              >
+                <Move size={18} className="text-gray-800" />
+              </button>
+              <a 
+                href="/plandusite-optimized.webp" 
+                download="Plan_du_site_Closurades.webp"
+                className="bg-white p-2 md:p-3 rounded-full hover:bg-gray-100 transition-colors shadow-lg flex items-center justify-center"
+                aria-label="Télécharger la carte"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <Download size={18} className="text-gray-800" />
+              </a>
+              <button 
+                onClick={closeMapModal}
+                className="bg-red-500 p-2 md:p-3 rounded-full hover:bg-red-600 transition-colors shadow-lg flex items-center justify-center"
+                aria-label="Close modal"
+              >
+                <X size={18} className="text-white" />
+              </button>
+            </div>
+            
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20 bg-black/70 text-white px-4 md:px-6 py-1.5 md:py-2 rounded-full text-xs md:text-sm backdrop-blur-sm w-auto max-w-[95%] md:max-w-[90%] text-center whitespace-nowrap">
+              Cliquez et déplacez pour naviguer • Zoom: {Math.round(zoomLevel * 100)}%
+            </div>
+
+            <div 
+              ref={containerRef}
+              className="overflow-hidden h-full w-full rounded-lg"
+              style={{ cursor: isDragging ? 'grabbing' : 'grab' }}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              <div 
+                className="transform-gpu w-full h-full" 
+                style={{ 
+                  transform: `scale(${zoomLevel}) translate(${position.x / zoomLevel}px, ${position.y / zoomLevel}px)`, 
+                  transformOrigin: 'center', 
+                  transition: isDragging ? 'none' : 'transform 0.2s ease-out'
+                }}
+              >
+                <Image 
+                  src="/plandusite.webp" 
+                  alt="Carte du site du festival" 
+                  width={1200} 
+                  height={800} 
+                  quality={95}
+                  className="w-full h-auto object-contain"
+                  draggable="false"
+                  priority
+                />
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

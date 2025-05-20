@@ -234,9 +234,16 @@ function TicketsSection({
         transition={{ duration: 0.8, ease: "easeOut" }}
       >
         <div className="text-center">
-          <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-orange-600 bg-clip-text text-transparent uppercase">
-            Billetterie
-          </h2>
+          <div className="flex justify-center items-center mb-4">
+            <Image
+              src="/titles/billetterie.webp"
+              alt="Billetterie Closurades"
+              width={500}
+              height={80}
+              className="object-contain"
+              priority
+            />
+          </div>
 
           <p className="mt-4 text-lg max-w-2xl text-center mx-auto text-black">
             Achetez vos tickets dès maintenant !

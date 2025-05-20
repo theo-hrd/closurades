@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
 
 import { Artiste } from '@/app/lib/types';
 
@@ -342,15 +343,22 @@ export default function Page() {
   return (
     <div id="lineup" className="bg-black scroll-mt-32">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.h2 
+        <motion.div 
           ref={titleRef}
-          className="uppercase text-4xl font-bold text-center mb-24 bg-gradient-to-r from-red-600 to-purple-700 bg-clip-text text-transparent drop-shadow-[0_1px_2px_rgba(255,255,255,0.5)]"
+          className="flex justify-center items-center mb-24"
           variants={mainTitleVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          Line-up
-        </motion.h2>
+          <Image
+            src="/titles/lineup.webp"
+            alt="Line-up Closurades"
+            width={400}
+            height={80}
+            className="object-contain"
+            priority
+          />
+        </motion.div>
         <div className="md:flex md:space-x-8">
           <JourSection 
             jour="Vendredi 18" 
