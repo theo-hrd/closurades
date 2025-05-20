@@ -8,6 +8,7 @@ interface TicketButtonProps {
   buttonText?: string;
   gradientFrom?: string;
   gradientTo?: string;
+  ticketUrl?: string;
 }
 
 // Separate the vinyl animation logic into a hook for better maintainability
@@ -77,10 +78,15 @@ const TicketButton = ({
   price = "20 €",
   buttonText = "Prenez vos tickets",
   gradientFrom = "from-red-600",
-  gradientTo = "to-orange-600"
+  gradientTo = "to-orange-600",
+  ticketUrl = "https://www.papayoux.com/fr/billet/les-closurades-edition-2025-1"
 }: Readonly<TicketButtonProps>) => {
   const [isHovered, setIsHovered] = useState(false);
   const { rotationAngle } = useVinylSpinAnimation(isHovered);
+
+  const handleClick = () => {
+    window.open(ticketUrl, '_blank', 'noopener,noreferrer');
+  };
 
   return (
     <div className="relative flex flex-col items-center justify-center p-6 h-[600px] overflow-hidden">
@@ -111,6 +117,7 @@ const TicketButton = ({
           }`}
           onMouseEnter={() => setIsHovered(true)} 
           onMouseLeave={() => setIsHovered(false)}
+          onClick={handleClick}
           role="button"
           aria-label="Acheter des billets pour le festival"
         >
