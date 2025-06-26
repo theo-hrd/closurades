@@ -4,7 +4,6 @@ export const FESTIVAL_DATES = "18 & 19 Juillet 2025";
 export const ARTISTS = [
   "Stonks",
   "Trifouille1er",
-  "Sun Gazol",
   "TILL",
   "Yoga Teacher",
   "CLM",
@@ -34,7 +33,6 @@ export const SOCIAL_LINKS = {
 export const ARTIST_LINKS: Record<string, string> = {
   "Stonks": "https://open.spotify.com/intl-fr/artist/0iwWvPe7sbKfFHkuFnXzgt?si=iDUSVWx5SDa5TgET-TinWg",
   "CLM": "https://open.spotify.com/intl-fr/artist/57HLYhNKiP6gbSQ1bV95xP?si=12e80a8646c04f5d",
-  "Sun Gazol": "https://open.spotify.com/intl-fr/artist/0ydl14K6aHIS7v6zNaGQv5?si=e89c524d8e184af1",
   "TILL": "https://www.instagram.com/till.band/",
   "Trifouille1er": "https://open.spotify.com/intl-fr/artist/0a4pTFuHCoMD3A2F4PRPyy?si=d79efca915de4c38",
   "Larsen": "https://www.instagram.com/larsen.touch/",
