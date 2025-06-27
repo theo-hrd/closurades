@@ -68,36 +68,39 @@ export default function Merch() {
         },
         {
             id: 3,
-            name: "T-shirt Closurades 4 Mascottes",
+            name: "T-shirt upcyclé patch Closurades",
             image: "/artists/question.webp",
-            description: "T-shirt exclusif avec notre logo 2025 avec ses 4 mascottes",
-            isShirt: false,
-            // colors: ["bleu", "orange", "vert"],
-            // views: ["front", "back"]
+            description: "T-shirt patché et upcyclé avec le logo Closurades chaque t shirt est unique.",
+            isShirt: true,
+            colors: ["bleu", "noir"],
+            variants: {
+                "bleu": {
+                    "front": "/merch/lison/bleu_patch.webp",
+                },
+                "noir": {
+                    "front": "/merch/lison/noir_patch.webp",
+                }
+            }
         },
         {
             id: 4,
             name: "T-shirt upcyclé Closurades",
             image: "/artists/question.webp",
-            description: "T-shirt upcyclé avec le logo Closurades",
-            isShirt: false,
-            // colors: ["bleu", "orange", "vert"],
-            // views: ["front", "back"]
-        },
-        {
-            id: 5,
-            name: "Stickers",
-            image: "/artists/question.webp",
-            description: "Stickers avec notre logo",
-            isShirt: false
-        },
-        {
-            id: 6,
-            name: "Affiche Closurades 2025",
-            image: "/artists/question.webp",
-            description: "Affiche des closurades avec la line up 2025",
-            isShirt: false
-        },
+            description: "T-shirt upcyclé sérigraphié avec des photos intimistes",
+            isShirt: true,
+            colors: ["bleu", "blanc", "vert"],
+            variants: {
+                "bleu": {
+                    "front": "/merch/lison/bleu_inti.webp",
+                },
+                "blanc": {
+                    "front": "/merch/lison/blanc_inti.webp",
+                },
+                "vert": {
+                    "front": "/merch/lison/vert_inti.webp",
+                }
+            }
+        }
     ];
 
     // State pour suivre la couleur et la vue de chaque produit
