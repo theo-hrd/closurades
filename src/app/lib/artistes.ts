@@ -22,17 +22,12 @@ export const artistesData = {
       },
       {
         id: 3,
-        nom: 'LARSEN',
-        photo: '/artists/larsen.webp',
-        genre: 'amapiano | chill-house | techno progressive',
+        nom: 'PRPHTXIV & TSHIMBOMBO', 
+        photo: '/artists/julien.webp',
+        genre: 'house | groove techno | dub techno',
         heure: '22h00',
         origine: 'Poitiers - France',
-        description: `LARSEN est le président et fondateur du collectif Badmood, aujourd'hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
-                      DJ passionné et engagé, il se distingue par une approche sans concession du mix, où l'éclectisme est poussé à l'outrance.
-                      Ses sets fusionnent les styles avec audace en passant par des classiques détournés et des surprises inattendues.
-                      Résolument instinctif et imprévisible, LARSEN aime jouer avec les codes, quitte à troller son public en glissant volontairement des morceaux inattendus ou complètement décalés dans ses sets.
-                      Amateur de contrastes et de chaos maîtrisé, il cultive l'art de la surprise et de la tension, créant des montagnes russes sonores entre intensité brute et clins d'œil malicieux.
-                      Fort d'une solide expérience en tant que DJ généraliste, il maîtrise les dynamiques de dancefloor sur le bout des doigts, ce qui lui permet d'embarquer tout type de public, du plus pointu au plus festif.`
+        description: ``
       },
       {
         id: 4,
@@ -45,18 +40,23 @@ export const artistesData = {
       },
       {
         id: 5,
-        nom: "TOOFOULK",
-        photo: '/artists/toofoulk.webp',
-        genre: 'Jungle | Drum and Bass | Neuro',
+        nom: 'LARSEN',
+        photo: '/artists/larsen.webp',
+        genre: 'amapiano | chill-house | techno progressive',
         heure: '01h00',
         origine: 'Poitiers - France',
-        description: ``
+        description: `LARSEN est le président et fondateur du collectif Badmood, aujourd'hui reconnu comme un acteur majeur de la scène Techno et Hard Music locale.
+                      DJ passionné et engagé, il se distingue par une approche sans concession du mix, où l'éclectisme est poussé à l'outrance.
+                      Ses sets fusionnent les styles avec audace en passant par des classiques détournés et des surprises inattendues.
+                      Résolument instinctif et imprévisible, LARSEN aime jouer avec les codes, quitte à troller son public en glissant volontairement des morceaux inattendus ou complètement décalés dans ses sets.
+                      Amateur de contrastes et de chaos maîtrisé, il cultive l'art de la surprise et de la tension, créant des montagnes russes sonores entre intensité brute et clins d'œil malicieux.
+                      Fort d'une solide expérience en tant que DJ généraliste, il maîtrise les dynamiques de dancefloor sur le bout des doigts, ce qui lui permet d'embarquer tout type de public, du plus pointu au plus festif.`
       },
       {
         id: 6,
-        nom: 'PRPHTXIV & TSHIMBOMBO', 
-        photo: '/artists/julien.webp',
-        genre: 'house | groove techno | dub techno',
+        nom: "TOOFOULK",
+        photo: '/artists/toofoulk.webp',
+        genre: 'Jungle | Drum and Bass | Neuro',
         heure: '02h30',
         origine: 'Poitiers - France',
         description: ``
@@ -64,7 +64,7 @@ export const artistesData = {
     ],
     j2: [
       {
-        id: 8,
+        id: 7,
         nom: 'PRPHTXIV & TSHIMBOMBO MIX VINYLE', 
         photo: '/artists/julien.webp',
         genre: 'house | groove techno | dub techno',
@@ -73,48 +73,48 @@ export const artistesData = {
         description: `Un DJ Set à la cool pendant l'après-midi !`
       },
       {
-        id: 9,
+        id:8,
         nom: "Yoga Teacher", 
         photo: '/artists/yogateacher.webp',
         genre: 'Cardio Psych Rock',
-        heure: '20h30',
+        heure: '21h00',
         origine: 'Bruxelles - Belgique',
         description: `Situé dans les prémices de la sortie de leurs premiers enregistrements, le groupe bruxellois Yoga Teacher façonne un son que l’on pourrait qualifier d’indie psychédélique groovy et chargé en riffs — à la fois accrocheur et distordu — influencé par les parcours musicaux propres à chacun des quatre membres, ainsi que par leur passion commune pour un rock sans compromis.`
       },
 
       {
-        id: 10,
+        id: 9,
         nom: 'Stonks', 
         photo: '/artists/stonks.webp',
         genre: 'Post Punk | Post Rock | Alternative rock',
-        heure: '22h00',
+        heure: '22h30',
         origine: 'Bruxelles - Belgique',
         description: `Formé en 2021 par quatre musiciens attirés par la création originale et alternative, Stonks est un groupe indé Bruxellois. Ils sont inspiré par le rock, le jazz, le brouahahah désinvolte, les valses cassées, tous types de musiques pour cheveux longs, et surtout par la nouvelle scène post-punk anglaise, tirée au lasso par squid, shame et les viagra boys qui font parler d'eux depuis quelques années.`
       },
       {
-        id: 11,
+        id: 10,
         nom: "C'EST ELLE AIME",
         photo: '/artists/CLM.webp',
         genre: 'Mood House | Electro-Acid | Techno Industrial | Dub',
-        heure: '23h30',
+        heure: '00h00',
         origine: 'Poitiers - France',
         description: `Plongez dans l'univers cosmique et cyberpunk des protagonistes C'est Elle et Aime grace à leurs aventures retrouvés sous format audio. Genres musicaux diagnostiqués : mood house, electro-acid, techno indus/DUB.`
       },
       {
-        id: 12,
+        id: 11,
         nom: "Akae",
         photo: '/artists/akae.webp',
         genre: 'Hard Techno',
-        heure: '01h30',
+        heure: '02h00',
         origine: 'Toulouse - France',
         description: ``
       },
       {
-        id: 13,
+        id: 12,
         nom: 'TWENTYHATE',
         photo: '/artists/twentyhate.webp',
         genre: 'Hard Music | Uptempo',
-        heure: '03h00',
+        heure: '03h30',
         origine: 'Toulouse - France',
         description: `I listen to normal music I swear`
       },
