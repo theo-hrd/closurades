@@ -22,7 +22,7 @@ type Product = {
 
 export default function Merch() {
     // Liste des produits
-    const products = [
+    const products: Product[] = [
         {
             id: 1,
             name: "T-shirt Closurades 2025",
