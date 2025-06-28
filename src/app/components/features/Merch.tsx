@@ -68,9 +68,9 @@ export default function Merch() {
         },
         {
             id: 3,
-            name: "T-shirt upcyclé patch Closurades",
+            name: "T-shirt patch Closurades",
             image: "/artists/question.webp",
-            description: "T-shirt patché et upcyclé avec le logo Closurades chaque t shirt est unique.",
+            description: "",
             isShirt: true,
             colors: ["bleu", "noir"],
             variants: {
@@ -84,9 +84,9 @@ export default function Merch() {
         },
         {
             id: 4,
-            name: "T-shirt upcyclé Closurades",
+            name: "T-shirt patch 2 Closurades",
             image: "/artists/question.webp",
-            description: "T-shirt upcyclé sérigraphié avec des photos intimistes",
+            description: "",
             isShirt: true,
             colors: ["bleu", "blanc", "vert"],
             variants: {
