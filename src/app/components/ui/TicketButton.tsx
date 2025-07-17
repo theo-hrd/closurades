@@ -75,7 +75,7 @@ function useVinylSpinAnimation(isHovered: boolean) {
 }
 
 const TicketButton = ({
-  buttonText = "COMPLET",
+  buttonText = "TICKETS RESTANTS SUR PLACE",
   gradientFrom = "from-red-600",
   gradientTo = "to-orange-600",
 }: Readonly<TicketButtonProps>) => {
