@@ -241,7 +241,6 @@ export default function Merch() {
                                     height={900}
                                     className="w-full h-full object-cover md:object-contain transition-all duration-500 group-hover:scale-105"
                                     priority={product.id <= 2}
-                                    onLoadingComplete={() => handleImageLoad(product.id)}
                                     onLoad={() => handleImageLoad(product.id)}
                                 />
                             </div>
